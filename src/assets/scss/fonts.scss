@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'ProximaNova';
+  src: local('ProximaNova-Bold'), local('ProximaNova-Bold'),
+    url('~assets/fonts/ProximaNova-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Blacksword';
+  src: local('Blacksword'), local('Blacksword'),
+    url('~assets/fonts/Blacksword.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Granville';
+  src: local('Granville'), local('Granville'),
+    url('~assets/fonts/Granville.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}

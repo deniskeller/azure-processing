@@ -1,0 +1,132 @@
+@use 'sass:math';
+
+html {
+  color: $black;
+  font-family: 'Mulish', sans-serif;
+  // font-size: math.div(16, 1920) * 100vh;
+  font-weight: $normal;
+  line-height: 120%;
+  scroll-behavior: smooth;
+  min-height: 100%;
+}
+
+@media screen and (max-aspect-ratio: 1920/960) {
+  html {
+    font-size: math.div(16, 1920) * 100vw;
+  }
+}
+
+@media only screen and (min-width: 1920px) and (max-aspect-ratio: 1920/960) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-height: 960px) and (min-aspect-ratio: 1920/960) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  @include iflaptop {
+    font-size: math.div(16, 1440) * 100vw;
+  }
+
+  @include iftablet {
+    font-size: math.div(16, 1024) * 100vw;
+  }
+  @include iftablet-mini {
+    font-size: math.div(16, 768) * 100vw;
+  }
+
+  @include ifmobile {
+    font-size: math.div(16, 360) * 100vw;
+  }
+}
+
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+a {
+  // color: $white;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  // border: 1px solid red;
+}
+
+picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+textarea::placeholder {
+  line-height: 100%;
+}
+input::placeholder {
+  font-weight: 200 !important;
+}
+
+//remove arrows in all browser
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='number']:hover,
+input[type='number']:focus {
+  -moz-appearance: number-input;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// ОТКЛЮЧАЕМ СТИЛИ АВТОЗАПОЛНЕНИЯ ПОЛЕЙ
+input:-internal-autofill-selected,
+input:-webkit-autofill {
+  &:hover,
+  &:focus,
+  &:active {
+    transition-delay: 9999s !important;
+    transition-property: background-color, color !important;
+  }
+}

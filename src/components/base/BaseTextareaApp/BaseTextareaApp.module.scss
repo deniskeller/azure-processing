@@ -1,0 +1,107 @@
+.BaseTextarea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: em(16px);
+
+  .Textarea {
+    $size: 14px;
+    width: 100%;
+    min-height: em(32px, $size);
+    max-height: em(160px, $size);
+
+    background: none;
+    outline: none;
+    border: none;
+    position: relative;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 0;
+    border-bottom: 1px solid $base600light;
+    transition: all 0.3s ease;
+    @include placeholder-color(transparent);
+    padding: em(0px, $size) em(16px, $size) em(14px, $size) em(10px, $size);
+    resize: none;
+
+    text-overflow: ellipsis;
+    font-family: 'Mulish', sans-serif;
+    font-size: em($size);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    color: #1a1a1a;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none; /* IE и Edge */
+    scrollbar-width: none; /* Firefox */
+
+    &::placeholder {
+      visibility: hidden;
+    }
+
+    &:focus + .Label {
+      $size: 12px;
+      top: em(0px);
+      font-size: em($size);
+    }
+
+    & + .NoEmpty {
+      $size: 12px;
+      top: em(0px);
+      font-size: em($size);
+    }
+  }
+
+  .Label {
+    $size: 14px;
+    display: flex;
+    position: absolute;
+    top: em(17px, $size);
+    left: em(10px, $size);
+    pointer-events: none;
+    color: #1a1a1a;
+    opacity: 0.6;
+    font-family: 'Mulish', sans-serif;
+    font-size: em($size);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    transition: top 0.3s ease, font-size 0.3s ease;
+  }
+
+  .Counter {
+    position: absolute;
+    right: em(6px);
+    bottom: em(4px);
+    color: $red;
+    opacity: 0.6;
+    font-family: 'Mulish', sans-serif;
+    font-size: em(10px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .Error {
+    border-bottom: 1px solid #a61613 !important;
+  }
+
+  //disabled style
+  .Textarea:disabled,
+  .Textarea:disabled:hover,
+  .Textarea:disabled:focus {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: $base400light;
+    border-color: $base400light;
+
+    & + .Label {
+      color: $base400light;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.Toggle {
+	display: inline-flex;
+	column-gap: em(10px);
+	position: relative;
+	border-radius: em(30px);
+	background: #081e5b;
+	// overflow: hidden;
+	input {
+		display: none;
+		opacity: 0;
+	}
+	label {
+		cursor: pointer;
+	}
+
+	.Toggle_Label {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: em(16px) em(32px) em(14px);
+		border-radius: em(30px);
+		border: 1px solid transparent;
+
+		@include ifmobile {
+			padding: em(16px) em(14px) em(14px);
+		}
+
+		&:hover {
+			background: #0e2565;
+		}
+
+		&:active {
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		span {
+			color: $grey;
+			font-family: $Spectral;
+			font-size: em(14px);
+			line-height: 100%;
+			font-style: normal;
+			font-weight: $normal;
+			letter-spacing: 1.4px;
+			text-transform: uppercase;
+			white-space: nowrap;
+		}
+	}
+}
+
+.Toggler {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	transition: 0.5s all ease-in-out;
+	overflow: hidden;
+	z-index: 0;
+
+	background: transparent;
+	border-radius: em(30px);
+	border: 1px solid rgba(214, 219, 225, 0.6);
+}

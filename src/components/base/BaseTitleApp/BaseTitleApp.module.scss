@@ -1,0 +1,33 @@
+.Title {
+  &_h1 {
+    color: $black;
+    font-family: $Mulish;
+    font-size: em(20px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+    text-transform: uppercase;
+    @include ifmobile {
+      font-size: em(16px);
+    }
+  }
+
+  &_h2 {
+    font-size: em(16px);
+    color: $base800light;
+    font-family: $Mulish;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 150% */
+    @include ifmobile {
+      font-size: em(14px);
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

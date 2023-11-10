@@ -1,3 +1,11 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "react-hooks/rules-of-hooks": 1,
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+    // "react/no-unescaped-entities": 1,
+    "react/display-name": 1,
+		"react/no-unescaped-entities": ["error", {"forbid": [">", "}"]}]
+  }
+	
 }

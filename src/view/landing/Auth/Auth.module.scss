@@ -1,0 +1,209 @@
+.Auth {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: em(40px) 0;
+
+  @include iftablet {
+    background-position: left;
+  }
+  @include iftablet-mini {
+    background-position: left;
+  }
+  @include ifmobile {
+    background-position: 19% 100%;
+  }
+
+  &_Background {
+    width: 100vw;
+    height: auto;
+  }
+
+  &_Content {
+    position: relative;
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(11px);
+    width: 100%;
+    max-width: em(691px);
+    padding: em(82px) em(95px) em(102px);
+    @include iftablet {
+      max-width: em(600px);
+      padding: em(48px) em(50px);
+    }
+    @include iftablet-mini {
+      max-width: em(600px);
+      padding: em(48px) em(50px);
+    }
+    @include ifmobile {
+      padding: em(42px) em(20px) em(62px);
+    }
+
+    .Decor {
+      position: absolute;
+      top: em(83px);
+      right: em(-15px);
+      width: em(90px);
+      height: em(7px);
+      background: $red;
+      display: none;
+      @include ifdesktop {
+        display: block;
+      }
+    }
+
+    .Form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: em(48px);
+
+      &_Title {
+        margin-bottom: em(55px);
+        @include ifmobile {
+          margin-bottom: em(30px);
+        }
+        h1 {
+          color: $white;
+          font-family: $Blacksword;
+          font-size: em(44px);
+          font-style: normal;
+          font-weight: 400;
+          line-height: 72%;
+          @include ifmobile {
+            font-size: em(30px);
+            line-height: 106%;
+          }
+        }
+      }
+
+      ul {
+        margin-bottom: em(62px);
+        @include ifmobile {
+          margin-bottom: em(40px);
+        }
+        li:not(:last-child) {
+          margin-bottom: em(39px);
+          @include ifmobile {
+            margin-bottom: em(20px);
+          }
+        }
+        .Password {
+          position: relative;
+          &_Input {
+            input {
+              padding-right: em(130px, 14px);
+            }
+          }
+          .Link {
+            position: absolute;
+            top: 50%;
+            right: em(16px);
+            transform: translate(0, -50%);
+            &:hover {
+              span {
+                color: $red2;
+              }
+            }
+            span {
+              color: $white;
+              text-overflow: ellipsis;
+              font-size: em(12px);
+              font-style: normal;
+              font-weight: 400;
+              line-height: 100%;
+            }
+          }
+        }
+      }
+
+      &_Button {
+        width: 100%;
+        height: em(57px);
+        background: rgba(145, 17, 14, 0.5);
+        &:hover {
+          background: #ab0300;
+        }
+        &:active {
+          opacity: 0.8;
+          background: #ab0300;
+        }
+      }
+    }
+
+    .Back {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0 auto;
+      width: max-content;
+      &:hover {
+        svg {
+          transform: translate(-3px, 0);
+          path {
+            fill: $red2;
+            stroke: $red2;
+          }
+        }
+        span {
+          color: $red2;
+        }
+      }
+      svg {
+        margin-right: em(18px);
+        transition: transform $speed ease;
+      }
+      span {
+        color: $white;
+        font-size: em(16px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.64px;
+        text-transform: uppercase;
+        transition: color $speed ease;
+      }
+    }
+  }
+
+  .Copyright {
+    position: absolute;
+    left: em(70px);
+    bottom: em(27px);
+    @include iflaptop {
+      left: em(50px);
+      bottom: em(50px);
+    }
+    @include iftablet {
+      left: em(40px);
+      bottom: em(40px);
+    }
+    @include iftablet-mini {
+      left: em(40px);
+      bottom: em(40px);
+    }
+    @include ifmobile {
+      left: em(30px);
+      bottom: em(30px);
+    }
+    p {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: em(12px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 133.333%;
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include iftablet-mini {
+}
+@include ifmobile {
+}
