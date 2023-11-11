@@ -1,0 +1,79 @@
+.Button {
+  $size: 18px;
+  line-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  height: em(53px, $size);
+  padding: em(20px, $size) em(24px, $size);
+  @extend %button;
+  box-sizing: border-box;
+  transition: all $speed ease;
+  border-radius: em(12px, $size);
+
+  color: #fff;
+  text-align: center;
+  font-family: $HelveticaNeueCyr;
+  font-size: em($size);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+
+  @include ifmobile {
+    $size: 16px;
+    height: em(43px, $size);
+    padding: em(14px, $size) em(24px, $size);
+    font-size: em($size);
+    border-radius: em(12px, $size);
+  }
+}
+
+// primary
+.Button_primary {
+  background: #425eec;
+  &:hover {
+    background: #4c68f6;
+  }
+  &:active {
+    background: #2f4cde;
+  }
+}
+
+//secondary
+.Button_secondary {
+  background: rgba(66, 94, 236, 0.15);
+  color: #425eec;
+
+  &:hover {
+    background: #91110e;
+  }
+
+  &:active {
+    background: rgba(145, 17, 14, 0.8);
+  }
+}
+
+//empty
+.Button_empty {
+  color: #425eec;
+  background: transparent;
+
+  &:hover {
+    color: #4c68f6;
+  }
+
+  &:active {
+    color: #2f4cde;
+  }
+}
+
+//disabled style
+.Button:disabled,
+.Button:disabled:hover,
+.Button:disabled:active {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  color: rgba(66, 94, 236, 0.4) !important;
+  background: rgba(66, 94, 236, 0.15) !important;
+}

@@ -1,35 +1,29 @@
 @mixin ifdesktop {
-  @media only screen and (min-width: 1441px) {
+  @media only screen and (min-width: 1025px) {
     @content;
   }
 }
 
 @mixin iflaptop {
-  @media only screen and (min-width: 1025px) and (max-width: 1440px) {
-    @content;
-  }
-}
-
-@mixin iftablet {
   @media only screen and (min-width: 769px) and (max-width: 1024px) {
     @content;
   }
 }
 
-@mixin iftablet-mini {
-  @media only screen and (min-width: 569px) and (max-width: 768px) {
+@mixin iftablet {
+  @media only screen and (min-width: 601px) and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin ifmobile {
+  @media only screen and (max-width: 600px) {
     @content;
   }
 }
 
 @mixin ifrespons {
   @media only screen and (min-width: 569px) and (max-width: 1440px) {
-    @content;
-  }
-}
-
-@mixin ifmobile {
-  @media only screen and (max-width: 568px) {
     @content;
   }
 }

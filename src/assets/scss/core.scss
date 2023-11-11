@@ -1,10 +1,10 @@
 @use 'sass:math';
 
 html {
-  color: $black;
-  font-family: 'Mulish', sans-serif;
+  color: #000;
+  font-family: 'HelveticaNeueCyr', sans-serif;
   // font-size: math.div(16, 1920) * 100vh;
-  font-weight: $normal;
+  font-weight: normal;
   line-height: 120%;
   scroll-behavior: smooth;
   min-height: 100%;
@@ -30,13 +30,10 @@ html {
 
 html {
   @include iflaptop {
-    font-size: math.div(16, 1440) * 100vw;
+    font-size: math.div(16, 1024) * 100vw;
   }
 
   @include iftablet {
-    font-size: math.div(16, 1024) * 100vw;
-  }
-  @include iftablet-mini {
     font-size: math.div(16, 768) * 100vw;
   }
 
@@ -51,15 +48,17 @@ body {
   flex-direction: column;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none; /* IE и Edge */
-  scrollbar-width: none; /* Firefox */
+  background: #fff;
+
+  //СКРЫВАЕМ СКРОЛЛ
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
+  // -ms-overflow-style: none; /* IE и Edge */
+  // scrollbar-width: none; /* Firefox */
 }
 
 a {
-  // color: $white;
   text-decoration: none;
 }
 
@@ -71,6 +70,7 @@ ul {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  //ДЛЯ ВЫЯВЛЕНИЯ ВЫЛЕЗАЮЩИХ ЗА СТРАНИЦУ БЛОКОВ
   // border: 1px solid red;
 }
 
@@ -101,7 +101,7 @@ input::placeholder {
   font-weight: 200 !important;
 }
 
-//remove arrows in all browser
+//УБИРАЕМ ДЕФОЛТНЫЕ СТРЕЛОЧКИ В ИНПУТ ТИПО НОМЕР
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;

@@ -1,23 +1,48 @@
 @font-face {
-  font-family: 'ProximaNova';
-  src: local('ProximaNova-Bold'), local('ProximaNova-Bold'),
-    url('~assets/fonts/ProximaNova-Bold.woff2') format('woff2');
+  font-family: 'HelveticaNeueCyr';
+  src: local('HelveticaNeueCyr-Light'), local('HelveticaNeueCyr-Light'),
+    url('~assets/fonts/HelveticaNeueCyr-Light.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'HelveticaNeueCyr';
+  src: local('HelveticaNeueCyr-Roman'), local('HelveticaNeueCyr-Roman'),
+    url('~assets/fonts/HelveticaNeueCyr-Roman.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'HelveticaNeueCyr';
+  src: local('HelveticaNeueCyr-Medium'),
+    local('HelvHelveticaNeueCyr-MediumeticaNeueCyr'),
+    url('~assets/fonts/HelveticaNeueCyr-Medium.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'HelveticaNeueCyr';
+  src: local('HelveticaNeueCyr-Heavy'), local('HelveticaNeueCyr-Heavy'),
+    url('~assets/fonts/HelveticaNeueCyr-Heavy.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'HelveticaNeueCyr';
+  src: local('HelveticaNeueCyr-Bold'), local('HelveticaNeueCyr-Bold'),
+    url('~assets/fonts/HelveticaNeueCyr-Bold.woff2') format('woff2');
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Blacksword';
-  src: local('Blacksword'), local('Blacksword'),
-    url('~assets/fonts/Blacksword.woff2') format('woff2');
+  font-family: 'HelveticaNeueCyr';
+  src: local('HelveticaNeueCyr-Black'), local('HelveticaNeueCyr-Black'),
+    url('~assets/fonts/HelveticaNeueCyr-Black.woff2') format('woff2');
   font-style: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'Granville';
-  src: local('Granville'), local('Granville'),
-    url('~assets/fonts/Granville.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 400;
+  font-weight: 900;
 }

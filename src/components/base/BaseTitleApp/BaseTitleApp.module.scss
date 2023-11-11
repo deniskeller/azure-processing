@@ -1,7 +1,7 @@
 .Title {
   &_h1 {
-    color: $black;
-    font-family: $Mulish;
+    color: #000;
+    font-family: $HelveticaNeueCyr;
     font-size: em(20px);
     font-style: normal;
     font-weight: 700;
@@ -15,7 +15,7 @@
   &_h2 {
     font-size: em(16px);
     color: $base800light;
-    font-family: $Mulish;
+    font-family: $HelveticaNeueCyr;
     font-style: normal;
     font-weight: 700;
     line-height: 150%; /* 150% */

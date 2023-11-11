@@ -1,5 +1,5 @@
 import React, { MutableRefObject, ReactNode } from 'react';
-import s from './BaseButtonApp.module.scss';
+import s from './BaseButton.module.scss';
 
 interface Props {
   children: string | ReactNode | ReactNode[];
@@ -10,7 +10,7 @@ interface Props {
   onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const BaseButtonApp: React.FC<Props> = ({
+const BaseButton: React.FC<Props> = ({
   children,
   disabled = false,
   type = 'primary',
@@ -30,4 +30,4 @@ const BaseButtonApp: React.FC<Props> = ({
   );
 };
 
-export default BaseButtonApp;
+export default BaseButton;
