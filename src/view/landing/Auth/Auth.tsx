@@ -1,4 +1,4 @@
-import { BaseButtonApp } from '@base/index';
+import { BaseButton } from '@base/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
@@ -21,7 +21,7 @@ const Auth: React.FC = () => {
             <li></li>
           </ul>
 
-          <BaseButtonApp className={s.Form_Button}>Log in</BaseButtonApp>
+          <BaseButton className={s.Form_Button}>Log in</BaseButton>
         </form>
       </div>
     </section>
