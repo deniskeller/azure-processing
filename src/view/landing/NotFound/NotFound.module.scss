@@ -3,7 +3,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: em(64px) em(30px);
+  min-height: 100vh;
+  padding: em(203px) em(30px) em(64px);
+  @include iflaptop {
+    padding: em(157px) em(30px) em(64px);
+  }
+  @include iftablet {
+    padding: em(203px) em(30px) em(64px);
+  }
+  @include ifmobile {
+    padding: em(64px) em(30px) em(64px);
+  }
 
   &_Image {
     position: relative;
