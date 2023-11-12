@@ -11,6 +11,12 @@
     justify-content: space-between;
   }
 
+  &_Logo {
+    @include ifmobile {
+      z-index: 1001;
+    }
+  }
+
   &_Navbar {
     display: flex;
     flex-direction: row;
