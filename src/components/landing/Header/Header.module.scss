@@ -76,13 +76,14 @@
       display: none;
     }
     .Login {
+      color: $base900light;
       margin-right: em(10px);
     }
   }
 
   &_Burder {
     cursor: pointer;
-    // display: none;
+    display: none;
     width: em(43px);
     height: em(20px);
     @include iftablet {
@@ -133,7 +134,9 @@
         height: 100%;
         padding: em(256px) em(40px) em(70px);
         @include ifmobile {
+          width: 100%;
           align-items: center;
+          padding: em(324px) em(40px) em(70px);
         }
         .Logo {
           position: absolute;
