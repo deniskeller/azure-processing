@@ -1,20 +1,20 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import s from './Landing.module.scss';
-// import Header from 'components/dashboard/Header/Header';
+import Header from 'components/landing/Header/Header';
 
 const pages = [
   {
     name: 'About & Contacts',
-    path: '/about-and-contacts',
+    href: '/about-and-contacts',
   },
   {
     name: 'Service Providers',
-    path: '/service-providers',
+    href: '/service-providers',
   },
   {
     name: 'Merchant Protection',
-    path: '/merchant-protection',
+    href: '/merchant-protection',
   },
 ];
 
@@ -29,11 +29,11 @@ const Landing: React.FC<Props> = ({ children, footer = true }) => {
   return (
     <>
       <div className={s.Landing}>
-        {/* <Header /> */}
+        <Header pages={pages} />
 
         <div className={s.Content}>{children}</div>
 
-        {footer ? <div className="">Footer</div> : null}
+        {footer ? <div className={s.Footer}>Footer</div> : null}
       </div>
     </>
   );

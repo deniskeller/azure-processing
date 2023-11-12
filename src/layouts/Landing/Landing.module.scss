@@ -1,3 +1,22 @@
+.Landing {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+.Footer {
+  margin-top: auto;
+  height: 200px;
+  background: grey;
+}
+
 @include iflaptop {
 }
 @include iftablet {

@@ -1,10 +1,10 @@
-import Link from 'next/link';
+import { Landing } from '@layouts/index';
 
 const MainPage = () => {
   return (
-    <h1>
-      <Link href="/about">404</Link>
-    </h1>
+    <Landing>
+      <h1>Main page</h1>
+    </Landing>
   );
 };
 

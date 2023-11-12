@@ -1,0 +1,254 @@
+.Header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &_Container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_Navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    @include iftablet {
+      display: none;
+    }
+    @include ifmobile {
+      display: none;
+    }
+    li:not(:last-child) {
+      margin-right: em(50px);
+      @include iflaptop {
+        margin-right: em(40px);
+      }
+    }
+    .Link {
+      color: $base900light;
+      font-family: $HelveticaNeueCyr;
+      font-size: em(16px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 130%; /* 20.8px */
+      white-space: nowrap;
+      position: relative;
+      width: max-content;
+      @include iflaptop {
+        font-size: em(14px);
+      }
+      &_Active {
+        color: #425eec;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: em(-5px);
+        left: 0;
+        height: em(1px);
+        background-color: $blue-main;
+      }
+
+      &:hover {
+        &::after {
+          animation: bottomLine 0.3s linear forwards;
+        }
+      }
+    }
+  }
+
+  &_Actions {
+    display: flex;
+    flex-direction: row;
+    @include iftablet {
+      display: none;
+    }
+    @include ifmobile {
+      display: none;
+    }
+    .Login {
+      margin-right: em(10px);
+    }
+  }
+
+  &_Burder {
+    cursor: pointer;
+    // display: none;
+    width: em(43px);
+    height: em(20px);
+    @include iftablet {
+      display: block;
+    }
+    @include ifmobile {
+      display: block;
+    }
+  }
+
+  &_Sidebar {
+    position: fixed;
+    z-index: $popup;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all $speed ease;
+
+    .Overlay {
+      @extend %fullsize;
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    .Sidebar {
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      right: 0;
+      width: em(358px);
+      height: 100vh;
+      overflow: hidden;
+      background: $white;
+      box-shadow: 0px 4px 25px 0px rgba(169, 169, 169, 0.25);
+      transition: all $speed ease;
+      transform: translate(100%, 0);
+      @include ifmobile {
+        width: 100%;
+      }
+
+      &_Content {
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        width: em(358px);
+        height: 100%;
+        padding: em(256px) em(40px) em(70px);
+        @include ifmobile {
+          align-items: center;
+        }
+        .Logo {
+          position: absolute;
+          right: em(-97px);
+          top: 50%;
+          transform: translate(0, -50%);
+          width: em(406px);
+          height: em(406px);
+          pointer-events: none;
+        }
+
+        .Close {
+          cursor: pointer;
+          position: absolute;
+          top: em(18px);
+          right: em(23px);
+          width: em(37px);
+          height: em(37px);
+          @include ifmobile {
+            top: em(13px);
+            right: em(13px);
+          }
+        }
+
+        .Navbar {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: em(100px);
+          @include ifmobile {
+            align-items: center;
+          }
+          li:not(:last-child) {
+            margin-bottom: em(50px);
+          }
+          .Link {
+            color: $base900light;
+            font-family: $HelveticaNeueCyr;
+            font-size: em(24px);
+            font-style: normal;
+            font-weight: 500;
+            line-height: 130%; /* 20.8px */
+            white-space: nowrap;
+            position: relative;
+            width: max-content;
+            &_Active {
+              color: #425eec;
+            }
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: em(-5px);
+              left: 0;
+              height: em(1px, 24px);
+              background-color: $blue-main;
+            }
+
+            &:hover {
+              &::after {
+                animation: bottomLine 0.3s linear forwards;
+              }
+            }
+          }
+        }
+
+        .Actions {
+          margin-top: auto;
+          .Login,
+          .SignUp {
+            color: $base900light;
+            font-family: $HelveticaNeueCyr;
+            font-size: em(24px);
+            font-style: normal;
+            font-weight: 500;
+            line-height: 130%; /* 20.8px */
+            white-space: nowrap;
+            position: relative;
+            width: max-content;
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: em(-5px);
+              left: 0;
+              height: em(1px, 24px);
+              background-color: $blue-main;
+            }
+
+            &:hover {
+              &::after {
+                animation: bottomLine 0.3s linear forwards;
+              }
+            }
+          }
+          .Login {
+            margin-right: em(50px);
+          }
+        }
+      }
+    }
+
+    &_Visible {
+      opacity: 1;
+      pointer-events: initial;
+      .Sidebar {
+        transform: translate(0);
+      }
+    }
+  }
+}
+
+@keyframes bottomLine {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}
