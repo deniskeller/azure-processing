@@ -9,11 +9,12 @@
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
+  overflow: hidden;
 }
 
 .Footer {
   margin-top: auto;
-  height: 200px;
+  height: 100px;
   background: grey;
 }
 
