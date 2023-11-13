@@ -145,13 +145,13 @@
     position: relative;
     padding: em(83px) 0 em(120px);
     @include iflaptop {
-      padding: 0 0 em(120px);
-    }
-    @include iftablet {
       padding: 0 0 em(100px);
     }
-    @include ifmobile {
+    @include iftablet {
       padding: 0 0 em(80px);
+    }
+    @include ifmobile {
+      padding: 0 0 em(60px);
     }
     &_Title {
       max-width: em(990px);
