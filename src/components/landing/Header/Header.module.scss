@@ -117,7 +117,8 @@
       right: 0;
       width: em(358px);
       height: 100vh;
-      overflow: hidden;
+      overflow: auto;
+      overflow-x: hidden;
       background: $white;
       box-shadow: 0px 4px 25px 0px rgba(169, 169, 169, 0.25);
       transition: all $speed ease;
@@ -129,9 +130,9 @@
       &_Content {
         display: flex;
         flex-direction: column;
-        overflow: auto;
-        width: em(358px);
-        height: 100%;
+        overflow: hidden;
+        max-width: em(358px);
+        min-height: 100%;
         padding: em(256px) em(40px) em(70px);
         @include ifmobile {
           width: 100%;
@@ -177,7 +178,7 @@
             font-size: em(24px);
             font-style: normal;
             font-weight: 500;
-            line-height: 130%; /* 20.8px */
+            line-height: 100%; /* 20.8px */
             white-space: nowrap;
             position: relative;
             width: max-content;
