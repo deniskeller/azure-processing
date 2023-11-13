@@ -1,0 +1,239 @@
+.PrivacyPolicy {
+  padding: em(213px) 0 em(120px);
+  @include iflaptop {
+    padding: em(145px) 0 em(100px);
+  }
+  @include iftablet {
+    padding: em(113px) 0 em(126px);
+  }
+  @include ifmobile {
+    padding: em(113px) 0 em(80px);
+  }
+
+  &_Container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr em(311px);
+    gap: 0 em(216px);
+    @include iflaptop {
+      grid-template-columns: 1fr em(201px);
+      gap: 0 em(53px);
+    }
+    @include iftablet {
+      grid-template-columns: 1fr em(181px);
+      gap: 0 em(50px);
+    }
+    @include ifmobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &_Content {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    .Section:not(:last-child) {
+      margin-bottom: em(60px);
+      @include ifmobile {
+        margin-bottom: em(20px);
+      }
+    }
+
+    .Section {
+      &_Title {
+        margin-bottom: em(40px);
+        @include iflaptop {
+          margin-bottom: em(30px);
+        }
+        @include iftablet {
+          margin-bottom: em(30px);
+        }
+        @include ifmobile {
+          margin-bottom: em(16px);
+        }
+        h1 {
+          color: $blue-main;
+          font-size: em(44px);
+          font-style: normal;
+          font-weight: 500;
+          line-height: 110%; /* 48.4px */
+          @include iflaptop {
+            font-size: em(32px);
+          }
+          @include iftablet {
+            font-size: em(26px);
+          }
+          @include ifmobile {
+            font-size: em(22px);
+          }
+        }
+      }
+
+      &_Content {
+        list-style: none;
+        .Paragraph:not(:last-child) {
+          margin-bottom: em(20px);
+          @include ifmobile {
+            margin-bottom: em(10px);
+          }
+        }
+
+        .Paragraph {
+          &_Title {
+            margin-bottom: em(20px);
+            @include ifmobile {
+              margin-bottom: em(10px);
+            }
+            h2 {
+              color: base900light;
+              font-size: em(24px);
+              font-style: normal;
+              font-weight: 500;
+              line-height: 130%;
+              @include iftablet {
+                font-size: em(16px);
+              }
+              @include ifmobile {
+                font-size: em(16px);
+              }
+            }
+          }
+
+          &_Description {
+            $size: 16px;
+
+            color: $base600light;
+            font-size: em($size);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 130%; /* 20.8px */
+            @include iftablet {
+              $size: 14px;
+              font-size: em($size);
+            }
+            @include ifmobile {
+              $size: 12px;
+              font-size: em($size);
+            }
+
+            ul {
+              $size: 16px;
+
+              list-style: decimal;
+              padding-left: em(24px, $size);
+              @include iftablet {
+                $size: 14px;
+                padding-left: em(24px, $size);
+              }
+              @include ifmobile {
+                $size: 12px;
+                padding-left: em(16px, $size);
+              }
+
+              li {
+                color: $base600light;
+                font-size: inherit;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 130%;
+                @include iflaptop {
+                }
+                @include iftablet {
+                }
+                @include ifmobile {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &_Sidebar {
+    position: relative;
+
+    .Sidebar {
+      position: sticky;
+      top: em(30px);
+      @include ifmobile {
+        display: none;
+      }
+
+      &_Header {
+        margin-bottom: em(20px);
+        p {
+          color: $black;
+          font-size: em(18px);
+          font-style: normal;
+          font-weight: 500;
+          line-height: 110%; /* 19.8px */
+          @include iftablet {
+            font-size: em(16px);
+          }
+        }
+      }
+
+      &_Navbar {
+        list-style: none;
+        &_Item {
+          cursor: pointer;
+          position: relative;
+          line-height: 100%;
+          &:not(:last-child) {
+            margin-bottom: em(18px);
+          }
+
+          p {
+            color: $base700light;
+            font-size: em(16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 110%; /* 17.6px */
+            display: inline-block;
+            position: relative;
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: em(-5px);
+              left: 0;
+              height: em(1px, 24px);
+              background-color: $blue-main;
+            }
+
+            @include iflaptop {
+              font-size: em(14px);
+            }
+            @include iftablet {
+              font-size: em(14px);
+            }
+          }
+          &:hover {
+            p::after {
+              animation: bottomLine 0.3s linear forwards;
+            }
+            p {
+              color: $base900light;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes bottomLine {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

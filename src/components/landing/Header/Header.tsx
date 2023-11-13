@@ -120,31 +120,6 @@ const Header: React.FC<Props> = ({ pages }) => {
                 />
               </svg>
 
-              {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 310 408"
-                fill="none"
-                
-              >
-                <path
-                  d="M0.502441 203.767C0.502441 91.5161 91.5 0.518555 203.751 0.518555V0.518555C316.003 0.518555 407 91.5162 407 203.767V385.336C407 397.31 397.294 407.016 385.32 407.016H203.751C91.4999 407.016 0.502441 316.019 0.502441 203.767V203.767Z"
-                  fill="url(#paint0_linear_623_4045)"
-                />
-                <defs>
-                  <linearGradient
-                    id="paint0_linear_623_4045"
-                    x1="73.377"
-                    y1="33.5264"
-                    x2="399.052"
-                    y2="411.623"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#425EEC" />
-                    <stop offset="1" stopColor="#7E93FA" />
-                  </linearGradient>
-                </defs>
-              </svg> */}
-
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 37 37"
