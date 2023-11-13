@@ -11,12 +11,6 @@
     justify-content: space-between;
   }
 
-  &_Logo {
-    @include ifmobile {
-      z-index: 1001;
-    }
-  }
-
   &_Navbar {
     display: flex;
     flex-direction: row;
@@ -139,7 +133,17 @@
           align-items: center;
           padding: em(324px) em(40px) em(70px);
         }
+
         .Logo {
+          display: none;
+          position: absolute;
+          top: em(16px);
+          left: em(10px);
+          @include ifmobile {
+            display: block;
+          }
+        }
+        .Icon {
           position: absolute;
           right: em(-97px);
           top: 50%;
