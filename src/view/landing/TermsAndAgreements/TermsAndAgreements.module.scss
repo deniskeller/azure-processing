@@ -1,0 +1,142 @@
+.TermsAndAgreements {
+  padding: em(213px) 0 em(120px);
+  @include iflaptop {
+    padding: em(145px) 0 em(100px);
+  }
+  @include iftablet {
+    padding: em(113px) 0 em(126px);
+  }
+  @include ifmobile {
+    padding: em(113px) 0 em(80px);
+  }
+
+  &_Content {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    .Section:not(:last-child) {
+      margin-bottom: em(60px);
+      @include ifmobile {
+        margin-bottom: em(20px);
+      }
+    }
+
+    .Section {
+      &_Title {
+        margin-bottom: em(40px);
+        @include iflaptop {
+          margin-bottom: em(30px);
+        }
+        @include iftablet {
+          margin-bottom: em(30px);
+        }
+        @include ifmobile {
+          margin-bottom: em(16px);
+        }
+        h1 {
+          color: $blue-main;
+          font-size: em(44px);
+          font-style: normal;
+          font-weight: 500;
+          line-height: 110%; /* 48.4px */
+          @include iflaptop {
+            font-size: em(32px);
+          }
+          @include iftablet {
+            font-size: em(26px);
+          }
+          @include ifmobile {
+            font-size: em(22px);
+          }
+        }
+      }
+
+      &_Content {
+        list-style: none;
+        .Paragraph:not(:last-child) {
+          margin-bottom: em(20px);
+          @include ifmobile {
+            margin-bottom: em(10px);
+          }
+        }
+
+        .Paragraph {
+          &_Title {
+            margin-bottom: em(20px);
+            @include ifmobile {
+              margin-bottom: em(10px);
+            }
+            h2 {
+              color: base900light;
+              font-size: em(24px);
+              font-style: normal;
+              font-weight: 500;
+              line-height: 130%;
+              @include iftablet {
+                font-size: em(16px);
+              }
+              @include ifmobile {
+                font-size: em(16px);
+              }
+            }
+          }
+
+          &_Description {
+            color: $base600light;
+            font-size: em(16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 130%; /* 20.8px */
+            @include iftablet {
+              font-size: em(14px);
+            }
+            @include ifmobile {
+              font-size: em(12px);
+            }
+
+            strong {
+              color: $black;
+              font-weight: 500;
+            }
+          }
+
+          &_List {
+            list-style: none;
+            li {
+              h3 {
+                color: $base900light;
+                font-size: em(18px);
+                font-style: normal;
+                font-weight: 500;
+                line-height: 130%;
+                @include ifmobile {
+                  font-size: em(14px);
+                }
+              }
+              p {
+                color: $base600light;
+                font-size: em(16px);
+                font-style: normal;
+                font-weight: 400;
+                line-height: 130%; /* 20.8px */
+                @include iftablet {
+                  font-size: em(14px);
+                }
+                @include ifmobile {
+                  font-size: em(12px);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}
