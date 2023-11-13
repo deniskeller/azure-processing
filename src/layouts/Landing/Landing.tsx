@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import s from './Landing.module.scss';
 import Header from 'components/landing/Header/Header';
+import Footer from 'components/landing/Footer/Footer';
 
 const pages = [
   {
@@ -33,7 +34,7 @@ const Landing: React.FC<Props> = ({ children, footer = true }) => {
 
         <div className={s.Content}>{children}</div>
 
-        {footer ? <div className={s.Footer}>Footer</div> : null}
+        {footer ? <Footer /> : null}
       </div>
     </>
   );

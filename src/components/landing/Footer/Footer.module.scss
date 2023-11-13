@@ -1,0 +1,141 @@
+.Footer {
+  padding: 0 0 em(40px) 0;
+  &_Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &_Logo {
+    @include iftablet {
+      width: 100%;
+      margin-bottom: em(30px);
+    }
+    @include ifmobile {
+      width: 100%;
+      margin-bottom: em(30px);
+      a {
+        width: em(150px);
+        height: em(40px);
+      }
+    }
+  }
+
+  &_Navbar {
+    width: 100%;
+    max-width: em(550px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include iflaptop {
+      max-width: em(335px);
+    }
+    @include iftablet {
+      max-width: em(375px);
+    }
+    @include ifmobile {
+      max-width: 100%;
+      margin-bottom: em(20px);
+    }
+    .Column {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      li:not(:last-child) {
+        margin-bottom: em(16px);
+      }
+      li {
+        line-height: 100%;
+        .Link {
+          color: $base900light;
+          font-family: $HelveticaNeueCyr;
+          font-size: em(16px);
+          font-style: normal;
+          font-weight: 400;
+          line-height: 100%; /* 20.8px */
+          white-space: nowrap;
+          position: relative;
+          width: max-content;
+          @include iflaptop {
+            font-size: em(14px);
+          }
+          @include iftablet {
+            font-size: em(14px);
+          }
+          @include ifmobile {
+            font-size: em(14px);
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: em(-5px);
+            left: 0;
+            height: em(1px, 24px);
+            background-color: $blue-main;
+          }
+
+          &:hover {
+            &::after {
+              animation: bottomLine 0.3s linear forwards;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &_Info {
+    .Contacts {
+      margin-bottom: em(16px);
+      @include ifmobile {
+        margin-bottom: em(10px);
+      }
+    }
+    .Contacts,
+    .Copyright {
+      @include iflaptop {
+        max-width: em(307px);
+      }
+      @include iftablet {
+        max-width: em(237px);
+      }
+      @include ifmobile {
+        max-width: 100%;
+      }
+      p {
+        color: $base600light;
+        font-size: em(16px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 20.8px */
+        @include iflaptop {
+          font-size: em(14px);
+        }
+        @include iftablet {
+          font-size: em(14px);
+        }
+        @include ifmobile {
+          font-size: em(12px);
+        }
+      }
+    }
+  }
+}
+
+@keyframes bottomLine {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

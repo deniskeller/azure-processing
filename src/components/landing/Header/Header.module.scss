@@ -3,6 +3,16 @@
   top: 0;
   left: 0;
   width: 100%;
+  padding: em(20px) 0;
+  @include iflaptop {
+    padding: em(20px) 0;
+  }
+  @include iftablet {
+    padding: em(16px) 0;
+  }
+  @include ifmobile {
+    padding: em(16px) 0;
+  }
 
   &_Container {
     display: flex;

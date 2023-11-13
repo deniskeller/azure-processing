@@ -12,12 +12,6 @@
   overflow: hidden;
 }
 
-.Footer {
-  margin-top: auto;
-  height: 100px;
-  background: grey;
-}
-
 @include iflaptop {
 }
 @include iftablet {
