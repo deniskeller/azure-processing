@@ -1,0 +1,62 @@
+.Title {
+  &_h1 {
+    color: $base900light;
+    font-family: $HelveticaNeueCyr;
+    font-size: em(90px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%; /* 99px */
+    @include iflaptop {
+      font-size: em(60px);
+    }
+    @include iftablet {
+      font-size: em(42px);
+    }
+    @include ifmobile {
+      font-size: em(26px);
+    }
+  }
+
+  &_h2 {
+    color: $base900light;
+    font-family: $HelveticaNeueCyr;
+    font-size: em(55px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%; /* 60.5px */
+    @include iflaptop {
+      font-size: em(44px);
+    }
+    @include iftablet {
+      font-size: em(32px);
+    }
+    @include ifmobile {
+      font-size: em(22px);
+    }
+  }
+
+  &_h3 {
+    color: $base900light;
+    font-family: $HelveticaNeueCyr;
+    font-size: em(44px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%; /* 60.5px */
+    @include iflaptop {
+      font-size: em(36px);
+    }
+    @include iftablet {
+      font-size: em(26px);
+    }
+    @include ifmobile {
+      font-size: em(22px);
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

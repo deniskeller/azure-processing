@@ -1,0 +1,248 @@
+.MerchantProtection {
+  position: relative;
+
+  .Header {
+    position: relative;
+
+    &_Container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: em(169px) 0 em(85px);
+      @include iflaptop {
+        padding: em(206px) 0 em(206px);
+      }
+      @include iftablet {
+        padding: em(153px) 0 em(150px);
+      }
+      @include ifmobile {
+        flex-wrap: wrap;
+        padding: em(123px) 0 em(60px);
+      }
+    }
+
+    &_Text {
+      max-width: em(810px);
+      @include iflaptop {
+        max-width: em(524px);
+      }
+      @include iftablet {
+        max-width: em(434px);
+      }
+      @include ifmobile {
+        max-width: em(810px);
+        margin-bottom: em(30px);
+      }
+      .Title {
+        margin-bottom: em(25px);
+      }
+      .Description {
+        max-width: em(704px);
+      }
+    }
+
+    &_Pictures {
+      width: em(643px);
+      height: em(643px);
+      position: relative;
+      z-index: 1;
+      @include iflaptop {
+        width: em(350px);
+        height: em(350px);
+      }
+      @include iftablet {
+        width: em(260px);
+        height: em(260px);
+      }
+      @include ifmobile {
+        width: em(260px);
+        height: em(260px);
+        margin: 0 auto;
+      }
+      .Image {
+        z-index: 1;
+      }
+
+      .Circle {
+        position: absolute;
+        z-index: -1;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        &_Small {
+          width: em(259px);
+          height: em(259px);
+          background: rgba(227, 231, 252, 0.5);
+          filter: blur(1.7568305730819702px);
+          @include iflaptop {
+            width: em(140px);
+            height: em(140px);
+          }
+          @include iftablet {
+            width: em(104px);
+            height: em(104px);
+          }
+          @include ifmobile {
+            width: em(104px);
+            height: em(104px);
+          }
+        }
+        &_Middle {
+          width: em(388px);
+          height: em(388px);
+          background: rgba(227, 231, 252, 0.4);
+          filter: blur(1.7568305730819702px);
+          @include iflaptop {
+            width: em(211px);
+            height: em(211px);
+          }
+          @include iftablet {
+            width: em(156px);
+            height: em(156px);
+          }
+          @include ifmobile {
+            width: em(156px);
+            height: em(156px);
+          }
+        }
+        &_Large {
+          width: em(643px);
+          height: em(643px);
+          background: rgba(227, 231, 252, 0.3);
+          filter: blur(5px);
+          @include iflaptop {
+            width: em(350px);
+            height: em(350px);
+          }
+          @include iftablet {
+            width: em(260px);
+            height: em(260px);
+          }
+          @include ifmobile {
+            width: em(260px);
+            height: em(260px);
+          }
+        }
+      }
+    }
+
+    &_Gradient {
+      @include iflaptop {
+        bottom: em(-44px);
+      }
+      @include iftablet {
+        bottom: em(-202px);
+      }
+      @include ifmobile {
+        bottom: em(118px);
+      }
+    }
+  }
+
+  .DescriptionProblem {
+    position: relative;
+    padding: em(83px) 0 em(120px);
+    @include iflaptop {
+      padding: 0 0 em(120px);
+    }
+    @include iftablet {
+      padding: 0 0 em(100px);
+    }
+    @include ifmobile {
+      padding: 0 0 em(80px);
+    }
+    &_Title {
+      max-width: em(990px);
+      margin: 0 auto em(40px);
+      text-align: center;
+      @include iflaptop {
+      }
+      @include iftablet {
+      }
+      @include ifmobile {
+      }
+    }
+
+    &_Form {
+      width: 100%;
+      max-width: em(790px);
+      padding: em(60px) em(100px);
+      margin: 0 auto;
+      border-radius: em(20px);
+      background: $blue-light;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include iftablet {
+        max-width: em(660px);
+        padding: em(60px) em(80px);
+      }
+      @include ifmobile {
+        max-width: 100%;
+        padding: em(40px) em(10px);
+      }
+
+      .Title {
+        margin-bottom: em(16px);
+        h3 {
+          color: $base900light;
+          font-size: em(44px);
+          font-style: normal;
+          font-weight: 500;
+          line-height: 140%;
+          @include iflaptop {
+            font-size: em(32px);
+          }
+          @include iftablet {
+            font-size: em(32px);
+          }
+          @include ifmobile {
+            font-size: em(22px);
+          }
+        }
+      }
+
+      .Subtitle {
+        margin-bottom: em(44px);
+        p {
+          color: $base400light;
+          text-align: center;
+          font-size: em(18px);
+          font-style: normal;
+          font-weight: 400;
+          line-height: 130%;
+          @include ifmobile {
+            font-size: em(16px);
+          }
+          a {
+            color: $blue-main;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .Inputs {
+        list-style: none;
+        margin-bottom: em(44px);
+        li:not(:last-child) {
+          margin-bottom: em(12px);
+        }
+      }
+
+      .Button {
+        @include ifmobile {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

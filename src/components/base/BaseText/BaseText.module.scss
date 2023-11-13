@@ -1,0 +1,14 @@
+.Text {
+  color: $base600light;
+  font-family: $HelveticaNeueCyr;
+  font-size: em(18px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  @include iftablet {
+    font-size: em(16px);
+  }
+  @include ifmobile {
+    font-size: em(16px);
+  }
+}

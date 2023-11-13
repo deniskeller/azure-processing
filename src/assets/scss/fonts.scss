@@ -25,16 +25,16 @@
 
 @font-face {
   font-family: 'HelveticaNeueCyr';
-  src: local('HelveticaNeueCyr-Heavy'), local('HelveticaNeueCyr-Heavy'),
-    url('~assets/fonts/HelveticaNeueCyr-Heavy.woff2') format('woff2');
+  src: local('HelveticaNeueCyr-Bold'), local('HelveticaNeueCyr-Bold'),
+    url('~assets/fonts/HelveticaNeueCyr-Bold.woff2') format('woff2');
   font-style: normal;
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'HelveticaNeueCyr';
-  src: local('HelveticaNeueCyr-Bold'), local('HelveticaNeueCyr-Bold'),
-    url('~assets/fonts/HelveticaNeueCyr-Bold.woff2') format('woff2');
+  src: local('HelveticaNeueCyr-Heavy'), local('HelveticaNeueCyr-Heavy'),
+    url('~assets/fonts/HelveticaNeueCyr-Heavy.woff2') format('woff2');
   font-style: normal;
   font-weight: 700;
 }
@@ -44,5 +44,5 @@
   src: local('HelveticaNeueCyr-Black'), local('HelveticaNeueCyr-Black'),
     url('~assets/fonts/HelveticaNeueCyr-Black.woff2') format('woff2');
   font-style: normal;
-  font-weight: 900;
+  font-weight: 800;
 }
