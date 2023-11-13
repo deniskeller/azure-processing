@@ -110,7 +110,8 @@
       top: 0;
       right: 0;
       width: em(358px);
-      height: 100vh;
+      min-height: 100vh;
+      height: 100%;
       overflow: auto;
       overflow-x: hidden;
       background: $white;
