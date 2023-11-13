@@ -148,6 +148,7 @@
         .Logo {
           display: none;
           position: absolute;
+          z-index: 100;
           top: em(16px);
           left: em(10px);
           @include ifmobile {
