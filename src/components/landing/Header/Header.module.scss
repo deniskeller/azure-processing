@@ -131,7 +131,7 @@
         @include ifmobile {
           width: 100%;
           align-items: center;
-          padding: em(324px) em(40px) em(70px);
+          padding: em(70px) em(40px) em(70px);
         }
 
         .Logo {
@@ -172,6 +172,7 @@
           margin-bottom: em(100px);
           @include ifmobile {
             align-items: center;
+            margin: auto;
           }
           li:not(:last-child) {
             margin-bottom: em(50px);
@@ -208,6 +209,9 @@
 
         .Actions {
           margin-top: auto;
+          @include ifmobile {
+            margin-top: em(40px);
+          }
           .Login,
           .SignUp {
             color: $base900light;
