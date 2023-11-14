@@ -1,0 +1,70 @@
+.AboutAndContacts {
+  position: relative;
+
+  .Header {
+    padding: em(295px) 0 0;
+    margin-bottom: em(200px);
+    &_Title {
+      text-align: center;
+      max-width: em(1119px);
+      margin: 0 auto em(25px);
+    }
+
+    &_Description {
+      text-align: center;
+      max-width: em(960px);
+      margin: 0 auto em(137px);
+    }
+
+    &_WhoAreWe {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 em(40px);
+      max-width: em(1114px);
+      margin: 0 auto;
+
+      .WhoAreWeItem {
+        min-height: em(350px);
+
+        border-radius: em(20px);
+        &_1 {
+          background: $blue-second;
+          padding: em(40px) em(40px) 0 em(40px);
+          .Text {
+            margin-bottom: em(8px);
+            p {
+              color: $blue-main;
+              font-size: em(24px);
+              font-style: normal;
+              font-weight: 500;
+              line-height: 140%; /* 33.6px */
+            }
+          }
+          .Image {
+            width: em(200px);
+            height: em(200px);
+            margin-left: auto;
+          }
+        }
+        &_2 {
+          background: $blue-light;
+          padding: em(6px) em(40px) em(40px) em(40px);
+          .Text {
+            margin-bottom: em(8px);
+            p {
+              color: $base800light;
+              font-size: em(18px);
+              font-style: normal;
+              font-weight: 500;
+              line-height: 140%; /* 33.6px */
+            }
+          }
+          .Image {
+            width: em(191px);
+            height: em(191px);
+          }
+        }
+      }
+    }
+  }
+}

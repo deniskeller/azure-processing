@@ -1,10 +1,10 @@
 import { Landing } from '@layouts/index';
+import { AboutAndContacts } from '@view/landing';
 
 const AboutAndContactsPage = () => {
   return (
     <Landing>
-      {/* <AboutAndContacts /> */}
-      <h1>about-and-contacts</h1>
+      <AboutAndContacts />
     </Landing>
   );
 };
