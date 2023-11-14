@@ -125,7 +125,6 @@ const MerchantProtection: React.FC = () => {
                   label="Email"
                   value={value.email}
                   onChange={(val: string) => setNewValue(val, 'email')}
-                  disabled
                 />
               </li>
 
@@ -135,7 +134,6 @@ const MerchantProtection: React.FC = () => {
                   label="Describe your problem"
                   value={value.text_problem}
                   onChange={(val: string) => setNewValue(val, 'text_problem')}
-                  disabled
                 />
               </li>
             </ul>

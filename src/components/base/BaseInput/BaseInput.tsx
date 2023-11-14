@@ -58,7 +58,9 @@ const BaseInput: React.FC<Props> = ({
       <input
         value={value}
         type={newType || type}
-        className={`${s.Input} ${error ? s.Input_Error : ''}`}
+        className={`${s.Input} ${error ? s.Input_Error : ''} ${
+          type == 'password' ? s.Input_Password : ''
+        }`}
         name={name}
         min={min}
         max={max}
@@ -87,7 +89,7 @@ const BaseInput: React.FC<Props> = ({
         />
       ) : null}
 
-      {icon === 'eye-off' && typeIcon === 'eye-off' ? (
+      {type === 'password' && typeIcon === 'eye-off' ? (
         <BaseIcon
           viewBox="0 0 24 24"
           icon={ALL_ICONS.EYE_OFF}

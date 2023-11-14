@@ -71,6 +71,13 @@
   &_Error {
     border: 1px solid #ff5f5f !important;
   }
+
+  &_Password {
+    padding-right: em(44px);
+    @include ifmobile {
+      padding-right: em(40px);
+    }
+  }
 }
 
 .Label {
