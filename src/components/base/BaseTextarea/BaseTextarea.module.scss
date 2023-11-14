@@ -9,6 +9,7 @@
   cursor: text;
 
   @include ifmobile {
+    border-radius: em(10px);
     padding: em(27px) em(16px) em(9px) em(16px);
   }
 
@@ -18,6 +19,7 @@
     min-height: em(44px, $size);
     max-height: em(200px, $size);
 
+    border-radius: 0;
     background: none;
     outline: none;
     border: none;
@@ -39,7 +41,6 @@
 
     @include ifmobile {
       $size: 16px;
-      border-radius: em(10px, $size);
       font-size: em($size);
       min-height: em(44px, $size);
       max-height: em(200px, $size);
