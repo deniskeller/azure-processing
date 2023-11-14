@@ -54,7 +54,12 @@ const BaseTextarea: React.FC<Props> = ({
   }, [value]);
 
   return (
-    <div className={`${s.BaseTextarea} ${className}`}>
+    <div
+      className={`${s.BaseTextarea} ${className} ${
+        disabled ? s.BaseTextarea_Disabled : null
+      }`}
+      onClick={() => refTextarea.current?.focus()}
+    >
       <textarea
         ref={refTextarea}
         value={value}
@@ -73,7 +78,7 @@ const BaseTextarea: React.FC<Props> = ({
 
       {label ? (
         <label className={`${s.Label} ${value ? s.NoEmpty : ''}`}>
-          {label}
+          <p>{label}</p>
         </label>
       ) : null}
 

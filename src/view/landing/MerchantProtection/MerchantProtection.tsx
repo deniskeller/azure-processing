@@ -19,19 +19,18 @@ interface IFormData {
   email: string;
   phone: string;
   text_problem: string;
-  password: string;
 }
 
 const MerchantProtection: React.FC = () => {
   const router = useRouter();
 
   const [value, setValue] = React.useState<IFormData>({
-    name_surname: '',
-    company_name: '',
-    email: '',
+    name_surname: 'Maxim Ivanov',
+    company_name: 'Azure Processing',
+    email: 'example@mail.com',
     phone: '',
-    text_problem: '',
-    password: '',
+    text_problem:
+      'There is something to think about: representatives of modern social reserves are presented in an exceptionally positive light.',
   });
 
   const setNewValue = (value: string, prop: keyof IFormData) => {
@@ -126,16 +125,17 @@ const MerchantProtection: React.FC = () => {
                   label="Email"
                   value={value.email}
                   onChange={(val: string) => setNewValue(val, 'email')}
+                  disabled
                 />
               </li>
 
               <li>
                 <BaseTextarea
-                  maxLength={300}
                   name="text_problem"
                   label="Describe your problem"
                   value={value.text_problem}
                   onChange={(val: string) => setNewValue(val, 'text_problem')}
+                  disabled
                 />
               </li>
             </ul>

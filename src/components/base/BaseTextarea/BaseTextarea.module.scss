@@ -2,36 +2,48 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-top: em(16px);
+  padding: em(34px) em(16px) em(10px) em(24px);
+  border-radius: em(12px);
+  border: 1px solid #e8e8ea;
+  background: #fff;
+  cursor: text;
+
+  @include ifmobile {
+    padding: em(27px) em(16px) em(9px) em(16px);
+  }
 
   .Textarea {
-    $size: 14px;
+    $size: 18px;
     width: 100%;
-    min-height: em(32px, $size);
-    max-height: em(160px, $size);
+    min-height: em(44px, $size);
+    max-height: em(200px, $size);
 
     background: none;
     outline: none;
     border: none;
     position: relative;
     box-shadow: none;
-    background: transparent;
-    border-radius: 0;
-    border-bottom: 1px solid $base600light;
     transition: all 0.3s ease;
     @include placeholder-color(transparent);
-    padding: em(0px, $size) em(16px, $size) em(14px, $size) em(10px, $size);
     resize: none;
-
-    text-overflow: ellipsis;
-    font-family: 'Mulish', sans-serif;
     font-size: em($size);
+    text-overflow: ellipsis;
+    color: rgba(26, 26, 26, 0.9);
+    font-family: $HelveticaNeueCyr;
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
     color: #1a1a1a;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
+
+    @include ifmobile {
+      $size: 16px;
+      border-radius: em(10px, $size);
+      font-size: em($size);
+      min-height: em(44px, $size);
+      max-height: em(200px, $size);
+    }
     &::-webkit-scrollbar {
       display: none;
     }
@@ -43,33 +55,48 @@
     }
 
     &:focus + .Label {
-      $size: 12px;
-      top: em(0px);
-      font-size: em($size);
+      top: em(10px);
+      p {
+        font-size: em(14px);
+        @include ifmobile {
+          font-size: em(12px);
+        }
+      }
     }
 
     & + .NoEmpty {
-      $size: 12px;
-      top: em(0px);
-      font-size: em($size);
+      top: em(10px);
+      p {
+        font-size: em(14px);
+        @include ifmobile {
+          font-size: em(12px);
+        }
+      }
     }
   }
 
   .Label {
-    $size: 14px;
-    display: flex;
     position: absolute;
-    top: em(17px, $size);
-    left: em(10px, $size);
     pointer-events: none;
-    color: #1a1a1a;
-    opacity: 0.6;
-    font-family: 'Mulish', sans-serif;
-    font-size: em($size);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 100%;
-    transition: top 0.3s ease, font-size 0.3s ease;
+    top: em(24px);
+    left: em(25px);
+    transition: all 0.3s ease;
+    @include ifmobile {
+      left: em(17px);
+    }
+
+    p {
+      color: rgba(26, 26, 26, 0.4);
+      font-family: $HelveticaNeueCyr;
+      font-size: em(18px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%; /* 18px */
+      transition: all 0.3s ease;
+      @include ifmobile {
+        font-size: em(16px);
+      }
+    }
   }
 
   .Counter {
@@ -78,7 +105,7 @@
     bottom: em(4px);
     color: $red;
     opacity: 0.6;
-    font-family: 'Mulish', sans-serif;
+    font-family: $HelveticaNeueCyr;
     font-size: em(10px);
     font-style: normal;
     font-weight: 400;
@@ -92,16 +119,15 @@
   }
 
   //disabled style
-  .Textarea:disabled,
-  .Textarea:disabled:hover,
-  .Textarea:disabled:focus {
+  &_Disabled,
+  &_Disabled:hover,
+  &_Disabled:focus {
     cursor: not-allowed;
     pointer-events: none;
-    color: $base400light;
-    border-color: $base400light;
-
-    & + .Label {
-      color: $base400light;
+    background: #f4f4f5;
+    border: 1px solid #e5e7eb !important;
+    .Textarea {
+      color: rgba(26, 26, 26, 0.5);
     }
   }
 }
