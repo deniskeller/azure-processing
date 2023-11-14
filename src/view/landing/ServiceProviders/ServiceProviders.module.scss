@@ -46,7 +46,7 @@
       width: em(643px);
       height: em(613px);
       position: relative;
-      z-index: 1;
+      z-index: 100;
       @include iflaptop {
         width: em(356px);
         height: em(339px);
@@ -61,7 +61,8 @@
         margin: 0 auto;
       }
       .Image {
-        z-index: 1;
+        z-index: 10;
+        position: relative;
       }
 
       .Icon {
@@ -69,7 +70,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: -1;
+        z-index: 0;
         width: em(644px);
         height: em(651px);
         @include iflaptop {
@@ -85,19 +86,6 @@
           height: em(270px);
           margin: 0 auto;
         }
-      }
-    }
-
-    &_Gradient {
-      bottom: em(-59px);
-      @include iflaptop {
-        bottom: em(-110px);
-      }
-      @include iftablet {
-        bottom: em(-207px);
-      }
-      @include ifmobile {
-        bottom: em(56px);
       }
     }
   }

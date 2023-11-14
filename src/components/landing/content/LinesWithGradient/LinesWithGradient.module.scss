@@ -1,0 +1,84 @@
+.LinesWithGradient {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  height: em(879px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 em(150px);
+
+  @include iflaptop {
+    height: em(768px);
+    padding: 0 em(86px) 0 em(74px);
+  }
+  @include iftablet {
+    height: em(768px);
+    padding: 0 em(20px);
+  }
+  @include ifmobile {
+    height: em(620px);
+    padding: 0 em(94px) 0 em(78px);
+  }
+
+  .Line {
+    width: 1px;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.05);
+
+    &_12,
+    &_13 {
+      @include iflaptop {
+        display: none;
+      }
+    }
+    &_10,
+    &_11,
+    &_12,
+    &_13 {
+      @include iftablet {
+        display: none;
+      }
+    }
+    &_1,
+    &_2,
+    &_3,
+    &_4,
+    &_5,
+    &_6,
+    &_7,
+    &_8,
+    &_9,
+    &_10 {
+      @include ifmobile {
+        display: none;
+      }
+    }
+  }
+}
+
+.Gradient {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: em(-59px);
+  width: 100%;
+  height: em(138px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 71.11%);
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(255, 255, 255, 0) 0%,
+  //   #942727 71.11%
+  // );
+
+  @include iflaptop {
+    bottom: em(-44px);
+  }
+  @include iftablet {
+    bottom: em(-12px);
+  }
+  @include ifmobile {
+    bottom: em(-13px);
+  }
+}

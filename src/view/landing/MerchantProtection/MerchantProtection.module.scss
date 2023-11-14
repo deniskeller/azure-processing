@@ -127,18 +127,6 @@
         }
       }
     }
-
-    &_Gradient {
-      @include iflaptop {
-        bottom: em(-44px);
-      }
-      @include iftablet {
-        bottom: em(-202px);
-      }
-      @include ifmobile {
-        bottom: em(118px);
-      }
-    }
   }
 
   .DescriptionProblem {

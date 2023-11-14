@@ -10,7 +10,6 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import s from './MerchantProtection.module.scss';
 import Image from 'next/image';
-import { Gradient } from '@content/landing/index';
 import Link from 'next/link';
 
 interface IFormData {
@@ -74,7 +73,6 @@ const MerchantProtection: React.FC = () => {
             </div>
           </div>
         </BaseContainer>
-        <Gradient className={s.Header_Gradient} />
       </section>
 
       <section className={s.DescriptionProblem}>
