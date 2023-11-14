@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
-import s from './BaseTextareaApp.module.scss';
+import s from './BaseTextarea.module.scss';
 
 interface Props {
   name: string;
@@ -15,7 +15,7 @@ interface Props {
   onKeyDown?: React.KeyboardEventHandler;
 }
 
-const BaseTextareaApp: React.FC<Props> = ({
+const BaseTextarea: React.FC<Props> = ({
   value,
   label,
   error,
@@ -85,4 +85,4 @@ const BaseTextareaApp: React.FC<Props> = ({
     </div>
   );
 };
-export default BaseTextareaApp;
+export default BaseTextarea;

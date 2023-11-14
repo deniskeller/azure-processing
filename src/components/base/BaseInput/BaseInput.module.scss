@@ -1,0 +1,127 @@
+.BaseInput {
+  font-size: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.Input {
+  $size: 18px;
+  width: 100%;
+  height: em(62px, $size);
+  background: none;
+  outline: none;
+  border: none;
+  position: relative;
+  box-shadow: none;
+  background: #fff;
+  border: 1px solid #e8e8ea;
+  border-radius: em(12px, $size);
+  transition: 0.3s ease all;
+  -moz-transition: 0.3s ease all;
+  -webkit-transition: 0.3s ease all;
+  @include placeholder-color(transparent);
+  padding: em(34px, $size) em(44px, $size) em(10px, $size) em(24px, $size);
+
+  color: rgba(26, 26, 26, 0.9);
+  font-family: $HelveticaNeueCyr;
+  font-size: em($size);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+
+  @include ifmobile {
+    $size: 16px;
+    height: em(52px, $size);
+    border-radius: em(10px, $size);
+    padding: em(27px, $size) em(40px, $size) em(9px, $size) em(16px, $size);
+    font-size: em($size);
+  }
+
+  &:hover {
+    border-color: #425eec;
+  }
+
+  &:focus {
+    border-color: #425eec;
+    @include placeholder-color(transparent);
+    & + .Label {
+      transform: translate(0);
+      top: em(10px);
+      p {
+        font-size: em(14px);
+        @include ifmobile {
+          font-size: em(12px);
+        }
+      }
+    }
+  }
+
+  & + .NoEmpty {
+    transform: translate(0);
+    top: em(10px);
+    p {
+      font-size: em(14px);
+      @include ifmobile {
+        font-size: em(12px);
+      }
+    }
+  }
+
+  &_Error {
+    border: 1px solid #ff5f5f !important;
+  }
+}
+
+.Label {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(0, -50%);
+  top: 50%;
+  left: em(25px);
+  transition: all 0.3s ease;
+  @include ifmobile {
+    left: em(17px);
+  }
+
+  p {
+    color: rgba(26, 26, 26, 0.4);
+    font-family: $HelveticaNeueCyr;
+    font-size: em(18px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 18px */
+    transition: all 0.3s ease;
+    @include ifmobile {
+      font-size: em(16px);
+    }
+  }
+}
+
+.Icon {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: em(16px);
+  width: em(24px);
+  height: em(24px);
+  @include ifmobile {
+    width: em(20px);
+    height: em(20px);
+  }
+}
+
+//disabled style
+.Input:disabled,
+.Input:disabled:hover,
+.Input:disabled:focus {
+  cursor: not-allowed;
+  pointer-events: none;
+  background: #f4f4f5;
+  border: 1px solid #e5e7eb !important;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+@include ifmobile {
+}

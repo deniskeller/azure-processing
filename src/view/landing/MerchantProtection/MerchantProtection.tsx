@@ -1,4 +1,11 @@
-import { BaseButton, BaseContainer, BaseText, BaseTitle } from '@base/index';
+import {
+  BaseButton,
+  BaseContainer,
+  BaseInput,
+  BaseText,
+  BaseTextarea,
+  BaseTitle,
+} from '@base/index';
 import { useRouter } from 'next/router';
 import React from 'react';
 import s from './MerchantProtection.module.scss';
@@ -6,8 +13,30 @@ import Image from 'next/image';
 import { Gradient } from '@content/landing/index';
 import Link from 'next/link';
 
+interface IFormData {
+  name_surname: string;
+  company_name: string;
+  email: string;
+  phone: string;
+  text_problem: string;
+  password: string;
+}
+
 const MerchantProtection: React.FC = () => {
   const router = useRouter();
+
+  const [value, setValue] = React.useState<IFormData>({
+    name_surname: '',
+    company_name: '',
+    email: '',
+    phone: '',
+    text_problem: '',
+    password: '',
+  });
+
+  const setNewValue = (value: string, prop: keyof IFormData) => {
+    setValue((prev) => ({ ...prev, [prop]: value }));
+  };
 
   return (
     <div className={s.MerchantProtection}>
@@ -70,8 +99,45 @@ const MerchantProtection: React.FC = () => {
             </div>
 
             <ul className={s.Inputs}>
-              <li></li>
-              <li></li>
+              <li>
+                <BaseInput
+                  name="name_surname"
+                  placeholder="Name Surname"
+                  label="Name Surname"
+                  value={value.name_surname}
+                  onChange={(val: string) => setNewValue(val, 'name_surname')}
+                />
+              </li>
+
+              <li>
+                <BaseInput
+                  name="company_name"
+                  placeholder="Company name"
+                  label="Company name"
+                  value={value.company_name}
+                  onChange={(val: string) => setNewValue(val, 'company_name')}
+                />
+              </li>
+
+              <li>
+                <BaseInput
+                  name="email"
+                  placeholder="Email"
+                  label="Email"
+                  value={value.email}
+                  onChange={(val: string) => setNewValue(val, 'email')}
+                />
+              </li>
+
+              <li>
+                <BaseTextarea
+                  maxLength={300}
+                  name="text_problem"
+                  label="Describe your problem"
+                  value={value.text_problem}
+                  onChange={(val: string) => setNewValue(val, 'text_problem')}
+                />
+              </li>
             </ul>
 
             <BaseButton className={s.Button} onClick={() => router.push('/')}>
