@@ -29,12 +29,14 @@ const BaseTextarea: React.FC<Props> = ({
   onKeyDown,
 }) => {
   const refTextarea = useRef<HTMLTextAreaElement | null>(null);
+  const [focus, setFocus] = useState(false);
 
   const onBlur = () => {
     if (refTextarea.current != null) {
       const scrollHeight = refTextarea.current.scrollHeight;
       refTextarea.current.style.height = scrollHeight + 'px';
     }
+    setFocus(false);
   };
 
   useEffect(() => {
@@ -57,7 +59,9 @@ const BaseTextarea: React.FC<Props> = ({
     <div
       className={`${s.BaseTextarea} ${className} ${
         disabled ? s.BaseTextarea_Disabled : null
-      } ${error ? s.BaseTextarea_Error : ''}`}
+      } ${error ? s.BaseTextarea_Error : ''} ${
+        focus ? s.BaseTextarea_Focus : ''
+      }`}
       onClick={() => refTextarea.current?.focus()}
     >
       <textarea
@@ -73,6 +77,7 @@ const BaseTextarea: React.FC<Props> = ({
           onChange(e.target.value)
         }
         onKeyDown={onKeyDown}
+        onFocus={() => setFocus(true)}
         onBlur={onBlur}
       />
 

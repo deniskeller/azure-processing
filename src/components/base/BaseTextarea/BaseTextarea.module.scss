@@ -7,6 +7,15 @@
   border: 1px solid #e8e8ea;
   background: #fff;
   cursor: text;
+  transition: 0.3s ease all;
+
+  &:hover {
+    border-color: #425eec;
+  }
+
+  &_Focus {
+    border-color: #425eec;
+  }
 
   @include ifmobile {
     border-radius: em(10px);
@@ -45,6 +54,7 @@
       min-height: em(44px, $size);
       max-height: em(200px, $size);
     }
+
     &::-webkit-scrollbar {
       display: none;
     }
