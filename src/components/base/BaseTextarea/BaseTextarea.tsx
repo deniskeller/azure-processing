@@ -57,13 +57,13 @@ const BaseTextarea: React.FC<Props> = ({
     <div
       className={`${s.BaseTextarea} ${className} ${
         disabled ? s.BaseTextarea_Disabled : null
-      }`}
+      } ${error ? s.BaseTextarea_Error : ''}`}
       onClick={() => refTextarea.current?.focus()}
     >
       <textarea
         ref={refTextarea}
         value={value}
-        className={`${s.Textarea} ${error ? s.Error : ''}`}
+        className={s.Textarea}
         name={name}
         maxLength={maxLength}
         placeholder={placeholder}

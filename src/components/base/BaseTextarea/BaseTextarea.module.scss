@@ -103,7 +103,7 @@
     position: absolute;
     right: em(6px);
     bottom: em(4px);
-    color: $red;
+    color: #ff5f5f;
     opacity: 0.6;
     font-family: $HelveticaNeueCyr;
     font-size: em(10px);
@@ -114,8 +114,8 @@
     user-select: none;
   }
 
-  .Error {
-    border-bottom: 1px solid #a61613 !important;
+  &_Error {
+    border-color: #ff5f5f !important;
   }
 
   //disabled style
