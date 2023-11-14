@@ -34,10 +34,8 @@
   }
 
   &_Button {
-    svg {
-      width: em(24px);
-      height: em(24px);
-      margin-left: em(10px);
+    @include ifmobile {
+      width: 100%;
     }
   }
 }

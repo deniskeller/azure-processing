@@ -1,0 +1,244 @@
+.ServiceProviders {
+  position: relative;
+
+  .Header {
+    position: relative;
+
+    &_Container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: em(189px) 0 em(78px);
+      @include iflaptop {
+        padding: em(204px) 0 em(90px);
+      }
+      @include iftablet {
+        padding: em(173px) 0 em(130px);
+      }
+      @include ifmobile {
+        flex-wrap: wrap;
+        padding: em(123px) 0 em(75px);
+      }
+    }
+
+    &_Text {
+      max-width: em(810px);
+      @include iflaptop {
+        max-width: em(514px);
+      }
+      @include iftablet {
+        max-width: em(372px);
+      }
+      @include ifmobile {
+        max-width: 100%;
+        margin-bottom: em(51px);
+      }
+      .Title {
+        margin-bottom: em(25px);
+      }
+      .Description {
+        max-width: em(704px);
+      }
+    }
+
+    &_Pictures {
+      width: em(643px);
+      height: em(613px);
+      position: relative;
+      z-index: 1;
+      @include iflaptop {
+        width: em(356px);
+        height: em(339px);
+      }
+      @include iftablet {
+        width: em(267px);
+        height: em(254px);
+      }
+      @include ifmobile {
+        width: em(267px);
+        height: em(254px);
+        margin: 0 auto;
+      }
+      .Image {
+        z-index: 1;
+      }
+
+      .Icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        width: em(644px);
+        height: em(651px);
+        @include iflaptop {
+          width: em(356px);
+          height: em(360px);
+        }
+        @include iftablet {
+          width: em(267px);
+          height: em(270px);
+        }
+        @include ifmobile {
+          width: em(267px);
+          height: em(270px);
+          margin: 0 auto;
+        }
+      }
+    }
+
+    &_Gradient {
+      bottom: em(-59px);
+      @include iflaptop {
+        bottom: em(-110px);
+      }
+      @include iftablet {
+        bottom: em(-207px);
+      }
+      @include ifmobile {
+        bottom: em(56px);
+      }
+    }
+  }
+
+  .AcquiringBanks {
+    position: relative;
+    margin-bottom: em(150px);
+    @include iftablet {
+      margin-bottom: em(100px);
+    }
+    @include ifmobile {
+      margin-bottom: em(60px);
+    }
+    &_Title {
+      text-align: center;
+      margin-bottom: em(40px);
+      @include ifmobile {
+        margin-bottom: em(20px);
+      }
+    }
+
+    &_Cards {
+      width: 100%;
+      max-width: em(842px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 em(40px);
+      @include iftablet {
+        max-width: 100%;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 em(18px);
+      }
+      @include ifmobile {
+        max-width: 100%;
+        grid-template-columns: 1fr;
+        gap: em(10px) 0;
+      }
+
+      .ConCardis {
+        width: em(155px);
+        height: em(70px);
+        @include ifmobile {
+          width: em(133px);
+          height: em(60px);
+        }
+      }
+
+      .BankFrick {
+        width: em(197px);
+        height: em(60px);
+      }
+    }
+  }
+
+  .PaymentServiceProviders {
+    position: relative;
+    margin-bottom: em(270px);
+    @include iflaptop {
+      margin-bottom: em(100px);
+    }
+    @include iftablet {
+      margin-bottom: em(80px);
+    }
+    @include ifmobile {
+      margin-bottom: em(60px);
+    }
+
+    &_Title {
+      text-align: center;
+      margin-bottom: em(40px);
+      @include ifmobile {
+        margin-bottom: em(20px);
+      }
+    }
+
+    &_Cards {
+      width: 100%;
+      max-width: em(1283px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: em(40px) em(40px);
+      @include iflaptop {
+        max-width: em(842px);
+        grid-template-columns: 1fr 1fr;
+        gap: em(40px) em(40px);
+      }
+
+      @include iftablet {
+        max-width: 100%;
+        grid-template-columns: 1fr 1fr;
+        gap: em(18px) em(18px);
+      }
+      @include ifmobile {
+        max-width: 100%;
+        grid-template-columns: 1fr;
+        gap: em(10px) 0;
+      }
+
+      .Elavon {
+        width: em(145.835px);
+        height: em(70px);
+        @include ifmobile {
+          width: em(127px);
+          height: em(60px);
+        }
+      }
+
+      .PAYU {
+        width: em(140.291px);
+        height: em(70px);
+      }
+
+      .CARDPAY {
+        width: em(174.198px);
+        height: em(70px);
+      }
+
+      .SEPA {
+        width: em(70px);
+        height: em(70px);
+      }
+
+      .Payvision {
+        width: em(214px);
+        height: em(40px);
+        margin-top: em(20px);
+      }
+
+      .Borgun {
+        width: em(202px);
+        height: em(56px);
+      }
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

@@ -59,7 +59,7 @@ const MerchantProtection: React.FC = () => {
 
             <div className={s.Header_Pictures}>
               <Image
-                src="/pictures/images/techny-fraud-detection-and-prevention-cybersecurity.png"
+                src="/pictures/images/merchant-protection-header-image.png"
                 width={643}
                 height={643}
                 priority

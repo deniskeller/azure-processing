@@ -1,0 +1,98 @@
+.PartnerCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  border-radius: em(20px);
+  background: $blue-light;
+  width: auto;
+  min-height: em(208px);
+  padding: em(40px);
+  transition: all $speed ease;
+  @include iftablet {
+    padding: em(30px) em(20px);
+  }
+  @include ifmobile {
+    padding: em(30px) em(20px);
+  }
+  &:hover {
+    background: #edf1ff;
+    .PartnerCard_Icon {
+      top: em(30px);
+      right: em(30px);
+      transform: scale(1.2);
+      @include ifmobile {
+        top: em(14px);
+        right: em(14px);
+      }
+      path {
+        stroke: #425eec;
+        stroke-opacity: 1;
+      }
+    }
+  }
+
+  &_Icon {
+    transition: all $speed ease;
+    position: absolute;
+    top: em(40px);
+    right: em(40px);
+    width: em(40px);
+    height: em(40px);
+    @include ifmobile {
+      top: em(20px);
+      right: em(20px);
+      width: em(30px);
+      height: em(30px);
+    }
+    path {
+      transition: all $speed ease;
+    }
+  }
+
+  &_Logo {
+    display: inline-flex;
+    margin-bottom: em(30px);
+  }
+
+  &_Name {
+    margin-top: auto;
+    margin-bottom: em(10px);
+    p {
+      color: $base900light;
+      font-size: em(24px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 140%;
+      @include iftablet {
+        font-size: em(20px);
+      }
+      @include ifmobile {
+        font-size: em(18px);
+      }
+    }
+  }
+
+  &_CardType {
+    p {
+      color: $base600light;
+      font-size: em(18px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      @include iftablet {
+        font-size: em(16px);
+      }
+      @include ifmobile {
+        font-size: em(16px);
+      }
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}
