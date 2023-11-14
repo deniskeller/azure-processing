@@ -11,6 +11,7 @@ import React from 'react';
 import s from './MerchantProtection.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
+import { LinesWithGradient } from '@content/landing/index';
 
 interface IFormData {
   name_surname: string;
@@ -38,6 +39,7 @@ const MerchantProtection: React.FC = () => {
 
   return (
     <div className={s.MerchantProtection}>
+      <LinesWithGradient />
       <section className={s.Header}>
         <BaseContainer>
           <div className={s.Header_Container}>
@@ -74,7 +76,6 @@ const MerchantProtection: React.FC = () => {
           </div>
         </BaseContainer>
       </section>
-
       <section className={s.DescriptionProblem}>
         <BaseContainer>
           <BaseTitle type="h2" className={s.DescriptionProblem_Title}>
