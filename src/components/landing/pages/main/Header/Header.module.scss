@@ -1,0 +1,29 @@
+.Header {
+  padding: em(566px) 0 0;
+  margin-bottom: em(200px);
+
+  &_Title {
+    text-align: center;
+    max-width: em(990px);
+    margin: 0 auto em(25px);
+  }
+  &_Subtitle {
+    text-align: center;
+    max-width: em(800px);
+    margin: 0 auto em(44px);
+  }
+
+  &_Buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0 em(16px);
+    margin: 0 auto;
+  }
+}
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

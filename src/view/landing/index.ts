@@ -5,4 +5,5 @@ export { default as TermsAndAgreements } from "./TermsAndAgreements/TermsAndAgre
 export { default as MerchantProtection } from "./MerchantProtection/MerchantProtection";
 export { default as ServiceProviders } from "./ServiceProviders/ServiceProviders";
 export { default as AboutAndContacts } from "./AboutAndContacts/AboutAndContacts";
+export { default as Main } from "./Main/Main";
 

@@ -1,0 +1,27 @@
+.Second {
+  margin-bottom: em(80px);
+  @include iflaptop {
+    margin-bottom: em(94px);
+  }
+  @include iftablet {
+    margin-bottom: em(50px);
+  }
+  @include ifmobile {
+    margin-bottom: em(30px);
+  }
+  &_Title {
+    width: 100%;
+    max-width: em(1004px);
+    margin: 0 auto em(25px);
+    text-align: center;
+    @include ifmobile {
+      margin: 0 auto em(20px);
+    }
+  }
+
+  &_Subtitle {
+    max-width: em(800px);
+    margin: 0 auto;
+    text-align: center;
+  }
+}

@@ -1,9 +1,10 @@
 import { Landing } from '@layouts/index';
+import { Main } from '@view/landing';
 
 const MainPage = () => {
   return (
     <Landing>
-      <h1>main page</h1>
+      <Main />
     </Landing>
   );
 };
