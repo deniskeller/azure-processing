@@ -215,11 +215,11 @@
           margin-right: em(120px);
         }
         @include iftablet {
-          margin-right: em(55px);
+          margin-right: em(55.5px);
         }
         @include ifmobile {
           margin-right: 0;
-          margin-bottom: em(55px);
+          margin-bottom: em(55.5px);
         }
 
         &_Icon {
