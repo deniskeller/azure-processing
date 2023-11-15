@@ -3,11 +3,17 @@ import React from 'react';
 import s from './AboutAndContacts.module.scss';
 import Image from 'next/image';
 import { BaseContainer, BaseIcon, BaseText, BaseTitle } from '@base/index';
-import { LinesWithGradient } from '@content/landing/index';
+import { LinesWithGradient, MapContacts } from '@content/landing/index';
 import { ALL_ICONS } from '@constants/icons';
 
 const AboutAndContacts: React.FC = () => {
   const router = useRouter();
+
+  //КООРДИНАТЫ МАРКЕРА КАРТЫ
+  const london = {
+    lat: 51.512619649633486,
+    lng: -0.07756605745821402,
+  };
 
   return (
     <div className={s.AboutAndContacts}>
@@ -70,7 +76,7 @@ const AboutAndContacts: React.FC = () => {
 
       <section className={s.WhyAreWeHere}>
         <BaseContainer>
-          <BaseTitle type="h1" className={s.WhyAreWeHere_Title}>
+          <BaseTitle type="h2" className={s.WhyAreWeHere_Title}>
             Why are we here?
           </BaseTitle>
 
@@ -229,6 +235,67 @@ const AboutAndContacts: React.FC = () => {
           </div>
         </BaseContainer>
       </section>
+
+      <BaseContainer>
+        <section className={s.Contacts}>
+          <div className={s.Contacts_Info}>
+            <BaseTitle type="h2" className={s.Title}>
+              Company
+            </BaseTitle>
+
+            <ul className={s.Content}>
+              <li className={s.Item}>
+                <div className={s.Label}>
+                  <p>AZURE PAYMENTS LIMITED</p>
+                </div>
+                <p className={s.Value}>
+                  (LTD - Limited Responsibility Company)
+                </p>
+              </li>
+
+              <li className={s.Item}>
+                <div className={s.Label}>
+                  <p>Reg.nr.</p>
+                </div>
+                <p className={s.Value}>12108869</p>
+              </li>
+
+              <li className={s.Item}>
+                <div className={s.Label}>
+                  <p>Legal address:</p>
+                </div>
+                <p className={s.Value}>
+                  1123 King Street, Hammersmith, London, United Kingdom, W9 9JG
+                </p>
+              </li>
+
+              <li className={s.Item}>
+                <div className={s.Label}>
+                  <p>Email:</p>
+                </div>
+                <p className={s.Value}>info@azureprocessing.solutions</p>
+              </li>
+
+              <li className={s.Item}>
+                <div className={s.Label}>
+                  <p>Working Hours</p>
+                </div>
+                <p className={s.Value}>
+                  Monday to Friday starting from 9:00 AM till 18:00 PM. Saturday
+                  to Sunday office is closed.
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <div className={s.Contacts_Map}>
+            <MapContacts
+              center={london}
+              marker_title="1123 King Street, Hammersmith, London, United Kingdom, W9 9JG"
+            />
+          </div>
+        </section>
+      </BaseContainer>
     </div>
   );
 };

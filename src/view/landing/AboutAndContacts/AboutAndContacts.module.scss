@@ -450,6 +450,118 @@
       }
     }
   }
+
+  .Contacts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: em(1114px);
+    margin: 0 auto em(120px);
+    @include iflaptop {
+      margin: 0 auto em(100px);
+    }
+    @include iftablet {
+      margin: 0 auto em(80px);
+    }
+    @include ifmobile {
+      flex-direction: column;
+      margin: 0 auto em(60px);
+    }
+    &_Info {
+      max-width: em(390px);
+      @include iftablet {
+        max-width: em(335px);
+      }
+      @include ifmobile {
+        min-width: 100%;
+        margin-bottom: em(33px);
+      }
+      .Title {
+        margin-bottom: em(30px);
+        @include iflaptop {
+          margin-bottom: em(20px);
+        }
+        @include iftablet {
+          margin-bottom: em(30px);
+        }
+        @include ifmobile {
+        }
+      }
+
+      .Content {
+        display: flex;
+        flex-direction: column;
+
+        .Item:not(:last-child) {
+          margin-bottom: em(24px);
+          @include iflaptop {
+            margin-bottom: em(20px);
+          }
+          @include iftablet {
+            margin-bottom: em(10px);
+          }
+          @include ifmobile {
+            margin-bottom: em(10px);
+          }
+        }
+
+        .Item {
+          .Label {
+            display: flex;
+            margin-bottom: em(6px);
+            p {
+              color: $base900light;
+              font-size: em(18px);
+              font-style: normal;
+              font-weight: 550;
+              line-height: 130%; /* 23.4px */
+              @include iftablet {
+                font-size: em(16px);
+              }
+              @include ifmobile {
+                font-size: em(16px);
+              }
+            }
+          }
+          .Value {
+            color: $base400light;
+            font-size: em(16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 130%; /* 20.8px */
+            @include iftablet {
+              font-size: em(14px);
+            }
+            @include ifmobile {
+              font-size: em(14px);
+            }
+          }
+        }
+      }
+    }
+
+    &_Map {
+      width: em(560px);
+      height: em(487px);
+      background: grey;
+      border-radius: em(20px);
+      overflow: hidden;
+      @include iflaptop {
+        width: em(516px);
+        height: em(448px);
+      }
+      @include iftablet {
+        width: em(349px);
+        height: em(303px);
+        margin-top: em(72px);
+      }
+      @include ifmobile {
+        width: 100%;
+        height: em(296px);
+      }
+    }
+  }
 }
 
 @include iflaptop {
