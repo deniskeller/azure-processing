@@ -87,6 +87,7 @@
           }
         }
       }
+
       &_Description {
         p {
           color: $base600light;
@@ -100,6 +101,68 @@
           }
           @include ifmobile {
             font-size: em(14px);
+          }
+        }
+      }
+
+      &:nth-child(1) {
+        .ArrowNext {
+          position: absolute;
+          top: em(50px);
+          left: calc(100% + em(7px));
+          @include iflaptop {
+            top: em(65px);
+            left: calc(100% + em(-10px));
+          }
+          @include iftablet {
+            top: em(61px);
+            left: 100%;
+          }
+          @include ifmobile {
+            display: none;
+          }
+
+          &_Desktop {
+            width: em(185px);
+            height: em(39px);
+            display: none;
+            @include ifdesktop {
+              display: block;
+            }
+          }
+
+          &_Mobile {
+            width: em(125px);
+            height: em(39px);
+            @include ifdesktop {
+              display: none;
+            }
+            @include iftablet {
+              width: em(97px);
+              height: em(31px);
+            }
+          }
+        }
+      }
+      &:nth-child(2) {
+        .ArrowNext {
+          position: absolute;
+          top: em(49px);
+          left: calc(100% + em(40px));
+          width: em(113px);
+          height: em(33px);
+          @include iflaptop {
+            top: em(65px);
+            left: calc(100% + em(-6px));
+          }
+          @include iftablet {
+            width: em(85px);
+            height: em(25px);
+            top: em(65px);
+            left: calc(100% + em(-6px));
+          }
+          @include ifmobile {
+            display: none;
           }
         }
       }
