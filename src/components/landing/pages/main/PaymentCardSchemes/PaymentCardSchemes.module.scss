@@ -42,15 +42,136 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    max-width: em(1495px);
+    margin: 0 auto;
+    @include ifmobile {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: em(20px) em(10px);
+    }
 
     .Partner {
+      position: relative;
       cursor: pointer;
-      filter: grayscale(1);
-      opacity: 0.4;
-      transition: all $speed ease;
-      &:hover {
-        filter: grayscale(0);
+
+      &_Before,
+      &_After {
+        overflow: visible;
+        position: absolute;
+        transition: all $speed ease;
+      }
+      &_Before {
         opacity: 1;
+      }
+      &_After {
+        opacity: 0;
+      }
+      &:hover {
+        .Partner_Before {
+          opacity: 0;
+        }
+        .Partner_After {
+          opacity: 1;
+        }
+      }
+    }
+
+    .Visa {
+      width: em(186px);
+      height: em(60px);
+      @include iflaptop {
+        width: em(139.349px);
+        height: em(45.059px);
+      }
+      @include iftablet {
+        width: em(104.827px);
+        height: em(33.896px);
+      }
+      @include ifmobile {
+        width: em(104.827px);
+        height: em(33.896px);
+        order: -1;
+      }
+    }
+    .MasterCard {
+      width: em(130px);
+      height: em(80px);
+      @include iflaptop {
+        width: em(97.783px);
+        height: em(60.078px);
+      }
+      @include iftablet {
+        width: em(73.559px);
+        height: em(45.195px);
+      }
+      @include ifmobile {
+        width: em(73.559px);
+        height: em(45.195px);
+      }
+    }
+    .UnionPay {
+      width: em(128px);
+      height: em(80px);
+      @include iflaptop {
+        width: em(96.042px);
+        height: em(60.078px);
+      }
+      @include iftablet {
+        width: em(72.249px);
+        height: em(45.195px);
+      }
+      @include ifmobile {
+        width: em(72.249px);
+        height: em(45.195px);
+      }
+    }
+    .AmericanExpress {
+      width: em(81px);
+      height: em(80px);
+      @include iflaptop {
+        width: em(60.228px);
+        height: em(60.078px);
+      }
+      @include iftablet {
+        width: em(45.307px);
+        height: em(45.195px);
+      }
+      @include ifmobile {
+        width: em(45.307px);
+        height: em(45.195px);
+      }
+    }
+    .Jcb {
+      width: em(104px);
+      height: em(80px);
+      @include iflaptop {
+        width: em(78.007px);
+        height: em(60.078px);
+      }
+      @include iftablet {
+        width: em(58.682px);
+        height: em(45.195px);
+      }
+      @include ifmobile {
+        width: em(58.682px);
+        height: em(45.195px);
+      }
+    }
+    .DinersClub {
+      width: em(267px);
+      height: em(70px);
+      @include iflaptop {
+        width: em(200.322px);
+        height: em(52.569px);
+      }
+      @include iftablet {
+        width: em(150.695px);
+        height: em(39.545px);
+      }
+      @include ifmobile {
+        width: em(150.695px);
+        height: em(39.545px);
+        order: -1;
       }
     }
   }

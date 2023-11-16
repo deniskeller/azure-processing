@@ -1,0 +1,114 @@
+.ForRegistration {
+  margin-bottom: em(140px);
+  @include iflaptop {
+    margin-bottom: em(100px);
+  }
+  @include iftablet {
+    margin-bottom: em(80px);
+  }
+  @include ifmobile {
+    margin-bottom: em(70px);
+  }
+
+  &_Title {
+    text-align: center;
+    max-width: em(990px);
+    margin: 0 auto em(25px);
+  }
+
+  &_Subtitle {
+    text-align: center;
+    max-width: em(800px);
+    margin: 0 auto em(50px);
+  }
+
+  &_Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: em(20px);
+    background: $blue-light;
+    margin: 0 auto;
+    max-width: em(698px);
+    padding: em(80px) em(100px);
+    @include iflaptop {
+      padding: em(60px) em(100px);
+    }
+    @include iftablet {
+      max-width: 100%;
+      padding: em(60px) em(100px);
+    }
+    @include ifmobile {
+      max-width: 100%;
+      padding: em(40px) em(10px);
+    }
+
+    .Image {
+      position: relative;
+      width: em(368px);
+      height: em(368px);
+      margin-bottom: em(40px);
+      @include ifmobile {
+        width: em(200px);
+        height: em(200px);
+      }
+    }
+
+    .Title {
+      margin-bottom: em(16px);
+      h3 {
+        color: $base900light;
+        font-size: em(44px);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        @include iflaptop {
+          font-size: em(36px);
+        }
+        @include iftablet {
+          font-size: em(32px);
+        }
+        @include ifmobile {
+          font-size: em(20px);
+        }
+      }
+    }
+    .Subtitle {
+      margin-bottom: em(44px);
+      p {
+        color: $base400light;
+        text-align: center;
+        font-size: em(24px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        @include ifmobile {
+          font-size: em(14px);
+        }
+      }
+    }
+    .Button {
+      @include ifmobile {
+        width: 100%;
+      }
+      &_Icon {
+        $size: 18px;
+        width: em(24px, $size);
+        height: em(24px, $size);
+        margin-left: em(10px, $size);
+        @include ifmobile {
+          $size: 16px;
+          width: em(24px, $size);
+          height: em(24px, $size);
+          margin-left: em(10px, $size);
+        }
+      }
+    }
+  }
+}
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

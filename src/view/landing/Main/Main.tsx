@@ -1,7 +1,9 @@
 import React from 'react';
 import s from './Main.module.scss';
 import {
+  ForRegistration,
   Header,
+  HowItWork,
   PaymentCardSchemes,
   Second,
 } from 'components/landing/pages/main';
@@ -15,6 +17,8 @@ const Main: React.FC = () => {
       <Second />
 
       <PaymentCardSchemes />
+      <HowItWork />
+      <ForRegistration />
     </div>
   );
 };
