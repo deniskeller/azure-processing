@@ -1,0 +1,187 @@
+.BenefitCards {
+  position: relative;
+  width: 100%;
+  max-width: em(964px);
+  margin: 0 auto em(200px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: em(40px);
+  @include iflaptop {
+    max-width: em(944px);
+    margin: 0 auto em(173px);
+    gap: em(20px);
+  }
+  @include iftablet {
+    margin: 0 auto em(150px);
+    gap: em(16px);
+  }
+  @include ifmobile {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    margin: 0 auto em(67px);
+    gap: em(16px) 0;
+  }
+
+  .Card {
+    position: relative;
+    border-radius: em(20px);
+    overflow: hidden;
+    padding: em(40px) em(40px) 0 em(40px);
+    height: em(350px);
+
+    @include iftablet {
+      padding: em(30px) em(25px) 0 em(20px);
+      height: em(291px);
+    }
+    @include ifmobile {
+      padding: em(30px) em(25px) 0 em(20px);
+      height: em(291px);
+    }
+
+    &_1 {
+      background: $blue-main;
+      .Card_Text {
+        p {
+          color: $white;
+        }
+      }
+      .Card_Image {
+        width: em(241px);
+        height: em(200px);
+        @include iftablet {
+          width: em(192px);
+          height: em(159px);
+        }
+        @include ifmobile {
+          width: em(192px);
+          height: em(159px);
+        }
+      }
+    }
+    &_2 {
+      transform: translate(0, em(60px));
+      background: $blue-second;
+      @include ifmobile {
+        transform: translate(0);
+      }
+      .Card_Text {
+        p {
+          color: $blue-main;
+        }
+      }
+      .Card_Image {
+        width: em(241px);
+        height: em(241px);
+        @include iftablet {
+          width: em(192px);
+          height: em(192px);
+        }
+        @include ifmobile {
+          width: em(192px);
+          height: em(192px);
+        }
+      }
+    }
+    &_3 {
+      background: $blue-light;
+      .Card_Text {
+        p {
+          color: $base800light;
+        }
+      }
+      .Card_Image {
+        width: em(241px);
+        height: em(226px);
+        @include iftablet {
+          width: em(192px);
+          height: em(180px);
+        }
+        @include ifmobile {
+          width: em(192px);
+          height: em(180px);
+        }
+      }
+    }
+    &_4 {
+      display: flex;
+      padding: 0;
+      background: $white;
+      transform: translate(0, em(70px));
+      @include iflaptop {
+        transform: translate(0, em(60px));
+      }
+      @include iftablet {
+        transform: translate(0, em(50px));
+      }
+      @include ifmobile {
+        transform: translate(0, em(10px));
+        border-radius: 0;
+        height: auto;
+      }
+      .Card_Text {
+        margin: auto 0 0;
+        padding-top: em(30px);
+        border-top: 1px solid rgba(26, 26, 26, 0.3);
+        @include iflaptop {
+          padding-top: em(20px);
+        }
+        @include iftablet {
+          padding-top: em(16px);
+        }
+        @include ifmobile {
+          padding-top: em(16px);
+          margin: 0;
+        }
+        p {
+          font-size: em(44px);
+          color: $base900light;
+          @include iflaptop {
+            font-size: em(36px);
+          }
+          @include iftablet {
+            font-size: em(26px);
+          }
+          @include ifmobile {
+            font-size: em(22px);
+          }
+        }
+      }
+    }
+
+    &_Text {
+      position: relative;
+      margin-bottom: em(8px);
+      p {
+        font-size: em(24px);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        @include iftablet {
+          font-size: em(20px);
+        }
+        @include ifmobile {
+          font-size: em(20px);
+        }
+      }
+    }
+
+    &_Image {
+      position: absolute;
+      right: em(20px);
+      bottom: 0;
+      @include iftablet {
+        right: 0;
+      }
+      @include ifmobile {
+        right: 0;
+      }
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

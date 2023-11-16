@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Main.module.scss';
 import {
+  BenefitCards,
   ForRegistration,
   Header,
   HowItWork,
@@ -15,7 +16,7 @@ const Main: React.FC = () => {
       <LinesWithGradient className={s.Main_Lines} />
       <Header />
       <Second />
-
+      <BenefitCards />
       <PaymentCardSchemes />
       <HowItWork />
       <ForRegistration />
