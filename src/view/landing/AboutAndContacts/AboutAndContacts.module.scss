@@ -2,6 +2,7 @@
   position: relative;
 
   .Header {
+    position: relative;
     padding: em(295px) 0 0;
     margin-bottom: em(200px);
     @include iflaptop {
@@ -16,7 +17,107 @@
       padding: em(143px) 0 0;
       margin-bottom: em(70px);
     }
+
+    &_Container {
+      position: relative;
+      .Icon {
+        position: absolute;
+        top: 0;
+        &_Wallet {
+          width: em(80px);
+          height: em(80px);
+          top: em(184px);
+          right: em(207px);
+          @include iflaptop {
+            width: em(60px);
+            height: em(60px);
+            top: em(307px);
+            right: em(94px);
+          }
+          @include iftablet {
+            width: em(50px);
+            height: em(50px);
+            top: em(97px);
+            right: em(40px);
+          }
+          @include ifmobile {
+            display: none;
+          }
+        }
+        &_Planet {
+          width: em(80px);
+          height: em(80px);
+          top: em(-145px);
+          left: em(466px);
+          @include iflaptop {
+            width: em(60px);
+            height: em(60px);
+            top: em(-96px);
+            left: em(199px);
+          }
+          @include iftablet {
+            width: em(50px);
+            height: em(50px);
+            top: em(-93px);
+            left: em(125px);
+          }
+          @include ifmobile {
+            width: em(36px);
+            height: em(36px);
+            top: em(-71px);
+            left: em(93px);
+          }
+        }
+        &_Cash {
+          width: em(70px);
+          height: em(70px);
+          top: em(242px);
+          left: em(181px);
+          @include iflaptop {
+            width: em(60px);
+            height: em(60px);
+            top: em(135px);
+            left: em(29px);
+          }
+          @include iftablet {
+            width: em(50px);
+            height: em(50px);
+            top: em(99px);
+            left: em(38px);
+          }
+          @include ifmobile {
+            display: none;
+          }
+        }
+        &_Piece {
+          width: em(80px);
+          height: em(80px);
+          top: em(-145px);
+          right: em(513px);
+          @include iflaptop {
+            width: em(60px);
+            height: em(60px);
+            top: em(-96px);
+            right: em(132px);
+          }
+          @include iftablet {
+            width: em(50px);
+            height: em(50px);
+            top: em(-78px);
+            right: em(113px);
+          }
+          @include ifmobile {
+            width: em(50px);
+            height: em(50px);
+            top: em(-58px);
+            right: em(32px);
+          }
+        }
+      }
+    }
+
     &_Title {
+      position: relative;
       text-align: center;
       max-width: em(1119px);
       margin: 0 auto em(25px);
