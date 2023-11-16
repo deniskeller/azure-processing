@@ -79,16 +79,20 @@
           @include iflaptop {
             width: em(140px);
             height: em(140px);
+            filter: blur(0.9570445418357849px);
           }
           @include iftablet {
             width: em(104px);
             height: em(104px);
+            filter: blur(0.7081391215324402px);
           }
           @include ifmobile {
             width: em(104px);
             height: em(104px);
+            filter: blur(0.7081391215324402px);
           }
         }
+
         &_Middle {
           width: em(388px);
           height: em(388px);
@@ -97,16 +101,20 @@
           @include iflaptop {
             width: em(211px);
             height: em(211px);
+            filter: blur(0.9570445418357849px);
           }
           @include iftablet {
             width: em(156px);
             height: em(156px);
+            filter: blur(0.7081391215324402px);
           }
           @include ifmobile {
             width: em(156px);
             height: em(156px);
+            filter: blur(0.7081391215324402px);
           }
         }
+
         &_Large {
           width: em(643px);
           height: em(643px);
@@ -115,14 +123,17 @@
           @include iflaptop {
             width: em(350px);
             height: em(350px);
+            filter: blur(2.7237815856933594px);
           }
           @include iftablet {
             width: em(260px);
             height: em(260px);
+            filter: blur(2.015388250350952px);
           }
           @include ifmobile {
             width: em(260px);
             height: em(260px);
+            filter: blur(2.015388250350952px);
           }
         }
       }
