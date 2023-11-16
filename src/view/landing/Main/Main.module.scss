@@ -1,3 +1,6 @@
 .Main {
   position: relative;
+  &_Lines {
+    z-index: 100;
+  }
 }

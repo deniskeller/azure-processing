@@ -12,7 +12,7 @@ import { LinesWithGradient } from '@content/landing/index';
 const Main: React.FC = () => {
   return (
     <div className={s.Main}>
-      <LinesWithGradient />
+      <LinesWithGradient className={s.Main_Lines} />
       <Header />
       <Second />
 

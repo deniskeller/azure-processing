@@ -1,24 +1,299 @@
 .Header {
-  padding: em(566px) 0 0;
   margin-bottom: em(200px);
+  @include iflaptop {
+    margin-bottom: em(146px);
+  }
+  @include iftablet {
+    margin-bottom: em(100px);
+  }
+  @include ifmobile {
+    margin-bottom: em(70px);
+  }
+
+  &_Decor {
+    width: em(915px);
+    height: em(566px);
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    @include iflaptop {
+      width: em(711px);
+      height: em(471px);
+    }
+    @include iftablet {
+      width: em(711px);
+      height: em(481px);
+    }
+    @include ifmobile {
+      width: 100%;
+      height: em(257px);
+    }
+    &::after {
+      display: block;
+      content: '';
+      position: absolute;
+      z-index: 10;
+      bottom: 0;
+      width: 100%;
+      height: em(122px);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        #fff 71.11%
+      );
+      @include iflaptop {
+        height: em(95px);
+      }
+      @include iftablet {
+        height: em(95px);
+      }
+      @include ifmobile {
+        height: em(48px);
+      }
+    }
+
+    .Circle {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      border-radius: 50%;
+      filter: blur(2.5px);
+      @include iflaptop {
+        filter: blur(1.9426229000091553px);
+      }
+      @include iftablet {
+        filter: blur(1.9426229000091553px);
+      }
+      @include ifmobile {
+        filter: blur(0.9838708639144897px);
+      }
+      &_Large {
+        z-index: -1;
+        top: em(-54px);
+        width: em(910px);
+        height: em(910px);
+        background: rgba(227, 231, 252, 0.3);
+        @include iflaptop {
+          top: em(-10px);
+          width: em(700px);
+          height: em(700px);
+        }
+        @include iftablet {
+          top: 0;
+          width: em(700px);
+          height: em(700px);
+        }
+        @include ifmobile {
+          top: 0;
+          width: em(360px);
+          height: em(360px);
+        }
+      }
+
+      &_Middle {
+        z-index: 10;
+        top: em(127px);
+        width: em(552px);
+        height: em(552px);
+        background: rgba(227, 231, 252, 0.4);
+        @include iflaptop {
+          top: em(127px);
+          width: em(429px);
+          height: em(429px);
+        }
+        @include iftablet {
+          top: em(140px);
+          width: em(429px);
+          height: em(429px);
+        }
+        @include ifmobile {
+          top: em(71px);
+          width: em(217px);
+          height: em(217px);
+        }
+      }
+      &_Small {
+        z-index: 10;
+        top: em(219px);
+        width: em(368px);
+        height: em(368px);
+        background: rgba(227, 231, 252, 0.5);
+        @include iflaptop {
+          top: em(202px);
+          width: em(286px);
+          height: em(286px);
+        }
+        @include iftablet {
+          top: em(212px);
+          width: em(286px);
+          height: em(286px);
+        }
+        @include ifmobile {
+          top: em(107px);
+          width: em(145px);
+          height: em(145px);
+        }
+      }
+    }
+
+    .Logo {
+      position: absolute;
+      z-index: 11;
+      width: em(110px);
+      height: em(110px);
+      bottom: em(103px);
+      left: 50%;
+      transform: translate(-50%, 0);
+      @include iflaptop {
+        bottom: em(60px);
+      }
+      @include iftablet {
+        bottom: em(50px);
+      }
+      @include ifmobile {
+        width: em(56px);
+        height: em(56px);
+        bottom: em(50px);
+      }
+    }
+
+    .Icon {
+      position: absolute;
+      z-index: 10;
+      &_Reset {
+        width: em(80px);
+        height: em(80px);
+        right: em(145px);
+        bottom: em(137px);
+        @include iflaptop {
+          width: em(70px);
+          height: em(70px);
+          right: em(108px);
+          bottom: em(90px);
+        }
+        @include iftablet {
+          width: em(70px);
+          height: em(70px);
+          right: em(108px);
+          bottom: em(80px);
+        }
+        @include ifmobile {
+          width: em(32px);
+          height: em(32px);
+          right: em(56px);
+          bottom: em(77px);
+        }
+      }
+
+      &_Wallet {
+        width: em(70px);
+        height: em(70px);
+        top: em(171px);
+        right: em(230px);
+        @include iflaptop {
+          width: em(60px);
+          height: em(60px);
+          top: em(131px);
+          right: em(226px);
+        }
+        @include iftablet {
+          width: em(60px);
+          height: em(60px);
+          top: em(141px);
+          right: em(226px);
+        }
+        @include ifmobile {
+          width: em(30px);
+          height: em(30px);
+          top: em(86px);
+          right: em(91px);
+        }
+      }
+
+      &_Shield {
+        width: em(60px);
+        height: em(60px);
+        top: em(173px);
+        left: em(236px);
+        @include iflaptop {
+          width: em(50px);
+          height: em(50px);
+          top: em(157px);
+          left: em(197px);
+        }
+        @include iftablet {
+          width: em(50px);
+          height: em(50px);
+          top: em(167px);
+          left: em(197px);
+        }
+        @include ifmobile {
+          width: em(30px);
+          height: em(30px);
+          top: em(80px);
+          left: em(100px);
+        }
+      }
+
+      &_Cash {
+        width: em(70px);
+        height: em(70px);
+        bottom: em(99px);
+        left: em(146px);
+        @include iflaptop {
+          width: em(60px);
+          height: em(60px);
+          bottom: em(96px);
+          left: em(116px);
+        }
+        @include iftablet {
+          width: em(60px);
+          height: em(60px);
+          bottom: em(86px);
+          left: em(116px);
+        }
+        @include ifmobile {
+          width: em(31px);
+          height: em(31px);
+          bottom: em(53px);
+          left: em(58px);
+        }
+      }
+    }
+  }
 
   &_Title {
+    position: relative;
+    z-index: 101;
     text-align: center;
     max-width: em(990px);
     margin: 0 auto em(25px);
   }
   &_Subtitle {
+    position: relative;
+    z-index: 101;
     text-align: center;
     max-width: em(800px);
     margin: 0 auto em(44px);
   }
 
   &_Buttons {
+    position: relative;
+    z-index: 101;
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 0 em(16px);
     margin: 0 auto;
+    @include ifmobile {
+      flex-direction: column;
+      gap: em(16px) 0;
+    }
+    .Btn {
+      @include ifmobile {
+        width: 100%;
+      }
+    }
   }
 }
 @include iflaptop {
