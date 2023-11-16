@@ -1,0 +1,63 @@
+.PaymentCardSchemes {
+  margin-bottom: em(204px);
+  @include iflaptop {
+    margin-bottom: em(150px);
+  }
+  @include iftablet {
+    margin-bottom: em(100px);
+  }
+  @include ifmobile {
+    margin-bottom: em(68px);
+  }
+
+  &_Subtitle {
+    text-align: center;
+    margin-bottom: em(70px);
+    @include iflaptop {
+      margin-bottom: em(50px);
+    }
+    @include iftablet {
+      margin-bottom: em(30px);
+    }
+    @include ifmobile {
+      margin-bottom: em(30px);
+    }
+    p {
+      color: $base400light;
+      font-size: em(24px);
+      @include iflaptop {
+        font-size: em(22px);
+      }
+      @include iftablet {
+        font-size: em(18px);
+      }
+      @include ifmobile {
+        font-size: em(18px);
+      }
+    }
+  }
+
+  &_Partners {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .Partner {
+      cursor: pointer;
+      filter: grayscale(1);
+      opacity: 0.4;
+      transition: all $speed ease;
+      &:hover {
+        filter: grayscale(0);
+        opacity: 1;
+      }
+    }
+  }
+}
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}
