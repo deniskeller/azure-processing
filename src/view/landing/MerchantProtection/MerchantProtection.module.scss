@@ -118,7 +118,7 @@
         &_Large {
           width: em(643px);
           height: em(643px);
-          background: rgba(227, 231, 252, 0.3);
+          background: rgba(227, 231, 252, 0.4);
           filter: blur(5px);
           @include iflaptop {
             width: em(350px);
