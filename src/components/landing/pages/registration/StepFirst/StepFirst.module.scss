@@ -1,0 +1,305 @@
+.Step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: em(1152px);
+  margin: 0 auto;
+
+  &_Counter {
+    margin-bottom: em(6px);
+    span {
+      color: $base400light;
+      font-size: em(16px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      @include ifmobile {
+        font-size: em(12px);
+      }
+    }
+  }
+
+  &_Title {
+    margin-bottom: em(10px);
+    h1 {
+      color: $base900light;
+      text-align: center;
+      font-size: em(32px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%;
+      @include ifmobile {
+        font-size: em(22px);
+      }
+    }
+  }
+
+  &_Subtitle {
+    text-align: center;
+    margin-bottom: em(30px);
+    @include ifmobile {
+      margin-bottom: em(20px);
+    }
+    p {
+      color: $base600light;
+      font-size: em(18px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      @include ifmobile {
+        font-size: em(16px);
+      }
+    }
+  }
+
+  &_Actions {
+    margin-left: auto;
+    @include ifmobile {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .NextStep {
+      @include ifmobile {
+        width: 100%;
+      }
+      &_Icon {
+        $size: 18px;
+        width: em(24px, $size);
+        height: em(24px, $size);
+        margin-left: em(10px, $size);
+        @include ifmobile {
+          $size: 16px;
+          width: em(24px, $size);
+          height: em(24px, $size);
+          margin-left: em(10px, $size);
+        }
+      }
+    }
+  }
+
+  &_Form {
+    border-radius: em(20px);
+    background: #f5f7fe;
+    width: 100%;
+    padding: em(40px) em(80px);
+    margin-bottom: em(39px);
+    @include iflaptop {
+      padding: em(40px) em(40px);
+    }
+    @include iftablet {
+      padding: em(40px) em(40px);
+    }
+    @include ifmobile {
+      padding: em(40px) em(10px);
+    }
+    .PersonalInfo,
+    .Secure {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      @include ifmobile {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      &_Label {
+        @include ifmobile {
+          margin-bottom: em(16px);
+        }
+        h2 {
+          color: $base900light;
+          text-align: center;
+          font-size: em(20px);
+          font-style: normal;
+          font-weight: 500;
+          line-height: 130%; /* 26px */
+          @include iflaptop {
+            font-size: em(18px);
+          }
+          @include iftablet {
+            font-size: em(18px);
+          }
+          @include ifmobile {
+            font-size: em(18px);
+          }
+        }
+      }
+
+      &_Inputs {
+        width: 100%;
+        max-width: em(830px);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: em(12px) em(30px);
+        @include iflaptop {
+          max-width: em(700px);
+          gap: em(12px) em(20px);
+        }
+        @include iftablet {
+          grid-template-columns: 1fr;
+          max-width: em(483px);
+          gap: em(12px) 0;
+        }
+        @include ifmobile {
+          grid-template-columns: 1fr;
+          max-width: 100%;
+          gap: em(12px) 0;
+        }
+      }
+    }
+
+    .PersonalInfo {
+      border-bottom: 1px solid #e8e8ea;
+      padding-bottom: em(20px);
+      margin-bottom: em(20px);
+    }
+
+    .Secure {
+      grid-template-columns: 1fr;
+      &_Inputs {
+        grid-template-columns: 1fr;
+        .Password,
+        .ConfirmPassword {
+          position: relative;
+          max-width: em(400px);
+          @include iflaptop {
+            max-width: em(340px);
+          }
+          @include iftablet {
+            max-width: em(483px);
+          }
+          @include ifmobile {
+            max-width: 100%;
+          }
+          .PasswordCheck {
+            pointer-events: none;
+            opacity: 0;
+            width: max-content;
+            border-radius: em(7px);
+            background: $white;
+            box-shadow: 0px 4px 25px 0px rgba(169, 169, 169, 0.25);
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            left: calc(100% + em(25px));
+            transform: translate(0, -50%);
+            padding: em(8px) em(16px);
+            transition: all $speed ease;
+
+            @include iftablet {
+              position: relative;
+              top: auto;
+              left: auto;
+              border-radius: 0;
+              background: transparent;
+              box-shadow: none;
+              display: none;
+              flex-direction: row;
+              align-items: center;
+              padding: 0;
+              margin-top: em(6px);
+              transform: translate(0);
+            }
+            @include ifmobile {
+              position: relative;
+              top: auto;
+              left: auto;
+              border-radius: 0;
+              background: transparent;
+              box-shadow: none;
+              display: none;
+              flex-direction: row;
+              align-items: center;
+              padding: 0;
+              margin-top: em(6px);
+              transform: translate(0);
+            }
+            &_Visible {
+              pointer-events: initial;
+              opacity: 1;
+              @include iftablet {
+                display: flex;
+              }
+              @include ifmobile {
+                display: flex;
+              }
+            }
+            &::before {
+              display: block;
+              content: '';
+              position: absolute;
+              left: em(-8px);
+              top: 50%;
+              transform: translate(0, -50%) rotate(45deg);
+              background: $white;
+              -webkit-clip-path: polygon(0 0, 100% 100%, 0 100%);
+              clip-path: polygon(0 0, 100% 100%, 0 100%);
+              width: em(16px);
+              height: em(16px);
+              @include iftablet {
+                display: none;
+              }
+              @include ifmobile {
+                display: none;
+              }
+            }
+
+            &_Item {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              transition: all $speed ease;
+
+              &:not(:last-child) {
+                margin-bottom: em(4px);
+                @include iftablet {
+                  margin-right: em(4px);
+                  margin-bottom: 0;
+                }
+                @include ifmobile {
+                  margin-right: em(4px);
+                  margin-bottom: 0;
+                }
+              }
+              .Icon {
+                width: em(20px);
+                height: em(20px);
+                margin-right: em(4px);
+              }
+              .Label {
+                color: $base600light;
+                font-size: em(14px);
+                font-style: normal;
+                font-weight: 400;
+                line-height: 100%;
+                @include iftablet {
+                  font-size: em(12px);
+                }
+                @include ifmobile {
+                  font-size: em(12px);
+                }
+              }
+
+              &_Valid {
+                .Icon {
+                  path {
+                    stroke: #1ac057;
+                    stroke-opacity: 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

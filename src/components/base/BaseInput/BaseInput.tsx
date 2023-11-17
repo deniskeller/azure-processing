@@ -16,7 +16,6 @@ interface Props {
   autocomplete?: string;
   error?: string | boolean;
   value: string | number;
-  icon?: string | boolean;
   onChange(value: string | number): void;
   onKeyDown?: React.KeyboardEventHandler;
 }
@@ -34,7 +33,6 @@ const BaseInput: React.FC<Props> = ({
   placeholder,
   className = '',
   autocomplete = 'off',
-  icon,
   onChange,
   onKeyDown,
 }) => {
@@ -83,7 +81,7 @@ const BaseInput: React.FC<Props> = ({
       {typeIcon === 'eye' ? (
         <BaseIcon
           viewBox="0 0 24 24"
-          icon={ALL_ICONS.EYE}
+          icon={ALL_ICONS.EYE_OFF}
           className={s.Icon}
           onClick={() => changeType('eye-off')}
         />
@@ -92,7 +90,7 @@ const BaseInput: React.FC<Props> = ({
       {type === 'password' && typeIcon === 'eye-off' ? (
         <BaseIcon
           viewBox="0 0 24 24"
-          icon={ALL_ICONS.EYE_OFF}
+          icon={ALL_ICONS.EYE}
           className={s.Icon}
           onClick={() => changeType('eye')}
         />

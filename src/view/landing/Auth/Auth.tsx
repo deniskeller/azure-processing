@@ -17,10 +17,6 @@ const Auth: React.FC = () => {
             <h1>Log in</h1>
           </div>
 
-          <ul>
-            <li></li>
-          </ul>
-
           <BaseButton className={s.Form_Button}>Log in</BaseButton>
         </form>
       </div>

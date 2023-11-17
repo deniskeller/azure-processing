@@ -1,0 +1,57 @@
+.Registration {
+  padding: em(123px) 0;
+  @include iflaptop {
+    padding: em(113px) 0 em(35px);
+  }
+  @include iftablet {
+    padding: em(110px) 0 em(110px);
+  }
+  @include ifmobile {
+    padding: em(90px) 0 em(90px);
+  }
+
+  &_Back {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: em(52px);
+    @include iflaptop {
+      margin-bottom: 0;
+    }
+    @include iftablet {
+      margin-bottom: em(40px);
+    }
+    @include ifmobile {
+      margin-bottom: em(36px);
+    }
+
+    &:hover {
+      .Icon {
+        transform: translate(-5px, 0);
+      }
+    }
+    .Icon {
+      width: em(24px);
+      height: em(24px);
+      margin-right: em(6px);
+      transition: transform $speed ease;
+    }
+    .Label {
+      color: $base600light;
+      font-size: em(16px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%; /* 16px */
+      @include ifmobile {
+        font-size: em(14px);
+      }
+    }
+  }
+}
+
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

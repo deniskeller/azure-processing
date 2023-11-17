@@ -6,4 +6,5 @@ export { default as MerchantProtection } from "./MerchantProtection/MerchantProt
 export { default as ServiceProviders } from "./ServiceProviders/ServiceProviders";
 export { default as AboutAndContacts } from "./AboutAndContacts/AboutAndContacts";
 export { default as Main } from "./Main/Main";
+export { default as Registration } from "./Registration/Registration";
 
