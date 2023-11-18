@@ -12,6 +12,8 @@ import {
 const Registration: React.FC = () => {
   const router = useRouter();
 
+  const [step, setStep] = useState(2);
+
   return (
     <BaseContainer>
       <section className={s.Registration}>
@@ -37,9 +39,17 @@ const Registration: React.FC = () => {
           <p className={s.Label}>Go to main page</p>
         </Link>
 
-        <StepFirst />
-        {/* <StepTwo />
-        <StepThree /> */}
+        {step == 1 ? (
+          <StepFirst onClick={() => setStep(2)} />
+        ) : step == 2 ? (
+          <StepTwo onClick={() => setStep(3)} onClick2={() => setStep(1)} />
+        ) : step == 3 ? (
+          <StepThree onClick={() => setStep(4)} onClick2={() => setStep(2)} />
+        ) : step == 4 ? (
+          <StepThree onClick={() => alert('end')} />
+        ) : (
+          <StepFirst onClick={() => setStep(2)} />
+        )}
       </section>
     </BaseContainer>
   );

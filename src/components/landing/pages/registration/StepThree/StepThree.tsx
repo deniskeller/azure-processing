@@ -4,7 +4,12 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import s from './StepThree.module.scss';
 
-const StepThree: React.FC = () => {
+interface Props {
+  onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick2?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const StepThree: React.FC<Props> = ({ onClick, onClick2 }) => {
   const router = useRouter();
 
   return (
@@ -24,10 +29,10 @@ const StepThree: React.FC = () => {
       <div className={s.Step_Form}></div>
 
       <div className={s.Step_Actions}>
-        <BaseButton
-          onClick={() => router.push('/login')}
-          className={s.NextStep}
-        >
+        <BaseButton onClick={onClick2} className={s.Back} type="empty">
+          Back
+        </BaseButton>
+        <BaseButton onClick={onClick} className={s.NextStep}>
           Next step
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -50,15 +50,28 @@
   }
 
   &_Actions {
+    display: flex;
+    flex-direction: row;
     margin-left: auto;
     @include ifmobile {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 em(10px);
       width: 100%;
       margin-left: 0;
     }
 
-    .NextStep {
+    .Back {
       @include ifmobile {
         width: 100%;
+      }
+    }
+
+    .NextStep {
+      margin-left: em(39px);
+      @include ifmobile {
+        width: 100%;
+        margin-left: 0;
       }
       &_Icon {
         $size: 18px;

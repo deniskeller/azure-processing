@@ -1,0 +1,129 @@
+.InputUploadPhoto {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .Uploader {
+    position: relative;
+    border-radius: em(12px);
+    overflow: hidden;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: em(13px);
+    width: em(204px);
+    height: em(204px);
+    transition: all $speed ease;
+    margin-left: auto;
+    @include ifmobile {
+      width: em(155px);
+      height: em(155px);
+    }
+    &_Empty {
+      width: 100%;
+      border: 1px dashed #a9a9a9;
+      &:hover {
+        border-color: $blue-main;
+      }
+    }
+
+    &_NotEmpty {
+      width: em(204px);
+      @include ifmobile {
+        width: em(155px);
+      }
+    }
+
+    &_Input {
+      @extend %fullsize;
+      width: inherit;
+      height: inherit;
+      cursor: pointer;
+      opacity: 0;
+      &::-webkit-file-upload-button {
+        cursor: pointer;
+      }
+    }
+
+    &_Icon {
+      width: em(60px);
+      height: em(60px);
+      margin-bottom: em(8px);
+      @include iflaptop {
+      }
+      @include iftablet {
+      }
+      @include ifmobile {
+      }
+    }
+
+    &_Label {
+      color: $base600light;
+      text-align: center;
+      font-family: $HelveticaNeueCyr;
+      font-size: em(16px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      @include iflaptop {
+      }
+      @include iftablet {
+      }
+      @include ifmobile {
+      }
+    }
+  }
+
+  .UploadedPhoto {
+    position: relative;
+    border-radius: em(12px);
+    overflow: hidden;
+    background: transparent;
+    width: em(204px);
+    height: em(204px);
+    transition: all $speed ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include ifmobile {
+      width: em(155px);
+      height: em(155px);
+    }
+    &:hover {
+      .UploadedPhoto_Delete {
+        opacity: 1;
+      }
+    }
+
+    &_Delete {
+      opacity: 0;
+      cursor: pointer;
+      position: absolute;
+      top: em(12px);
+      right: em(12px);
+      width: em(20px);
+      height: em(20px);
+      transition: all $speed ease;
+      @include iflaptop {
+      }
+      @include iftablet {
+      }
+      @include ifmobile {
+      }
+      &:hover {
+        path {
+          transition: all $speed ease;
+          fill: $blue-main;
+        }
+      }
+    }
+  }
+}
+@include iflaptop {
+}
+@include iftablet {
+}
+@include ifmobile {
+}

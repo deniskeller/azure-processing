@@ -68,6 +68,12 @@
         width: em(24px, $size);
         height: em(24px, $size);
         margin-left: em(10px, $size);
+        &_Disabled {
+          path {
+            stroke: $blue-main;
+            stroke-opacity: 0.4;
+          }
+        }
         @include ifmobile {
           $size: 16px;
           width: em(24px, $size);

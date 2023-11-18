@@ -3,9 +3,17 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import s from './StepTwo.module.scss';
+import { InputUploadPhoto, UploadMerchPhoto } from '@content/landing/index';
 
-const StepTwo: React.FC = () => {
+interface Props {
+  onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick2?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const StepTwo: React.FC<Props> = ({ onClick, onClick2 }) => {
   const router = useRouter();
+
+  const [disabled, setDisabled] = useState(true);
 
   return (
     <div className={s.Step}>
@@ -24,12 +32,24 @@ const StepTwo: React.FC = () => {
         </p>
       </div>
 
-      <div className={s.Step_Form}></div>
+      <div className={s.Step_Form}>
+        <div className={s.Title}>
+          <h2>Upload Passport or ID card (up to two photos)</h2>
+        </div>
+
+        {/* <UploadMerchPhoto multiple /> */}
+        <InputUploadPhoto setDisabled={setDisabled} />
+      </div>
 
       <div className={s.Step_Actions}>
+        <BaseButton onClick={onClick2} className={s.Back} type="empty">
+          Back
+        </BaseButton>
+
         <BaseButton
-          onClick={() => router.push('/login')}
+          onClick={onClick}
           className={s.NextStep}
+          disabled={disabled}
         >
           Next step
           <svg
@@ -38,7 +58,9 @@ const StepTwo: React.FC = () => {
             height="25"
             viewBox="0 0 24 25"
             fill="none"
-            className={s.NextStep_Icon}
+            className={`${s.NextStep_Icon} ${
+              disabled ? s.NextStep_Icon_Disabled : null
+            }`}
           >
             <path
               d="M4 12.5H20M20 12.5L14 6.5M20 12.5L14 18.5"
