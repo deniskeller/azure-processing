@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import s from './StepTwo.module.scss';
-import { InputUploadPhoto, UploadMerchPhoto } from '@content/landing/index';
+import { InputUploadPhoto } from '@content/landing/index';
 
 interface Props {
   onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
@@ -37,7 +37,6 @@ const StepTwo: React.FC<Props> = ({ onClick, onClick2 }) => {
           <h2>Upload Passport or ID card (up to two photos)</h2>
         </div>
 
-        {/* <UploadMerchPhoto multiple /> */}
         <InputUploadPhoto setDisabled={setDisabled} />
       </div>
 

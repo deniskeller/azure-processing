@@ -1,0 +1,49 @@
+.Step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  &_Image {
+    position: relative;
+    width: em(220px);
+    height: em(183px);
+    margin-bottom: em(40px);
+    @include ifmobile {
+      width: em(160px);
+      height: em(133px);
+    }
+  }
+  &_Title {
+    margin-bottom: em(10px);
+    h1 {
+      color: $base900light;
+      text-align: center;
+      font-size: em(32px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%;
+    }
+  }
+  &_Subtitle {
+    max-width: em(450px);
+    margin-bottom: em(40px);
+    p {
+      color: $base600light;
+      text-align: center;
+      font-size: em(18px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      @include ifmobile {
+        font-size: em(16px);
+      }
+    }
+  }
+
+  &_Button {
+    @include ifmobile {
+      width: 100%;
+    }
+  }
+}

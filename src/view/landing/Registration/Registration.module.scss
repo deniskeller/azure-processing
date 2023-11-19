@@ -1,4 +1,7 @@
 .Registration {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   padding: em(123px) 0;
   @include iflaptop {
     padding: em(113px) 0 em(35px);
