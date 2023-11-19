@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import s from './InputPhone.module.scss';
@@ -20,6 +20,7 @@ const InputPhone: React.FC<Props> = ({
   onChange,
   disabled = false,
 }) => {
+  const [focus, setFocus] = useState(false);
   return (
     <div
       className={`${s.BaseInput} ${className} ${
@@ -27,6 +28,8 @@ const InputPhone: React.FC<Props> = ({
       }`}
     >
       <PhoneInput
+        onFocus={() => setFocus(true)}
+        onBlur={() => setFocus(false)}
         placeholder={placeholder}
         country={'ru'}
         value={value}
@@ -36,6 +39,7 @@ const InputPhone: React.FC<Props> = ({
         searchNotFound="Nothing found"
         inputClass={error ? 'phone-input-error' : ''}
         disabled={disabled}
+        inputStyle={{ borderColor: focus ? '#425eec' : '#e8e8ea' }}
       />
     </div>
   );

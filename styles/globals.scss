@@ -28,7 +28,7 @@
   width: 100% !important;
   height: 100% !important;
   padding-left: em(80px, $size) !important;
-  border: 1px solid #e8e8ea !important;
+  border: 1px solid #e8e8ea;
   border-radius: em(12px, $size) !important;
   background: #fff !important;
   @include ifmobile {
@@ -37,6 +37,13 @@
     padding-left: em(74px, $size) !important;
     font-size: em($size) !important;
   }
+}
+.react-tel-input:hover .form-control {
+  border-color: #425eec !important;
+}
+
+.react-tel-input .form-control.phone-input-error {
+  border-color: #ff5f5f !important;
 }
 
 //флаг и шеврон
@@ -189,7 +196,6 @@ input[type='search']::-webkit-search-results-decoration {
 // ТЕЛЕФОН КОНЕЦ
 
 // ДАТАПИКЕР НАЧАЛО
-
 // инпут
 .ant-picker-input input {
   $size: 18px;
@@ -201,6 +207,11 @@ input[type='search']::-webkit-search-results-decoration {
   line-height: 100% !important;
 
   padding: em(32px, $size) em(16px, $size) em(10px, $size) em(24px, $size) !important;
+  @include ifmobile {
+    $size: 16px;
+    font-size: em($size) !important;
+    padding: em(26px, $size) em(16px, $size) em(9px, $size) em(16px, $size) !important;
+  }
 
   &::placeholder {
     color: transparent !important;
