@@ -1,0 +1,13 @@
+.BaseInput {
+  font-size: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &_Disabled {
+    transition: all $speed ease;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6 !important;
+  }
+}
