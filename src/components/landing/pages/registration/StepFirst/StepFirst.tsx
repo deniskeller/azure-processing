@@ -1,12 +1,9 @@
-import { BaseButton, BaseContainer, BaseInput } from '@base/index';
-import Link from 'next/link';
+import { BaseButton, BaseInput } from '@base/index';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import s from './StepFirst.module.scss';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import type { DatePickerProps } from 'antd';
-import { DatePicker, Space } from 'antd';
+import { DatePicker } from 'antd';
 import { InputPhone } from '@content/landing/index';
 
 interface Props {
@@ -38,21 +35,13 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
     setValue((prev) => ({ ...prev, [prop]: value }));
   };
 
+  //проверка строки на цифры
   const checkForNumberValuePassword = (str: string) => {
     return /\d/.test(str);
   };
-
+  //проверка строки на буквы
   const checkForStringValuePassword = (str: string) => {
     return /[a-zа-яё]/i.test(str);
-  };
-
-  // календарь
-  const [value2, onChange2] = useState(new Date());
-  // useEffect(() => {
-  //   console.log('value2: ', value2);
-  // }, [value2]);
-  const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(date, dateString);
   };
 
   // валидация
@@ -84,6 +73,18 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
       onClick();
     }
   };
+
+  // календарь
+  const [focus, setFocus] = useState(false);
+
+  const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+    console.log(date, dateString);
+    setNewValue(dateString, 'birh_date');
+  };
+
+  useEffect(() => {
+    console.log('value: ', value);
+  }, [value]);
 
   return (
     <div className={s.Step}>
@@ -119,19 +120,48 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
             </li>
 
             <li>
-              <BaseInput
-                name="birh_date"
-                placeholder="Birht date"
-                label="Birht date"
-                value={value.birh_date}
-                onChange={(val: string) => setNewValue(val, 'birh_date')}
-              />
-              {/* <Calendar onChange={onChange2} value={value2} /> */}
-              {/* <DatePicker
-                onChange={onChange}
+              <DatePicker
+                className={`${s.DataPicker} ${
+                  focus || value.birh_date !== '' ? s.DataPicker_Focus : ''
+                } ${!focus ? s.DataPicker_Blur : ''}`}
                 format="DD.MM.YYYY"
                 placeholder="Birht date"
-              /> */}
+                onChange={onChange}
+                onFocus={() => setFocus(true)}
+                onBlur={() => setFocus(false)}
+                suffixIcon={
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className={s.DataPicker_Icon}
+                  >
+                    <path
+                      d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12Z"
+                      stroke="#767676"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M7 4V2.5"
+                      stroke="#767676"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M17 4V2.5"
+                      stroke="#767676"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M2.5 9H21.5"
+                      stroke="#767676"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                }
+              />
             </li>
 
             <li>

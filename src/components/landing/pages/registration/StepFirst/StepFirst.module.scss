@@ -304,6 +304,56 @@
   }
 }
 
+.DataPicker {
+  position: relative;
+  font-size: 100%;
+  width: 100%;
+  height: em(62px);
+  padding: 0;
+  border-radius: em(12px);
+  border: 1px solid #e8e8ea !important;
+  background: #fff;
+  transition: border 0.2s, box-shadow 0.2s;
+  &::before {
+    $size: 18px;
+    content: 'Birht date';
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    transform: translate(0, -50%);
+    top: 50%;
+    left: em(24px, $size);
+    transition: all 0.3s ease;
+
+    color: rgba(26, 26, 26, 0.4);
+    font-family: $HelveticaNeueCyr;
+    font-size: em($size);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+  }
+
+  &:hover {
+    border-color: #425eec !important;
+  }
+
+  &_Focus {
+    border-color: #425eec !important;
+    box-shadow: none !important;
+    &::before {
+      $size: 14px;
+      transform: translate(0, 0);
+      top: em(10px, $size);
+      left: em(23px, $size);
+      font-size: em($size);
+    }
+  }
+
+  &_Blur {
+    border-color: #e8e8ea !important;
+  }
+}
+
 @include iflaptop {
 }
 @include iftablet {
