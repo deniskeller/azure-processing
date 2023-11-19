@@ -3,3 +3,4 @@ export { default as LinesWithGradient } from './LinesWithGradient/LinesWithGradi
 export { default as PartnerCard } from './PartnerCard/PartnerCard';
 export { default as MapContacts } from './MapContacts/MapContacts';
 export { default as InputUploadPhoto } from './InputUploadPhoto/InputUploadPhoto';
+export { default as InputPhone } from './InputPhone/InputPhone';

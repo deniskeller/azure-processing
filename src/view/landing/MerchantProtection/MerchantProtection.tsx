@@ -11,7 +11,7 @@ import React from 'react';
 import s from './MerchantProtection.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import { LinesWithGradient } from '@content/landing/index';
+import { InputPhone, LinesWithGradient } from '@content/landing/index';
 
 interface IFormData {
   name_surname: string;
@@ -124,6 +124,13 @@ const MerchantProtection: React.FC = () => {
                   label="Email"
                   value={value.email}
                   onChange={(val: string) => setNewValue(val, 'email')}
+                />
+              </li>
+
+              <li>
+                <InputPhone
+                  value={value.phone}
+                  onChange={(val: string) => setNewValue(val, 'phone')}
                 />
               </li>
 

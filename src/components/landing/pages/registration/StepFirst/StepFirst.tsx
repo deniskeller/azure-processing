@@ -7,6 +7,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import type { DatePickerProps } from 'antd';
 import { DatePicker, Space } from 'antd';
+import { InputPhone } from '@content/landing/index';
 
 interface Props {
   onClick: () => void;
@@ -144,10 +145,7 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
             </li>
 
             <li>
-              <BaseInput
-                name="phone"
-                placeholder="Phone"
-                label="Phone"
+              <InputPhone
                 value={value.phone}
                 onChange={(val: string) => setNewValue(val, 'phone')}
               />
