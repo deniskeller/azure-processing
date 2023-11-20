@@ -46,7 +46,6 @@
     border-color: #425eec;
     @include placeholder-color(transparent);
     & + .Label {
-      transform: translate(0, 0);
       top: em(10px);
       p {
         font-size: em(14px);
@@ -58,7 +57,6 @@
   }
 
   & + .NoEmpty {
-    transform: translate(0, 0);
     top: em(10px);
     p {
       font-size: em(14px);
@@ -83,10 +81,10 @@
 .Label {
   position: absolute;
   pointer-events: none;
-  transform: translate(0, -50%);
-  top: 50%;
+  top: em(22px);
   left: em(25px);
-  transition: all 0.3s ease;
+  transition: top 0.3s ease;
+
   @include ifmobile {
     left: em(17px);
   }
@@ -98,7 +96,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 18px */
-    transition: all 0.3s ease;
+    transition: font-size 0.3s ease;
     @include ifmobile {
       font-size: em(16px);
     }
