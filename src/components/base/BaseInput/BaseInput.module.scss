@@ -46,7 +46,7 @@
     border-color: #425eec;
     @include placeholder-color(transparent);
     & + .Label {
-      transform: translate(0);
+      transform: translate(0, 0);
       top: em(10px);
       p {
         font-size: em(14px);
@@ -58,7 +58,7 @@
   }
 
   & + .NoEmpty {
-    transform: translate(0);
+    transform: translate(0, 0);
     top: em(10px);
     p {
       font-size: em(14px);
