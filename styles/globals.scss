@@ -248,7 +248,7 @@ input[type='search']::-webkit-search-results-decoration {
   line-height: normal !important;
 }
 .ant-picker-date-panel {
-  width: max-content !important;
+  width: em(288px) !important;
 }
 .ant-picker-panel-container {
   border-radius: em(12px) !important;
@@ -277,7 +277,7 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 .ant-picker-dropdown .ant-picker-date-panel .ant-picker-content {
-  width: max-content !important;
+  width: 100% !important;
 }
 .ant-picker-dropdown .ant-picker-header-view button {
   color: rgba(26, 26, 26, 0.9) !important;
