@@ -46,11 +46,9 @@
     border-color: #425eec;
     @include placeholder-color(transparent);
     & + .Label {
-      transition: top 0.3s ease;
       top: em(10px);
       p {
         font-size: em(14px);
-        transition: font-size 0.3s ease;
         @include ifmobile {
           font-size: em(12px);
         }
@@ -59,11 +57,9 @@
   }
 
   & + .NoEmpty {
-    transition: top 0.3s ease;
     top: em(10px);
     p {
       font-size: em(14px);
-      transition: font-size 0.3s ease;
       @include ifmobile {
         font-size: em(12px);
       }
@@ -90,6 +86,7 @@
   transition: top 0.3s ease;
 
   @include ifmobile {
+    top: em(18px);
     left: em(17px);
   }
 

@@ -337,7 +337,8 @@
     line-height: 100%;
     @include ifmobile {
       $size: 16px;
-      left: em(24px, $size);
+      font-size: em($size);
+      left: em(15px, $size);
     }
   }
 
