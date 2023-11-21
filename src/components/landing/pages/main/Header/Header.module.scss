@@ -59,7 +59,7 @@
       left: 50%;
       transform: translate(-50%, 0%) scale(0);
       animation-direction: alternate;
-      animation-duration: 2s;
+      animation-duration: 1s;
       animation-name: pulse;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
@@ -309,7 +309,7 @@
 
 @keyframes pulse {
   0% {
-    transform: translate(-50%, 0%) scale(0.3);
+    transform: translate(-50%, 0%) scale(0.8);
   }
   100% {
     transform: translate(-50%, 0%) scale(1);
