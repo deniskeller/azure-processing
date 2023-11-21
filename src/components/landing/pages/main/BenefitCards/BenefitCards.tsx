@@ -19,51 +19,55 @@ const BenefitCards: React.FC = () => {
         trigger: sectionScrollRef.current,
         toggleActions: 'play none none none',
         markers: true,
-        start: 'top 20%',
+        start: 'top 100%',
+        end: 'bottom 80%',
+        scrub: 1,
       },
     });
 
     tl.fromTo(
       refCard_1.current,
       {
-        y: '100%',
+        x: '-100%',
         opacity: 0,
+        duration: 1,
       },
       {
-        y: '0%',
+        x: '0%',
         opacity: 1,
       }
     )
       .fromTo(
         refCard_2.current,
         {
-          y: '100%',
+          x: '100%',
           opacity: 0,
+          duration: 1,
         },
         {
-          y: '0%',
+          x: '0%',
           opacity: 1,
         }
       )
       .fromTo(
         refCard_3.current,
         {
-          y: '100%',
+          x: '-100%',
           opacity: 0,
         },
         {
-          y: '0%',
+          x: '0%',
           opacity: 1,
         }
       )
       .fromTo(
         refCard_4.current,
         {
-          y: '100%',
+          x: '100%',
           opacity: 0,
         },
         {
-          y: '0%',
+          x: '0%',
           opacity: 1,
         }
       );
