@@ -35,7 +35,7 @@ const ForRegistration: React.FC = () => {
           </div>
 
           <BaseButton
-            onClick={() => router.push('/login')}
+            onClick={() => router.push('/sign-up')}
             className={s.Button}
           >
             Get started
