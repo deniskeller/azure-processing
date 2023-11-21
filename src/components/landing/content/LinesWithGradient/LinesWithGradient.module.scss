@@ -24,7 +24,7 @@
 
   .Line {
     width: 1px;
-    height: 100%;
+    // height: 100%;
     background: rgba(26, 26, 26, 0.05);
 
     &_12,
@@ -64,13 +64,8 @@
   left: 0;
   bottom: em(-59px);
   width: 100%;
-  height: em(138px);
+  height: em(138px) !important;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 71.11%);
-  // background: linear-gradient(
-  //   180deg,
-  //   rgba(255, 255, 255, 0) 0%,
-  //   #942727 71.11%
-  // );
 
   @include iflaptop {
     bottom: em(-44px);

@@ -18,7 +18,7 @@ const BenefitCards: React.FC = () => {
       scrollTrigger: {
         trigger: sectionScrollRef.current,
         toggleActions: 'play none none none',
-        markers: true,
+        // markers: true,
         start: 'top 100%',
         end: 'bottom 80%',
         scrub: 1,
@@ -30,7 +30,6 @@ const BenefitCards: React.FC = () => {
       {
         x: '-100%',
         opacity: 0,
-        duration: 1,
       },
       {
         x: '0%',
@@ -42,7 +41,6 @@ const BenefitCards: React.FC = () => {
         {
           x: '100%',
           opacity: 0,
-          duration: 1,
         },
         {
           x: '0%',
