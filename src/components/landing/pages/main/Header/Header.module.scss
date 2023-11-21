@@ -74,7 +74,8 @@
         width: em(910px);
         height: em(910px);
         background: rgba(227, 231, 252, 0.3);
-        animation: pulse 2s linear infinite;
+        animation: pulse 2s linear;
+        animation-delay: 0.5s;
         @include iflaptop {
           top: em(-10px);
           width: em(700px);
@@ -98,7 +99,8 @@
         width: em(552px);
         height: em(552px);
         background: rgba(227, 231, 252, 0.4);
-        animation: pulse 2s linear infinite;
+        animation: pulse 2s linear;
+        animation-delay: 0.3s;
         @include iflaptop {
           top: em(127px);
           width: em(429px);
@@ -121,7 +123,8 @@
         width: em(368px);
         height: em(368px);
         background: rgba(227, 231, 252, 0.5);
-        animation: pulse 2s linear infinite;
+        animation: pulse 2s linear;
+
         @include iflaptop {
           top: em(202px);
           width: em(286px);
@@ -303,15 +306,12 @@
 
 @keyframes pulse {
   0% {
-    transform: translate(-50%, 0%) scale(0.5);
+    transform: translate(-50%, 0%) scale(0.3);
     opacity: 0;
-  }
-  50% {
-    opacity: 1;
   }
   100% {
-    transform: translate(-50%, 0%) scale(1.2);
-    opacity: 0;
+    transform: translate(-50%, 0%) scale(1);
+    opacity: 1;
   }
 }
 
