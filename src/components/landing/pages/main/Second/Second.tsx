@@ -11,37 +11,40 @@ const Second: React.FC = () => {
   const refSubtitle = useRef(null);
 
   useEffect(() => {
-    gsap.set(refTitle.current, {
-      y: '0%',
-      opacity: 1,
-      scale: 1,
-    });
-
-    gsap.from(refTitle.current, {
+    const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: refTitle.current,
+        trigger: sectionScrollRef.current,
         toggleActions: 'play none none none',
+        markers: true,
+        start: 'top 50%',
       },
-      y: '100%',
-      opacity: 0,
-      scale: 0.3,
     });
 
-    gsap.set(refSubtitle.current, {
-      y: '0%',
-      opacity: 1,
-      scale: 1,
-    });
-
-    gsap.from(refSubtitle.current, {
-      scrollTrigger: {
-        trigger: refSubtitle.current,
-        toggleActions: 'play none none none',
+    tl.fromTo(
+      refTitle.current,
+      {
+        y: '100%',
+        opacity: 0,
+        scale: 0.3,
       },
-      y: '100%',
-      opacity: 0,
-      scale: 0.3,
-    });
+      {
+        y: '0%',
+        opacity: 1,
+        scale: 1,
+      }
+    ).fromTo(
+      refSubtitle.current,
+      {
+        y: '100%',
+        opacity: 0,
+        scale: 0.3,
+      },
+      {
+        y: '0%',
+        opacity: 1,
+        scale: 1,
+      }
+    );
   }, []);
 
   return (

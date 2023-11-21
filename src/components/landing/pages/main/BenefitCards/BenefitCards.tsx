@@ -14,27 +14,65 @@ const BenefitCards: React.FC = () => {
   const refCard_4 = useRef(null);
 
   useEffect(() => {
-    gsap.set(refCard_1.current, {
-      y: '0%',
-      opacity: 1,
-      scale: 1,
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionScrollRef.current,
+        toggleActions: 'play none none none',
+        markers: true,
+        start: 'top 20%',
+      },
     });
 
-    gsap.from(refCard_1.current, {
-      scrollTrigger: {
-        trigger: refCard_1.current,
-        toggleActions: 'play none none none',
+    tl.fromTo(
+      refCard_1.current,
+      {
+        y: '100%',
+        opacity: 0,
       },
-      y: '100%',
-      opacity: 0,
-      scale: 0.3,
-    });
+      {
+        y: '0%',
+        opacity: 1,
+      }
+    )
+      .fromTo(
+        refCard_2.current,
+        {
+          y: '100%',
+          opacity: 0,
+        },
+        {
+          y: '0%',
+          opacity: 1,
+        }
+      )
+      .fromTo(
+        refCard_3.current,
+        {
+          y: '100%',
+          opacity: 0,
+        },
+        {
+          y: '0%',
+          opacity: 1,
+        }
+      )
+      .fromTo(
+        refCard_4.current,
+        {
+          y: '100%',
+          opacity: 0,
+        },
+        {
+          y: '0%',
+          opacity: 1,
+        }
+      );
   }, []);
 
   return (
     <BaseContainer>
       <section className={s.BenefitCards} ref={sectionScrollRef}>
-        <div className={`${s.Card} ${s.Card_1}`}>
+        <div className={`${s.Card} ${s.Card_1}`} ref={refCard_1}>
           <div className={s.Card_Text}>
             <p>
               Chance to choose the best processing solution with the best rates
@@ -50,7 +88,7 @@ const BenefitCards: React.FC = () => {
           />
         </div>
 
-        <div className={`${s.Card} ${s.Card_2}`}>
+        <div className={`${s.Card} ${s.Card_2}`} ref={refCard_2}>
           <div className={s.Card_Text}>
             <p>
               Secured and verified network of acquiring banks and service
@@ -66,7 +104,7 @@ const BenefitCards: React.FC = () => {
           />
         </div>
 
-        <div className={`${s.Card} ${s.Card_3}`}>
+        <div className={`${s.Card} ${s.Card_3}`} ref={refCard_3}>
           <div className={s.Card_Text}>
             <p>
               Fast approval and easy boarding with own professional assistance.
@@ -81,7 +119,7 @@ const BenefitCards: React.FC = () => {
           />
         </div>
 
-        <div className={`${s.Card} ${s.Card_4}`}>
+        <div className={`${s.Card} ${s.Card_4}`} ref={refCard_4}>
           <div className={s.Card_Text}>
             <p>Your time and security are our biggest values</p>
           </div>
