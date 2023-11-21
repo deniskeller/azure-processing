@@ -54,10 +54,15 @@
 
     .Circle {
       position: absolute;
-      left: 50%;
-      transform: translate(-50%, 0%) scale(0);
       border-radius: 50%;
       filter: blur(2.5px);
+      left: 50%;
+      transform: translate(-50%, 0%) scale(0);
+      animation-direction: alternate;
+      animation-duration: 2s;
+      animation-name: pulse;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
       @include iflaptop {
         filter: blur(1.9426229000091553px);
       }
@@ -74,7 +79,7 @@
         width: em(910px);
         height: em(910px);
         background: rgba(227, 231, 252, 0.3);
-        animation: pulse 4s forwards infinite;
+
         animation-delay: 0.5s;
         @include iflaptop {
           top: em(-10px);
@@ -99,7 +104,6 @@
         width: em(552px);
         height: em(552px);
         background: rgba(227, 231, 252, 0.4);
-        animation: pulse 4s forwards infinite;
         animation-delay: 0.3s;
         @include iflaptop {
           top: em(127px);
@@ -123,7 +127,6 @@
         width: em(368px);
         height: em(368px);
         background: rgba(227, 231, 252, 0.5);
-        animation: pulse 4s forwards infinite;
 
         @include iflaptop {
           top: em(202px);
@@ -306,15 +309,11 @@
 
 @keyframes pulse {
   0% {
-    transform: translate(-50%, 0%) scale(0.3);
-    opacity: 0;
-  }
-  50% {
-    transform: translate(-50%, 0%) scale(1);
-    opacity: 1;
+    transform: translate(-50%, 0%) scale(0.5);
+    opacity: 0.3;
   }
   100% {
-    transform: translate(-50%, 0%) scale(0.3);
+    transform: translate(-50%, 0%) scale(1);
     opacity: 1;
   }
 }
