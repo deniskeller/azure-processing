@@ -5,13 +5,49 @@ import {
   BaseText,
   BaseTitle,
 } from '@base/index';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import s from './Header.module.scss';
 import { useRouter } from 'next/router';
 import { ALL_ICONS } from '@constants/icons';
+import { gsap } from 'gsap';
+const { ScrollTrigger } = require('gsap/dist/ScrollTrigger');
+gsap.registerPlugin(ScrollTrigger);
 
 const Header: React.FC = () => {
   const router = useRouter();
+
+  const sectionScrollRef = useRef(null);
+  const refTitle = useRef(null);
+  const refSubtitle = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionScrollRef.current,
+        toggleActions: 'play none none none',
+        // markers: true,
+        start: 'top 50%',
+      },
+    });
+
+    tl.fromTo(
+      refTitle.current,
+      {
+        y: '100%',
+      },
+      {
+        y: '0%',
+      }
+    ).fromTo(
+      refSubtitle.current,
+      {
+        y: '100%',
+      },
+      {
+        y: '0%',
+      }
+    );
+  }, []);
 
   return (
     <section className={s.Header}>

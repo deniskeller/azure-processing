@@ -24,26 +24,17 @@ const Second: React.FC = () => {
       refTitle.current,
       {
         y: '100%',
-        opacity: 0,
-        scale: 0.3,
       },
       {
         y: '0%',
-        opacity: 1,
-        scale: 1,
       }
     ).fromTo(
       refSubtitle.current,
       {
         y: '100%',
-        opacity: 0,
-        scale: 0.3,
       },
       {
         y: '0%',
-        opacity: 1,
-        scale: 1,
-        duration: 0.5,
       }
     );
   }, []);
@@ -51,12 +42,10 @@ const Second: React.FC = () => {
   return (
     <section className={s.Second} ref={sectionScrollRef}>
       <BaseContainer>
-        <span>
-          <BaseTitle type="h2" className={s.Second_Title} ref={refTitle}>
-            We are working with international network of payment providers
-            offering only trusted and secured companies for e-commerce services
-          </BaseTitle>
-        </span>
+        <BaseTitle type="h2" className={s.Second_Title} ref={refTitle}>
+          We are working with international network of payment providers
+          offering only trusted and secured companies for e-commerce services
+        </BaseTitle>
 
         <BaseText className={s.Second_Subtitle} ref={refSubtitle}>
           We also do merchant due-diligence and protection in case of acquirers

@@ -14,6 +14,8 @@
     max-width: em(1004px);
     margin: 0 auto em(25px);
     text-align: center;
+    position: relative;
+    overflow: hidden;
     @include ifmobile {
       margin: 0 auto em(20px);
     }
@@ -23,5 +25,7 @@
     max-width: em(800px);
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
 }

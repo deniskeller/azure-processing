@@ -6,6 +6,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 110%; /* 99px */
+    transform-style: preserve-3d;
     @include iflaptop {
       font-size: em(60px);
     }
@@ -24,6 +25,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 110%; /* 60.5px */
+    transform-style: preserve-3d;
     @include iflaptop {
       font-size: em(44px);
     }
@@ -42,6 +44,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 110%; /* 60.5px */
+    transform-style: preserve-3d;
     @include iflaptop {
       font-size: em(36px);
     }

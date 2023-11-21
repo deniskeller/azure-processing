@@ -12,8 +12,10 @@ const BaseText = forwardRef<Ref, Props>(function BaseText(
   ref
 ) {
   return (
-    <div className={`${className}`} ref={ref}>
-      <p className={s.Text}>{children}</p>
+    <div className={`${className}`}>
+      <p className={s.Text} ref={ref}>
+        {children}
+      </p>
     </div>
   );
 });

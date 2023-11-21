@@ -5,6 +5,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
+  transform-style: preserve-3d;
   @include iftablet {
     font-size: em(16px);
   }
