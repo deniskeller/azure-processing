@@ -12,13 +12,13 @@
 
   &_Decor {
     width: em(915px);
-    height: em(566px);
+    height: em(500px);
     margin: 0 auto;
     overflow: hidden;
     position: relative;
     @include iflaptop {
       width: em(711px);
-      height: em(471px);
+      height: em(400px);
     }
     @include iftablet {
       width: em(711px);

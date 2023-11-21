@@ -16,7 +16,7 @@ const Second: React.FC = () => {
         trigger: sectionScrollRef.current,
         toggleActions: 'play none none none',
         // markers: true,
-        start: 'top 50%',
+        start: 'top 60%',
       },
     });
 
