@@ -16,13 +16,6 @@ const LinesWithGradient: React.FC<Props> = ({ className = '' }) => {
     if (sectionScrollRef.current != null) {
       const line_list = sectionScrollRef.current.childNodes;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionScrollRef.current,
-          toggleActions: 'play none none none',
-        },
-      });
-
       line_list.forEach((line: gsap.TweenTarget, index) => {
         gsap.fromTo(
           line,

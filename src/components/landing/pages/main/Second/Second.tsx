@@ -43,6 +43,7 @@ const Second: React.FC = () => {
         y: '0%',
         opacity: 1,
         scale: 1,
+        duration: 0.5,
       }
     );
   }, []);
