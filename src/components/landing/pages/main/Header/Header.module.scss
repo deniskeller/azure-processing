@@ -309,12 +309,10 @@
 
 @keyframes pulse {
   0% {
-    transform: translate(-50%, 0%) scale(0.5);
-    opacity: 0.3;
+    transform: translate(-50%, 0%) scale(0.3);
   }
   100% {
     transform: translate(-50%, 0%) scale(1);
-    opacity: 1;
   }
 }
 
