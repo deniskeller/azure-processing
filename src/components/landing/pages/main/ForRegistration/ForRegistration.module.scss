@@ -14,12 +14,16 @@
     text-align: center;
     max-width: em(990px);
     margin: 0 auto em(25px);
+    position: relative;
+    overflow: hidden;
   }
 
   &_Subtitle {
     text-align: center;
     max-width: em(800px);
     margin: 0 auto em(50px);
+    position: relative;
+    overflow: hidden;
   }
 
   &_Form {

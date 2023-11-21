@@ -6,41 +6,33 @@ const { ScrollTrigger } = require('gsap/dist/ScrollTrigger');
 gsap.registerPlugin(ScrollTrigger);
 
 const Second: React.FC = () => {
-  const sectionScrollRef = useRef(null);
   const refTitle = useRef(null);
   const refSubtitle = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionScrollRef.current,
-        toggleActions: 'play none none none',
-        // markers: true,
-        start: 'top 60%',
-      },
-    });
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refTitle.current,
+          toggleActions: 'play none none none',
+          start: 'top 80%',
+        },
+      })
+      .fromTo(refTitle.current, { y: '100%' }, { y: '0%' });
 
-    tl.fromTo(
-      refTitle.current,
-      {
-        y: '100%',
-      },
-      {
-        y: '0%',
-      }
-    ).fromTo(
-      refSubtitle.current,
-      {
-        y: '100%',
-      },
-      {
-        y: '0%',
-      }
-    );
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refSubtitle.current,
+          toggleActions: 'play none none none',
+          start: 'top 70%',
+        },
+      })
+      .fromTo(refSubtitle.current, { y: '100%' }, { y: '0%', delay: 0.5 });
   }, []);
 
   return (
-    <section className={s.Second} ref={sectionScrollRef}>
+    <section className={s.Second}>
       <BaseContainer>
         <BaseTitle type="h2" className={s.Second_Title} ref={refTitle}>
           We are working with international network of payment providers

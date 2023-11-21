@@ -7,11 +7,14 @@ import {
   BaseTitle,
 } from '@base/index';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import s from './MerchantProtection.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { InputPhone, LinesWithGradient } from '@content/landing/index';
+import { gsap } from 'gsap';
+const { ScrollTrigger } = require('gsap/dist/ScrollTrigger');
+gsap.registerPlugin(ScrollTrigger);
 
 interface IFormData {
   name_surname: string;
@@ -37,6 +40,43 @@ const MerchantProtection: React.FC = () => {
     setValue((prev) => ({ ...prev, [prop]: value }));
   };
 
+  //АНИМАЦИИ
+  const refTitle = useRef(null);
+  const refTitle2 = useRef(null);
+  const refSubtitle = useRef(null);
+
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refTitle.current,
+          toggleActions: 'play none none none',
+          start: 'top 80%',
+        },
+      })
+      .fromTo(refTitle.current, { y: '100%' }, { y: '0%' });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refSubtitle.current,
+          toggleActions: 'play none none none',
+          start: 'top 80%',
+        },
+      })
+      .fromTo(refSubtitle.current, { y: '100%' }, { y: '0%', delay: 0.5 });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refTitle2.current,
+          toggleActions: 'play none none none',
+          start: 'top 80%',
+        },
+      })
+      .fromTo(refTitle2.current, { y: '100%' }, { y: '0%' });
+  }, []);
+
   return (
     <div className={s.MerchantProtection}>
       <LinesWithGradient />
@@ -44,13 +84,13 @@ const MerchantProtection: React.FC = () => {
         <BaseContainer>
           <div className={s.Header_Container}>
             <div className={s.Header_Text}>
-              <BaseTitle type="h2" className={s.Title}>
+              <BaseTitle type="h2" className={s.Title} ref={refTitle}>
                 We are helping merchants to protect themselves from illegal,
                 unprofessional behavior of acquiring banks or payment service
                 providers in different situations
               </BaseTitle>
 
-              <BaseText className={s.Description}>
+              <BaseText className={s.Description} ref={refSubtitle}>
                 In case your funds were frozen, merchant account blocked or you
                 are receiving letters with fines and warnings without any reason
                 – we can immediately help get things clear and resolve any
@@ -78,7 +118,11 @@ const MerchantProtection: React.FC = () => {
       </section>
       <section className={s.DescriptionProblem}>
         <BaseContainer>
-          <BaseTitle type="h2" className={s.DescriptionProblem_Title}>
+          <BaseTitle
+            type="h2"
+            className={s.DescriptionProblem_Title}
+            ref={refTitle2}
+          >
             Please send us a brief description of your issue and we will contact
             you within 24 hours
           </BaseTitle>

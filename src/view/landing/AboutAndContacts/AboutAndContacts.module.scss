@@ -121,12 +121,14 @@
       text-align: center;
       max-width: em(1119px);
       margin: 0 auto em(25px);
+      overflow: hidden;
     }
 
     &_Description {
       text-align: center;
       max-width: em(960px);
       margin: 0 auto em(137px);
+      overflow: hidden;
       @include iflaptop {
         margin: 0 auto em(125px);
       }
@@ -159,6 +161,7 @@
         overflow: hidden;
         min-height: em(350px);
         border-radius: em(20px);
+        opacity: 0;
         @include iftablet {
           min-height: em(271px);
         }
@@ -270,6 +273,7 @@
     &_Title {
       text-align: center;
       margin: 0 auto em(25px);
+      overflow: hidden;
       @include ifmobile {
         margin: 0 auto em(20px);
       }
@@ -279,6 +283,7 @@
       text-align: center;
       max-width: em(800px);
       margin: 0 auto em(100px);
+      overflow: hidden;
       @include iflaptop {
         margin: 0 auto em(60px);
       }
@@ -648,6 +653,7 @@
       background: grey;
       border-radius: em(20px);
       overflow: hidden;
+      transform: scale(0);
       @include iflaptop {
         width: em(516px);
         height: em(448px);

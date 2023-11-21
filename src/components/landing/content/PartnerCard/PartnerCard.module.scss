@@ -8,7 +8,7 @@
   width: auto;
   min-height: em(208px);
   padding: em(40px);
-  transition: all $speed ease;
+  transition: background $speed ease;
   @include iftablet {
     padding: em(30px) em(20px);
   }

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, forwardRef } from 'react';
 import s from './PartnerCard.module.scss';
 import Link from 'next/link';
 
@@ -10,15 +10,14 @@ interface Props {
   children?: ReactNode | ReactNode[];
 }
 
-const PartnerCard: React.FC<Props> = ({
-  href = '/',
-  name,
-  card_type,
-  country,
-  children,
-}) => {
+export type Ref = HTMLAnchorElement;
+
+const PartnerCard = forwardRef<Ref, Props>(function PartnerCard(
+  { href = '/', name, card_type, country, children },
+  ref
+) {
   return (
-    <Link href={href} className={s.PartnerCard}>
+    <Link href={href} className={s.PartnerCard} ref={ref}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 40 40"
@@ -48,6 +47,6 @@ const PartnerCard: React.FC<Props> = ({
       </div>
     </Link>
   );
-};
+});
 
 export default PartnerCard;

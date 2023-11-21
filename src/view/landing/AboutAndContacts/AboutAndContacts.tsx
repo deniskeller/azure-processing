@@ -1,10 +1,13 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import s from './AboutAndContacts.module.scss';
 import Image from 'next/image';
 import { BaseContainer, BaseIcon, BaseText, BaseTitle } from '@base/index';
 import { LinesWithGradient, MapContacts } from '@content/landing/index';
 import { ALL_ICONS } from '@constants/icons';
+import { gsap } from 'gsap';
+const { ScrollTrigger } = require('gsap/dist/ScrollTrigger');
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutAndContacts: React.FC = () => {
   const router = useRouter();
@@ -14,6 +17,87 @@ const AboutAndContacts: React.FC = () => {
     lat: 51.512619649633486,
     lng: -0.07756605745821402,
   };
+
+  //АНИМАЦИИ
+  const refTitle = useRef(null);
+  const refSubtitle = useRef(null);
+  const refCard_1 = useRef(null);
+  const refCard_2 = useRef(null);
+  const refTitle2 = useRef(null);
+  const refSubtitle2 = useRef(null);
+  const refMap = useRef(null);
+
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refTitle.current,
+          toggleActions: 'play none none none',
+          start: 'top 80%',
+        },
+      })
+      .fromTo(refTitle.current, { y: '100%' }, { y: '0%' });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refSubtitle.current,
+          toggleActions: 'play none none none',
+          start: 'top 80%',
+        },
+      })
+      .fromTo(refSubtitle.current, { y: '100%' }, { y: '0%', delay: 0.5 });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refCard_1.current,
+          toggleActions: 'play none none none',
+          start: 'top 100%',
+        },
+      })
+      .fromTo(refCard_1.current, { y: '100%' }, { y: '0%', opacity: 1 });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refCard_2.current,
+          toggleActions: 'play none none none',
+          start: 'top 100%',
+        },
+      })
+      .fromTo(refCard_2.current, { y: '100%' }, { y: '0%', opacity: 1 });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refTitle2.current,
+          toggleActions: 'play none none none',
+          start: 'top 80%',
+        },
+      })
+      .fromTo(refTitle2.current, { y: '100%' }, { y: '0%' });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refSubtitle2.current,
+          toggleActions: 'play none none none',
+          start: 'top 80%',
+        },
+      })
+      .fromTo(refSubtitle2.current, { y: '100%' }, { y: '0%', delay: 0.5 });
+
+    gsap.to(refMap.current, {
+      scrollTrigger: {
+        trigger: refMap.current,
+        toggleActions: 'play none none none',
+        start: 'top 80%',
+      },
+      scale: 1,
+      duration: 0.6,
+    });
+  }, []);
 
   return (
     <div className={s.AboutAndContacts}>
@@ -38,17 +122,7 @@ const AboutAndContacts: React.FC = () => {
               stroke="#7E93FA"
               strokeWidth="2.28571"
               strokeLinecap="round"
-            >
-              {/* <animateTransform
-              attributeName="transform"
-              attributeType="XML"
-              type="rotate"
-              from="00 180 180"
-              to="360 180 180"
-              dur="5s"
-              repeatCount="indefinite"
-            ></animateTransform> */}
-            </path>
+            ></path>
             <path
               d="M30 36.6667H36.6667"
               stroke="#425EEC"
@@ -169,12 +243,12 @@ const AboutAndContacts: React.FC = () => {
               strokeWidth="2.3"
             />
           </svg>
-          <BaseTitle type="h1" className={s.Header_Title}>
+          <BaseTitle type="h1" className={s.Header_Title} ref={refTitle}>
             We help to open merchant accounts for different kind of businesses
             worldwide
           </BaseTitle>
 
-          <BaseText className={s.Header_Description}>
+          <BaseText className={s.Header_Description} ref={refSubtitle}>
             Azure Processing is an independent sales organization founded in
             2017 and acting on behalf of acquiring banks and service providers.
             We also initiate the boarding procedure on our side and make
@@ -183,7 +257,10 @@ const AboutAndContacts: React.FC = () => {
           </BaseText>
 
           <div className={s.Header_WhoAreWe}>
-            <div className={`${s.WhoAreWeItem} ${s.WhoAreWeItem_1}`}>
+            <div
+              className={`${s.WhoAreWeItem} ${s.WhoAreWeItem_1}`}
+              ref={refCard_1}
+            >
               <div className={s.Text}>
                 <p>
                   We are not a bank, nor a payment system. We are professional
@@ -201,7 +278,10 @@ const AboutAndContacts: React.FC = () => {
               />
             </div>
 
-            <div className={`${s.WhoAreWeItem} ${s.WhoAreWeItem_2}`}>
+            <div
+              className={`${s.WhoAreWeItem} ${s.WhoAreWeItem_2}`}
+              ref={refCard_2}
+            >
               <Image
                 src="/pictures/images/about-and-contacts-who-are-we-image-2.png"
                 width={200}
@@ -225,11 +305,11 @@ const AboutAndContacts: React.FC = () => {
 
       <section className={s.WhyAreWeHere}>
         <BaseContainer>
-          <BaseTitle type="h2" className={s.WhyAreWeHere_Title}>
+          <BaseTitle type="h2" className={s.WhyAreWeHere_Title} ref={refTitle2}>
             Why are we here?
           </BaseTitle>
 
-          <BaseText className={s.WhyAreWeHere_Description}>
+          <BaseText className={s.WhyAreWeHere_Description} ref={refSubtitle2}>
             Because we help you find safe and secure payment service providers
             for your business avoiding fraudsters and Ponzi schemes.
           </BaseText>
@@ -437,7 +517,7 @@ const AboutAndContacts: React.FC = () => {
             </ul>
           </div>
 
-          <div className={s.Contacts_Map}>
+          <div className={s.Contacts_Map} ref={refMap}>
             <MapContacts
               center={london}
               marker_title="1123 King Street, Hammersmith, London, United Kingdom, W9 9JG"

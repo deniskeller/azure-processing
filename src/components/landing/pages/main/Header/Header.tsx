@@ -25,7 +25,6 @@ const Header: React.FC = () => {
       scrollTrigger: {
         trigger: sectionScrollRef.current,
         toggleActions: 'play none none none',
-        // markers: true,
         start: 'top 50%',
       },
     });

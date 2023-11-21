@@ -18,7 +18,6 @@ const BenefitCards: React.FC = () => {
       scrollTrigger: {
         trigger: sectionScrollRef.current,
         toggleActions: 'play none none none',
-        // markers: true,
         start: 'top 100%',
         end: 'bottom 80%',
         scrub: 1,

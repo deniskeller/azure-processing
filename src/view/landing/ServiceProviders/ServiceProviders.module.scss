@@ -36,9 +36,11 @@
       }
       .Title {
         margin-bottom: em(25px);
+        overflow: hidden;
       }
       .Description {
         max-width: em(704px);
+        overflow: hidden;
       }
     }
 

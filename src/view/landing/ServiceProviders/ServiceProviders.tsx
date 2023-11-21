@@ -1,12 +1,161 @@
 import { BaseContainer, BaseText, BaseTitle } from '@base/index';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import s from './ServiceProviders.module.scss';
 import Image from 'next/image';
 import { LinesWithGradient, PartnerCard } from '@content/landing/index';
+import { gsap } from 'gsap';
+const { ScrollTrigger } = require('gsap/dist/ScrollTrigger');
+gsap.registerPlugin(ScrollTrigger);
 
 const ServiceProviders: React.FC = () => {
   const router = useRouter();
+
+  //АНИМАЦИИ
+  const refTitle = useRef(null);
+  const refSubtitle = useRef(null);
+  const refCard_1 = useRef(null);
+  const refCard_2 = useRef(null);
+  const refCard_3 = useRef(null);
+  const refCard_4 = useRef(null);
+  const refCard_5 = useRef(null);
+  const refCard_6 = useRef(null);
+  const refCard_7 = useRef(null);
+  const refCard_8 = useRef(null);
+
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refTitle.current,
+          toggleActions: 'play none none none',
+          start: 'top 80%',
+        },
+      })
+      .fromTo(refTitle.current, { y: '100%' }, { y: '0%' });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refSubtitle.current,
+          toggleActions: 'play none none none',
+          start: 'top 80%',
+        },
+      })
+      .fromTo(refSubtitle.current, { y: '100%' }, { y: '0%', delay: 0.5 });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refCard_1.current,
+          toggleActions: 'play none none none',
+          start: 'top 100%',
+        },
+      })
+      .fromTo(
+        refCard_1.current,
+        { y: '100%', opacity: 0 },
+        { y: '0%', opacity: 1 }
+      );
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refCard_2.current,
+          toggleActions: 'play none none none',
+          start: 'top 100%',
+        },
+      })
+      .fromTo(
+        refCard_2.current,
+        { y: '100%', opacity: 0 },
+        { y: '0%', opacity: 1 }
+      );
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refCard_3.current,
+          toggleActions: 'play none none none',
+          start: 'top 100%',
+        },
+      })
+      .fromTo(
+        refCard_3.current,
+        { y: '100%', opacity: 0 },
+        { y: '0%', opacity: 1 }
+      );
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refCard_4.current,
+          toggleActions: 'play none none none',
+          start: 'top 100%',
+        },
+      })
+      .fromTo(
+        refCard_4.current,
+        { y: '100%', opacity: 0 },
+        { y: '0%', opacity: 1 }
+      );
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refCard_5.current,
+          toggleActions: 'play none none none',
+          start: 'top 100%',
+        },
+      })
+      .fromTo(
+        refCard_5.current,
+        { y: '100%', opacity: 0 },
+        { y: '0%', opacity: 1 }
+      );
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refCard_6.current,
+          toggleActions: 'play none none none',
+          start: 'top 100%',
+        },
+      })
+      .fromTo(
+        refCard_6.current,
+        { y: '100%', opacity: 0 },
+        { y: '0%', opacity: 1 }
+      );
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refCard_7.current,
+          toggleActions: 'play none none none',
+          start: 'top 100%',
+        },
+      })
+      .fromTo(
+        refCard_7.current,
+        { y: '100%', opacity: 0 },
+        { y: '0%', opacity: 1 }
+      );
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: refCard_8.current,
+          toggleActions: 'play none none none',
+          start: 'top 100%',
+        },
+      })
+      .fromTo(
+        refCard_8.current,
+        { y: '100%', opacity: 0 },
+        { y: '0%', opacity: 1 }
+      );
+  }, []);
 
   return (
     <div className={s.ServiceProviders}>
@@ -16,12 +165,12 @@ const ServiceProviders: React.FC = () => {
         <BaseContainer>
           <div className={s.Header_Container}>
             <div className={s.Header_Text}>
-              <BaseTitle type="h2" className={s.Title}>
+              <BaseTitle type="h2" className={s.Title} ref={refTitle}>
                 Here you can see the list of service providers and acquiring
                 banks with whom we work
               </BaseTitle>
 
-              <BaseText className={s.Description}>
+              <BaseText className={s.Description} ref={refSubtitle}>
                 Through partners and integrations, we provide our users with the
                 most extensive financial instrument capabilities in key regions
                 around the world.
@@ -197,6 +346,7 @@ const ServiceProviders: React.FC = () => {
               name="JSC ConCardis"
               card_type="VISA, MasterCard"
               country="Germany"
+              ref={refCard_1}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -220,6 +370,7 @@ const ServiceProviders: React.FC = () => {
               name="JSC Bank Frick"
               card_type="VISA, MasterCard"
               country="Liechtenstein"
+              ref={refCard_2}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -253,6 +404,7 @@ const ServiceProviders: React.FC = () => {
               name="Elavon"
               card_type="VISA, MasterCard"
               country="USA"
+              ref={refCard_3}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -299,6 +451,7 @@ const ServiceProviders: React.FC = () => {
               name="PAYU"
               card_type="VISA, MasterCard"
               country="United Kingdom"
+              ref={refCard_4}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -325,6 +478,7 @@ const ServiceProviders: React.FC = () => {
               name="CARDPAY"
               card_type="VISA, MasterCard"
               country="Cyprus"
+              ref={refCard_5}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -351,6 +505,7 @@ const ServiceProviders: React.FC = () => {
               name="Payvision"
               card_type="VISA, MasterCard"
               country="Netherlands"
+              ref={refCard_6}
             >
               <Image
                 src="/pictures/images/payvision_logo.png"
@@ -367,6 +522,7 @@ const ServiceProviders: React.FC = () => {
               name="SEPA Express"
               card_type="SEPA"
               country="Germany"
+              ref={refCard_7}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -401,6 +557,7 @@ const ServiceProviders: React.FC = () => {
               name="Borgun"
               card_type="VISA, MasterCard"
               country="Latvia"
+              ref={refCard_8}
             >
               <Image
                 src="/pictures/images/borgun_logo.png"

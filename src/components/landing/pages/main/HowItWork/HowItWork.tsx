@@ -8,7 +8,7 @@ const HowItWork: React.FC = () => {
     <section className={s.HowItWork}>
       <BaseContainer>
         <BaseTitle type="h2" className={s.HowItWork_Title}>
-          How it work?
+          How it works?
         </BaseTitle>
 
         <ul className={s.HowItWork_Steps}>
