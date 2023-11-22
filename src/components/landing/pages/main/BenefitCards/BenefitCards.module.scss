@@ -71,14 +71,14 @@
       }
       .Card_Image {
         width: em(241px);
-        height: em(241px);
+        height: em(200px);
         @include iftablet {
           width: em(192px);
-          height: em(192px);
+          height: em(159px);
         }
         @include ifmobile {
           width: em(192px);
-          height: em(192px);
+          height: em(159px);
         }
       }
     }
@@ -91,14 +91,14 @@
       }
       .Card_Image {
         width: em(241px);
-        height: em(226px);
+        height: em(200px);
         @include iftablet {
           width: em(192px);
-          height: em(180px);
+          height: em(159px);
         }
         @include ifmobile {
           width: em(192px);
-          height: em(180px);
+          height: em(159px);
         }
       }
     }
