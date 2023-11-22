@@ -95,6 +95,16 @@
       .UploadedPhoto_Delete {
         opacity: 1;
       }
+      .UploadedPhoto_Overlay {
+        opacity: 1;
+      }
+    }
+
+    &_Overlay {
+      @extend %fullsize;
+      background: rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      pointer-events: none;
     }
 
     &_Delete {
@@ -106,12 +116,6 @@
       width: em(20px);
       height: em(20px);
       transition: all $speed ease;
-      @include iflaptop {
-      }
-      @include iftablet {
-      }
-      @include ifmobile {
-      }
       &:hover {
         path {
           transition: all $speed ease;
