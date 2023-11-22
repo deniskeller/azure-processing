@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       {/* <Provider store={store}> */}
-      {loading ? <Component {...pageProps} /> : <h1>Loading...</h1>}
+      <Component {...pageProps} />
       {/* </Provider> */}
     </>
   );
