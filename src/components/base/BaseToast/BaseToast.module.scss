@@ -1,0 +1,140 @@
+.BaseToast {
+  position: fixed;
+  z-index: $toast;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+
+  &_Wrapper {
+    left: 0px;
+    right: 0px;
+    display: flex;
+    position: absolute;
+    transition: all 230ms cubic-bezier(0.21, 1.02, 0.73, 1) 0s;
+    transform: translateY(0px);
+    bottom: em(44px);
+    justify-content: center;
+    z-index: $toast;
+    pointer-events: painted;
+  }
+
+  &_Toast {
+    position: relative;
+    max-width: em(423px);
+    padding: em(14px) em(90px) em(14px) em(30px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    backdrop-filter: blur(15px);
+    border-radius: em(12px);
+    background: #fff;
+    box-shadow: 0px 6px 24px 0px rgba(53, 53, 53, 0.1);
+    animation: 0.35s cubic-bezier(0.21, 1.02, 0.73, 1) 0s 1 normal forwards
+      running fadeIn;
+
+    @include ifmobile {
+      max-width: em(321px);
+      left: auto;
+      padding: em(10px) em(66px) em(10px) em(10px);
+    }
+  }
+
+  &_Icon {
+    width: em(44px);
+    height: em(44px);
+    margin-right: em(20px);
+    @include ifmobile {
+      width: em(26px);
+      height: em(26px);
+      margin-right: em(10px);
+    }
+  }
+
+  &_Content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .Text {
+      p {
+        color: $base900light;
+        font-family: $HelveticaNeueCyr;
+        font-size: em(16px);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%;
+        @include ifmobile {
+          font-size: em(14px);
+        }
+      }
+    }
+  }
+
+  &_Close {
+    position: absolute;
+    right: em(18px);
+    top: 50%;
+    transform: translate(0%, -50%);
+    cursor: pointer;
+    width: em(24px);
+    height: em(24px);
+    @include ifmobile {
+      right: em(15px);
+      width: em(22px);
+      height: em(22px);
+    }
+  }
+}
+
+.BaseToastApp {
+  .BaseToast_Toast {
+    border-radius: em(6px);
+    background: #f9fafb;
+    box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: em(10px) em(86px) em(10px) em(16px);
+    .BaseToast_Content {
+      .Icon {
+        width: em(44px);
+        height: em(44px);
+        margin-right: em(14px);
+        @include ifmobile {
+          width: em(30px);
+          height: em(30px);
+          margin-right: em(10px);
+        }
+      }
+      .Text {
+        p {
+          color: $base900light;
+          font-family: $HelveticaNeueCyr;
+          font-size: em(18px);
+          font-style: normal;
+          font-weight: 400;
+          line-height: 120%;
+          @include ifmobile {
+            font-size: em(14px);
+          }
+        }
+      }
+    }
+    .BaseToast_Close path {
+      stroke: #1a1a1a;
+      stroke-opacity: 0.3;
+    }
+  }
+}
+
+@include keyframe(fadeIn) {
+  0% {
+    transform: translate3d(0, 200%, 0) scale(0.6);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}

@@ -13,6 +13,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { InputPhone, LinesWithGradient } from '@content/landing/index';
 import { gsap } from 'gsap';
+import toast from 'react-hot-toast';
 const { ScrollTrigger } = require('gsap/dist/ScrollTrigger');
 gsap.registerPlugin(ScrollTrigger);
 
@@ -654,7 +655,7 @@ const MerchantProtection: React.FC = () => {
             you within 24 hours
           </BaseTitle>
 
-          <div className={s.DescriptionProblem_Form}>
+          <form className={s.DescriptionProblem_Form}>
             <div className={s.Title}>
               <h3>Contact form</h3>
             </div>
@@ -715,10 +716,18 @@ const MerchantProtection: React.FC = () => {
               </li>
             </ul>
 
-            <BaseButton className={s.Button} onClick={() => router.push('/')}>
+            <BaseButton
+              className={s.Button}
+              onClick={(e) => {
+                e.preventDefault();
+                toast.success('Data has been sent successfully', {
+                  duration: 300000,
+                });
+              }}
+            >
               Send request
             </BaseButton>
-          </div>
+          </form>
         </BaseContainer>
       </section>
     </div>

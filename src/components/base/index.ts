@@ -6,4 +6,5 @@ export { default as BaseInput } from "./BaseInput/BaseInput";
 export { default as BaseTitle } from "./BaseTitle/BaseTitle";
 export { default as BaseTextarea } from "./BaseTextarea/BaseTextarea";
 export { default as BaseText } from "./BaseText/BaseText";
+export { default as BaseToast } from "./BaseToast/BaseToast";
 
