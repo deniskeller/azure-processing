@@ -531,7 +531,7 @@ const MerchantProtection: React.FC = () => {
               onClick={(e) => {
                 e.preventDefault();
                 toast.success('Data has been sent successfully', {
-                  duration: 300000,
+                  duration: 3000,
                 });
               }}
             >
