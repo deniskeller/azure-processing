@@ -17,6 +17,7 @@
     display: inline-flex;
     flex-direction: row;
     align-items: center;
+    width: max-content;
     margin-bottom: em(52px);
     @include iflaptop {
       margin-bottom: 0;

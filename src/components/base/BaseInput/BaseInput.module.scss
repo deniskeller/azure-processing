@@ -53,11 +53,11 @@
       $size: 14px;
       font-size: em($size);
       top: em(10px, $size);
-      left: em(25px, $size);
+      left: em(23px, $size);
       @include ifmobile {
         $size: 12px;
         font-size: em($size);
-        top: em(18px, $size);
+        top: em(10px, $size);
         left: em(17px, $size);
       }
     }
@@ -67,11 +67,11 @@
     $size: 14px;
     font-size: em($size);
     top: em(10px, $size);
-    left: em(25px, $size);
+    left: em(23px, $size);
     @include ifmobile {
       $size: 12px;
       font-size: em($size);
-      top: em(18px, $size);
+      top: em(10px, $size);
       left: em(17px, $size);
     }
   }
@@ -92,8 +92,8 @@
   $size: 18px;
   position: absolute;
   pointer-events: none;
-  top: em(22px);
-  left: em(25px);
+  top: em(22px, $size);
+  left: em(25px, $size);
 
   color: rgba(26, 26, 26, 0.4);
   font-family: $HelveticaNeueCyr;
@@ -107,7 +107,7 @@
     $size: 16px;
     font-size: em($size);
     top: em(18px, $size);
-    left: em(17px, $size);
+    left: em(15px, $size);
   }
 }
 
