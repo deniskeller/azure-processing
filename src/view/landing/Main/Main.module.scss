@@ -1,5 +1,6 @@
 .Main {
   position: relative;
+  overflow: hidden;
   &_Lines {
     z-index: 100;
   }
