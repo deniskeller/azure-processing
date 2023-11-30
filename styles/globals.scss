@@ -215,8 +215,10 @@ input[type='search']::-webkit-search-results-decoration {
   font-style: normal !important;
   font-weight: 400 !important;
   line-height: 100% !important;
-
-  padding: em(32px, $size) em(16px, $size) em(10px, $size) em(24px, $size) !important;
+  padding: em(34px, $size) em(16px, $size) em(10px, $size) em(24px, $size) !important;
+  &::-webkit-contacts-auto-fill-button {
+    opacity: 0;
+  }
   @include ifmobile {
     $size: 16px;
     font-size: em($size) !important;
