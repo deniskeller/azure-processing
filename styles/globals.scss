@@ -339,8 +339,9 @@ input[type='search']::-webkit-search-results-decoration {
 
   border-radius: em(10px, $size) !important;
   min-width: auto !important;
-  width: em(34px) !important;
-  height: em(34px, $size) !important;
+  min-width: em(34px) !important;
+  min-height: em(34px, $size) !important;
+  margin: auto;
   &::before {
     display: none !important;
   }
@@ -358,4 +359,8 @@ input[type='search']::-webkit-search-results-decoration {
 .ant-picker-footer {
   display: none;
 }
+
+// .ant-picker-dropdown .ant-picker-month-panel .ant-picker-cell-inner {
+//   margin: auto;
+// }
 //ДАТАПИКЕР КОНЕЦ
