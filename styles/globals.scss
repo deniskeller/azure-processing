@@ -41,6 +41,11 @@
 .react-tel-input:hover .form-control {
   border-color: #425eec !important;
 }
+.react-tel-input .form-control {
+  &::-webkit-contacts-auto-fill-button {
+    opacity: 0;
+  }
+}
 
 .react-tel-input .form-control.phone-input-error {
   border-color: #ff5f5f !important;
@@ -137,7 +142,7 @@ input[type='search']::-webkit-search-results-decoration {
   width: 100% !important;
   height: em(46px, $size) !important;
   margin: 0 !important;
-  padding: 0 0 0 em(48px) !important;
+  padding: em(4px, $size) 0 0 em(48px) !important;
   outline: none;
   border-radius: em(8px, $size) !important;
   border: 1px solid #d1d5db !important;
@@ -145,7 +150,7 @@ input[type='search']::-webkit-search-results-decoration {
 
   color: rgba(26, 26, 26, 0.6);
   font-family: $HelveticaNeueCyr !important;
-  font-size: em($size) !important;
+  font-size: em(15px) !important;
   font-style: normal !important;
   font-weight: 400 !important;
   line-height: 100% !important;
