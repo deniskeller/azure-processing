@@ -30,11 +30,10 @@ const MerchantProtection: React.FC = () => {
 
   const [value, setValue] = React.useState<IFormData>({
     name_surname: 'Maxim Ivanov',
-    company_name: 'Azure Processing',
-    email: 'example@mail.com',
+    company_name: '',
+    email: '',
     phone: '',
-    text_problem:
-      'There is something to think about: representatives of modern social reserves are presented in an exceptionally positive light.',
+    text_problem: '',
   });
 
   const setNewValue = (value: string, prop: keyof IFormData) => {

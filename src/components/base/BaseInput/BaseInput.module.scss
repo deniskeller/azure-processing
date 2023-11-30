@@ -50,29 +50,33 @@
     border-color: #425eec;
     @include placeholder-color(transparent);
     & + .Label {
-      $size: 14px;
-      font-size: em($size);
-      top: em(10px, $size);
-      left: em(23px, $size);
+      top: em(10px);
+      left: em(25px);
       @include ifmobile {
-        $size: 12px;
-        font-size: em($size);
-        top: em(10px, $size);
-        left: em(17px, $size);
+        top: em(10px);
+        left: em(17px);
+      }
+      span {
+        font-size: em(14px);
+        @include ifmobile {
+          font-size: em(12px);
+        }
       }
     }
   }
 
   & + .NoEmpty {
-    $size: 14px;
-    font-size: em($size);
-    top: em(10px, $size);
-    left: em(23px, $size);
+    top: em(10px);
+    left: em(25px);
     @include ifmobile {
-      $size: 12px;
-      font-size: em($size);
-      top: em(10px, $size);
-      left: em(17px, $size);
+      top: em(10px);
+      left: em(17px);
+    }
+    span {
+      font-size: em(14px);
+      @include ifmobile {
+        font-size: em(12px);
+      }
     }
   }
 
@@ -89,25 +93,29 @@
 }
 
 .Label {
-  $size: 18px;
   position: absolute;
   pointer-events: none;
-  top: em(22px, $size);
-  left: em(25px, $size);
-
-  color: rgba(26, 26, 26, 0.4);
-  font-family: $HelveticaNeueCyr;
-  font-size: em($size);
-  font-style: normal;
-  font-weight: 400;
-  line-height: 100%;
-  transition: top 0.3s ease, left 0.3s ease, font-size 0.3s ease;
+  top: em(24px);
+  left: em(25px);
+  transition: top 0.3s ease, left 0.3s ease;
 
   @include ifmobile {
-    $size: 16px;
-    font-size: em($size);
-    top: em(18px, $size);
-    left: em(15px, $size);
+    top: em(18px);
+    left: em(15px);
+  }
+
+  span {
+    display: flex;
+    color: rgba(26, 26, 26, 0.4);
+    font-family: $HelveticaNeueCyr;
+    font-size: em(18px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    transition: font-size 0.3s ease;
+    @include ifmobile {
+      font-size: em(16px);
+    }
   }
 }
 

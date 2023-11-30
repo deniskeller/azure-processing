@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: em(34px) em(16px) em(10px) em(24px);
+  padding: em(34px) em(16px) em(10px) em(25px);
   border-radius: em(12px);
   border: 1px solid #e8e8ea;
   background: #fff;
@@ -67,7 +67,12 @@
 
     &:focus + .Label {
       top: em(10px);
-      p {
+      left: em(25px);
+      @include ifmobile {
+        top: em(10px);
+        left: em(16px);
+      }
+      span {
         font-size: em(14px);
         @include ifmobile {
           font-size: em(12px);
@@ -77,7 +82,12 @@
 
     & + .NoEmpty {
       top: em(10px);
-      p {
+      left: em(25px);
+      @include ifmobile {
+        top: em(10px);
+        left: em(16px);
+      }
+      span {
         font-size: em(14px);
         @include ifmobile {
           font-size: em(12px);
@@ -93,10 +103,11 @@
     left: em(25px);
     transition: all 0.3s ease;
     @include ifmobile {
-      left: em(17px);
+      left: em(15px);
     }
 
-    p {
+    span {
+      display: flex;
       color: rgba(26, 26, 26, 0.4);
       font-family: $HelveticaNeueCyr;
       font-size: em(18px);

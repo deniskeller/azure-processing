@@ -83,7 +83,7 @@ const BaseTextarea: React.FC<Props> = ({
 
       {label ? (
         <label className={`${s.Label} ${value ? s.NoEmpty : ''}`}>
-          <p>{label}</p>
+          <span>{label}</span>
         </label>
       ) : null}
 
