@@ -16,7 +16,7 @@ interface Props {
 const InputPhone: React.FC<Props> = ({
   value,
   error,
-  country = 'USA',
+  country = 'us',
   placeholder,
   className = '',
   onChange,
