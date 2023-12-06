@@ -604,6 +604,7 @@ const MerchantProtection: React.FC = () => {
 
               <li>
                 <BaseInput
+                  type="email"
                   name="email"
                   placeholder="Email"
                   label="Email"
