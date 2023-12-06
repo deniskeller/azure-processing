@@ -28,6 +28,26 @@ const BaseToast: React.FC = () => {
             </svg>
           </>
         );
+
+      case 'error':
+        return (
+          <>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 44 44"
+              fill="none"
+              className={s.BaseToast_Icon}
+            >
+              <path
+                d="M22 14.6667V22M22 29.3333H22.0183M38.5 22C38.5 31.1127 31.1127 38.5 22 38.5C12.8873 38.5 5.5 31.1127 5.5 22C5.5 12.8873 12.8873 5.5 22 5.5C31.1127 5.5 38.5 12.8873 38.5 22Z"
+                stroke="#425EEC"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </>
+        );
       default:
         return null;
     }
