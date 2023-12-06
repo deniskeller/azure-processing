@@ -162,7 +162,7 @@ const MerchantProtection: React.FC = () => {
 
       if (result.success) {
         toast.success('Application successfully submitted', {
-          duration: 300000,
+          duration: 3000,
         });
       }
     } catch (error) {
