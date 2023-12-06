@@ -7,38 +7,27 @@ import {
   BaseTitle,
 } from '@base/index';
 import { useRouter } from 'next/router';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import s from './MerchantProtection.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { InputPhone, LinesWithGradient } from '@content/landing/index';
 import { gsap } from 'gsap';
 import toast from 'react-hot-toast';
+import { message } from 'antd';
 const { ScrollTrigger } = require('gsap/dist/ScrollTrigger');
 gsap.registerPlugin(ScrollTrigger);
 
 interface IFormData {
-  name_surname: string;
-  company_name: string;
+  nameSurname: string;
+  companyName: string;
   email: string;
-  phone: string;
-  text_problem: string;
+  phoneNumber: string;
+  problemDescription: string;
 }
 
 const MerchantProtection: React.FC = () => {
   const router = useRouter();
-
-  const [value, setValue] = React.useState<IFormData>({
-    name_surname: 'Maxim Ivanov',
-    company_name: '',
-    email: '',
-    phone: '',
-    text_problem: '',
-  });
-
-  const setNewValue = (value: string, prop: keyof IFormData) => {
-    setValue((prev) => ({ ...prev, [prop]: value }));
-  };
 
   //АНИМАЦИИ
   const refTitle = useRef(null);
@@ -76,6 +65,111 @@ const MerchantProtection: React.FC = () => {
       })
       .fromTo(refTitle2.current, { y: '100%' }, { y: '0%' });
   }, []);
+
+  //ФОРМА
+  const [value, setValue] = React.useState<IFormData>({
+    nameSurname: '',
+    companyName: '',
+    email: '',
+    phoneNumber: '',
+    problemDescription: '',
+  });
+
+  const setNewValue = (value: string, prop: keyof IFormData) => {
+    setValue((prev) => ({ ...prev, [prop]: value }));
+  };
+
+  //ДОСТУП К ОТПРАВКЕ ФОРМЫ
+  // const [disabled, setDisabled] = useState(true);
+  // useEffect(() => {
+  //   const array = Object.values(value);
+  //   function checkingForEmptiness(item: string) {
+  //     if (item === '') {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   }
+  //   if (array.some(checkingForEmptiness) || !emailCheckValid) {
+  //     setDisabled(true);
+  //   } else {
+  //     setDisabled(false);
+  //   }
+
+  //   return () => {
+  //     setDisabled(true);
+  //   };
+  // }, [emailCheckValid, value]);
+  const [textErrors, setTextErrors] = useState<string[]>([]);
+
+  const nameSurnameError = 'The "Name and Surname" field must not be empty';
+  const [hasNameSurnameError, setHasNameSurnameError] = useState(false);
+
+  const companyNameError = "The 'Company Name' field must not be empty.";
+  const [hasCompanyNameError, setHasCompanyNameError] = useState(false);
+
+  const emailError = 'Invalid email.';
+  const [hasEmailError, setHasEmailError] = useState(false);
+
+  const [hasPhoneNumberError, setHasPhoneNumberError] = useState(false);
+  const phoneNumberError = 'The phone number must be valid.';
+
+  useEffect(() => {
+    if (textErrors.includes(nameSurnameError)) {
+      setHasNameSurnameError(true);
+    } else {
+      setHasNameSurnameError(false);
+    }
+
+    if (textErrors.includes(companyNameError)) {
+      setHasCompanyNameError(true);
+    } else {
+      setHasCompanyNameError(false);
+    }
+
+    if (textErrors.includes(emailError)) {
+      setHasEmailError(true);
+    } else {
+      setHasEmailError(false);
+    }
+
+    if (textErrors.includes(phoneNumberError)) {
+      setHasPhoneNumberError(true);
+    } else {
+      setHasPhoneNumberError(false);
+    }
+  }, [textErrors]);
+
+  //ОТПРАВКА ФОРМЫ
+  async function submitHandler(e: { preventDefault: () => void }) {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/contact/merchant`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(value),
+        }
+      );
+      const result = await response.json();
+      setTextErrors(result.message);
+      // console.log('result: ', result);
+      // console.log('Успех:', JSON.stringify(result));
+
+      if (result.success) {
+        toast.success('Application successfully submitted', {
+          duration: 300000,
+        });
+      }
+    } catch (error) {
+      console.error('Ошибка:', error);
+      alert('Something went wrong');
+    }
+  }
 
   return (
     <div className={s.MerchantProtection}>
@@ -453,6 +547,7 @@ const MerchantProtection: React.FC = () => {
           </div>
         </BaseContainer>
       </section>
+
       <section className={s.DescriptionProblem}>
         <BaseContainer>
           <BaseTitle
@@ -480,21 +575,23 @@ const MerchantProtection: React.FC = () => {
             <ul className={s.Inputs}>
               <li>
                 <BaseInput
-                  name="name_surname"
+                  name="nameSurname"
                   placeholder="Name Surname"
                   label="Name Surname"
-                  value={value.name_surname}
-                  onChange={(val: string) => setNewValue(val, 'name_surname')}
+                  value={value.nameSurname}
+                  onChange={(val: string) => setNewValue(val, 'nameSurname')}
+                  error={hasNameSurnameError}
                 />
               </li>
 
               <li>
                 <BaseInput
-                  name="company_name"
+                  name="companyName"
                   placeholder="Company name"
                   label="Company name"
-                  value={value.company_name}
-                  onChange={(val: string) => setNewValue(val, 'company_name')}
+                  value={value.companyName}
+                  onChange={(val: string) => setNewValue(val, 'companyName')}
+                  error={hasCompanyNameError}
                 />
               </li>
 
@@ -505,13 +602,15 @@ const MerchantProtection: React.FC = () => {
                   label="Email"
                   value={value.email}
                   onChange={(val: string) => setNewValue(val, 'email')}
+                  error={hasEmailError}
                 />
               </li>
 
               <li>
                 <InputPhone
-                  value={value.phone}
-                  onChange={(val: string) => setNewValue(val, 'phone')}
+                  value={value.phoneNumber}
+                  onChange={(val: string) => setNewValue(val, 'phoneNumber')}
+                  error={hasPhoneNumberError}
                 />
               </li>
 
@@ -519,21 +618,15 @@ const MerchantProtection: React.FC = () => {
                 <BaseTextarea
                   name="text_problem"
                   label="Describe your problem"
-                  value={value.text_problem}
-                  onChange={(val: string) => setNewValue(val, 'text_problem')}
+                  value={value.problemDescription}
+                  onChange={(val: string) =>
+                    setNewValue(val, 'problemDescription')
+                  }
                 />
               </li>
             </ul>
 
-            <BaseButton
-              className={s.Button}
-              onClick={(e) => {
-                e.preventDefault();
-                toast.success('Data has been sent successfully', {
-                  duration: 3000,
-                });
-              }}
-            >
+            <BaseButton className={s.Button} onClick={submitHandler}>
               Send request
             </BaseButton>
           </form>

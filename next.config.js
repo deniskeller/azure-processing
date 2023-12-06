@@ -11,5 +11,5 @@ module.exports = withImages({
   },
 	experimental: {
 		scrollRestoration: true,
-	}
+	},
 });
