@@ -49,10 +49,8 @@ const Registration: React.FC = () => {
         ) : step == 3 ? (
           <StepThree onClick={() => setStep(4)} onClick2={() => setStep(2)} />
         ) : step == 4 ? (
-          <Confirm onClick={() => alert('end')} />
-        ) : (
-          <StepFirst onClick={() => setStep(2)} />
-        )}
+          <Confirm />
+        ) : null}
       </section>
     </BaseContainer>
   );

@@ -347,7 +347,7 @@
   }
 
   &_Focus {
-    border-color: #425eec !important;
+    border-color: #425eec;
     box-shadow: none !important;
     &::before {
       $size: 14px;
@@ -366,6 +366,10 @@
 
   &_Blur {
     border-color: #e8e8ea !important;
+  }
+
+  &_Error {
+    border-color: #ff5f5f !important;
   }
 }
 

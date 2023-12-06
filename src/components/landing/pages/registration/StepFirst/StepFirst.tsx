@@ -5,14 +5,15 @@ import s from './StepFirst.module.scss';
 import type { DatePickerProps } from 'antd';
 import { DatePicker } from 'antd';
 import { InputPhone } from '@content/landing/index';
+import toast from 'react-hot-toast';
 
 interface Props {
   onClick: () => void;
 }
 
 interface IFormData {
-  name_surname: string;
-  birh_date: string;
+  nameSurname: string;
+  birthDate: string;
   email: string;
   phone: string;
   password: string;
@@ -23,8 +24,8 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
   const router = useRouter();
 
   const [value, setValue] = React.useState<IFormData>({
-    name_surname: '',
-    birh_date: '',
+    nameSurname: '',
+    birthDate: '',
     email: '',
     phone: '',
     password: '',
@@ -44,47 +45,94 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
     return /[a-zа-яё]/i.test(str);
   };
 
-  // валидация
-  // const [error, setError] = useState({
-  //   name_surname: false,
-  //   birh_date: false,
-  //   email: false,
-  //   phone: false,
-  //   password: false,
-  //   confirm_password: false,
-  // });
-  const [error, setError] = useState(false);
-  const submitFirstStepHandler = () => {
-    if (
-      value.name_surname == ''
-      // value.birh_date &&
-      // value.email &&
-      // value.phone &&
-      // value.password &&
-      // value.confirm_password &&
-      // value.password === value.confirm_password &&
-      // /\d/.test(value.password) &&
-      // /[a-zа-яё]/i.test(value.password) &&
-      // value.password.length >= 8
-    ) {
-      setError(true);
-    } else {
-      setError(false);
-      onClick();
-    }
-  };
-
   // календарь
   const [focus, setFocus] = useState(false);
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     console.log(date, dateString);
-    setNewValue(dateString, 'birh_date');
+    setNewValue(dateString, 'birthDate');
   };
+
+  //ОТПРАВКА ФОРМЫ
+  const [textErrors, setTextErrors] = useState<string[]>([]);
+  const nameSurnameError = 'The "Name and Surname" field must not be empty';
+  const [hasNameSurnameError, setHasNameSurnameError] = useState(false);
+
+  const birthDateError = 'Invalid date of birth.';
+  const [hasBirthDateError, setHasBirthDateError] = useState(false);
+
+  const emailError = 'Invalid email.';
+  const [hasEmailError, setHasEmailError] = useState(false);
+
+  const [hasPhoneNumberError, setHasPhoneNumberError] = useState(false);
+  const phoneNumberError = 'The phone number must be valid.';
+
+  useEffect(() => {
+    if (textErrors.includes(nameSurnameError)) {
+      setHasNameSurnameError(true);
+    } else {
+      setHasNameSurnameError(false);
+    }
+
+    if (textErrors.includes(birthDateError)) {
+      setHasBirthDateError(true);
+    } else {
+      setHasBirthDateError(false);
+    }
+
+    if (textErrors.includes(emailError)) {
+      setHasEmailError(true);
+    } else {
+      setHasEmailError(false);
+    }
+
+    if (textErrors.includes(phoneNumberError)) {
+      setHasPhoneNumberError(true);
+    } else {
+      setHasPhoneNumberError(false);
+    }
+  }, [textErrors]);
+
+  async function submitHandler(e: { preventDefault: () => void }) {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(value),
+      });
+      const result = await response.json();
+      setTextErrors(result.message);
+      console.log('result: ', result);
+      console.log('Успех:', JSON.stringify(result));
+
+      // if (result.success) {
+      //   toast.success('Application successfully submitted', {
+      //     duration: 3000,
+      //   });
+      //   setValue({
+      //     nameSurname: '',
+      //     companyName: '',
+      //     email: '',
+      //     phoneNumber: '',
+      //     problemDescription: '',
+      //   });
+      // }
+    } catch (error) {
+      console.error('Ошибка:', error);
+      toast.error('Something went wrong', {
+        duration: 3000,
+      });
+    }
+  }
 
   useEffect(() => {
     console.log('value: ', value);
-  }, [value]);
+    console.log('textErrors: ', textErrors);
+  }, [textErrors, value]);
 
   return (
     <div className={s.Step}>
@@ -110,21 +158,23 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
           <ul className={s.PersonalInfo_Inputs}>
             <li>
               <BaseInput
-                name="name_surname"
+                name="nameSurname"
                 placeholder="Name Surname"
                 label="Name Surname"
-                value={value.name_surname}
-                onChange={(val: string) => setNewValue(val, 'name_surname')}
-                error={error}
+                value={value.nameSurname}
+                onChange={(val: string) => setNewValue(val, 'nameSurname')}
+                error={hasNameSurnameError}
               />
             </li>
 
             <li>
               <DatePicker
                 className={`${s.DataPicker} ${
-                  focus || value.birh_date !== '' ? s.DataPicker_Focus : ''
-                } ${!focus ? s.DataPicker_Blur : ''}`}
-                format="DD.MM.YYYY"
+                  focus || value.birthDate !== '' ? s.DataPicker_Focus : ''
+                } ${!focus ? s.DataPicker_Blur : ''} ${
+                  hasBirthDateError ? s.DataPicker_Error : ''
+                }`}
+                format="YYYY-MM-DD"
                 placeholder="Birht date"
                 onChange={onChange}
                 onFocus={() => setFocus(true)}
@@ -166,18 +216,22 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
 
             <li>
               <BaseInput
+                type="mail"
                 name="email"
                 placeholder="Email"
                 label="Email"
                 value={value.email}
                 onChange={(val: string) => setNewValue(val, 'email')}
+                error={hasEmailError}
               />
             </li>
 
             <li>
               <InputPhone
+                country="us"
                 value={value.phone}
                 onChange={(val: string) => setNewValue(val, 'phone')}
+                error={hasPhoneNumberError}
               />
             </li>
           </ul>
@@ -331,7 +385,7 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
       {/* форма к*/}
 
       <div className={s.Step_Actions}>
-        <BaseButton onClick={submitFirstStepHandler} className={s.NextStep}>
+        <BaseButton onClick={submitHandler} className={s.NextStep}>
           Next step
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -340,9 +394,6 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
             viewBox="0 0 24 25"
             fill="none"
             className={s.NextStep_Icon}
-            // className={`${s.NextStep_Icon} ${
-            //   disabled ? s.NextStep_Icon_Disabled : null
-            // }`}
           >
             <path
               d="M4 12.5H20M20 12.5L14 6.5M20 12.5L14 18.5"
