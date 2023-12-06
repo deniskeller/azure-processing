@@ -174,7 +174,9 @@ const MerchantProtection: React.FC = () => {
       }
     } catch (error) {
       console.error('Ошибка:', error);
-      alert('Something went wrong');
+      toast.success('Something went wrong', {
+        duration: 3000,
+      });
     }
   }
 
