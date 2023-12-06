@@ -5,6 +5,7 @@ import s from './InputPhone.module.scss';
 
 interface Props {
   placeholder?: string;
+  country?: string;
   className?: string;
   error?: string | boolean;
   value: string;
@@ -15,6 +16,7 @@ interface Props {
 const InputPhone: React.FC<Props> = ({
   value,
   error,
+  country = 'USA',
   placeholder,
   className = '',
   onChange,
@@ -31,7 +33,7 @@ const InputPhone: React.FC<Props> = ({
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
         placeholder={placeholder}
-        country={'ru'}
+        country={country}
         value={value}
         onChange={onChange}
         enableSearch

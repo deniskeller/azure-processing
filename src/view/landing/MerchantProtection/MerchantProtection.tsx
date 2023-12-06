@@ -616,6 +616,7 @@ const MerchantProtection: React.FC = () => {
 
               <li>
                 <InputPhone
+                  country="us"
                   value={value.phoneNumber}
                   onChange={(val: string) => setNewValue(val, 'phoneNumber')}
                   error={hasPhoneNumberError}
