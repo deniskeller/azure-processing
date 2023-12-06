@@ -164,6 +164,13 @@ const MerchantProtection: React.FC = () => {
         toast.success('Application successfully submitted', {
           duration: 3000,
         });
+        setValue({
+          nameSurname: '',
+          companyName: '',
+          email: '',
+          phoneNumber: '',
+          problemDescription: '',
+        });
       }
     } catch (error) {
       console.error('Ошибка:', error);
