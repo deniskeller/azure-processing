@@ -49,7 +49,7 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
   const [focus, setFocus] = useState(false);
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(date, dateString);
+    // console.log(date, dateString);
     setNewValue(dateString, 'birthDate');
   };
 
@@ -66,6 +66,9 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
 
   const [hasPhoneNumberError, setHasPhoneNumberError] = useState(false);
   const phoneNumberError = 'The phone number must be valid.';
+
+  const [hasPasswordError, setHasPasswordError] = useState(false);
+  const passwordError = 'The password is too simple.';
 
   useEffect(() => {
     if (textErrors.includes(nameSurnameError)) {
@@ -90,6 +93,12 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
       setHasPhoneNumberError(true);
     } else {
       setHasPhoneNumberError(false);
+    }
+
+    if (textErrors.includes(passwordError)) {
+      setHasPasswordError(true);
+    } else {
+      setHasPasswordError(false);
     }
   }, [textErrors]);
 
@@ -130,9 +139,9 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
   }
 
   useEffect(() => {
-    console.log('value: ', value);
+    // console.log('value: ', value);
     console.log('textErrors: ', textErrors);
-  }, [textErrors, value]);
+  }, [textErrors]);
 
   return (
     <div className={s.Step}>
@@ -251,11 +260,14 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
                 label="Password"
                 value={value.password}
                 onChange={(val: string) => setNewValue(val, 'password')}
+                error={hasPasswordError}
               />
 
               <ul
                 className={`${s.PasswordCheck} ${
-                  value.password ? s.PasswordCheck_Visible : ''
+                  value.password || hasPasswordError
+                    ? s.PasswordCheck_Visible
+                    : ''
                 }`}
               >
                 <li
@@ -344,11 +356,18 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
                 label="Confirm password"
                 value={value.confirm_password}
                 onChange={(val: string) => setNewValue(val, 'confirm_password')}
+                error={
+                  hasPasswordError || value.confirm_password != value.password
+                }
               />
 
               <ul
                 className={`${s.PasswordCheck} ${
-                  value.confirm_password ? s.PasswordCheck_Visible : ''
+                  value.confirm_password ||
+                  hasPasswordError ||
+                  value.confirm_password != value.password
+                    ? s.PasswordCheck_Visible
+                    : ''
                 }`}
               >
                 <li

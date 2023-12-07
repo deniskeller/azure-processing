@@ -38,6 +38,11 @@
     font-size: em($size) !important;
   }
 }
+
+.react-tel-input .form-control.phone-input-error {
+  border-color: #ff5f5f !important;
+}
+
 .react-tel-input:hover .form-control {
   border-color: #425eec !important;
 }
@@ -45,10 +50,6 @@
   &::-webkit-contacts-auto-fill-button {
     opacity: 0;
   }
-}
-
-.react-tel-input .form-control.phone-input-error {
-  border-color: #ff5f5f !important;
 }
 
 //флаг и шеврон
