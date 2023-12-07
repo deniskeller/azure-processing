@@ -16,8 +16,26 @@ const Registration: React.FC = () => {
   const [step, setStep] = useState(1);
 
   useEffect(() => {
+    const formData = sessionStorage.getItem('test');
+    if (formData !== null) {
+      console.log('formData: ', JSON.parse(formData));
+    }
+
+    const currentStep = sessionStorage.getItem('step');
+    console.log('currentStep: ', currentStep);
+    if (currentStep !== null) {
+      setStep(+currentStep);
+    }
+
     console.log('step: ', step);
   }, [step]);
+
+  // useLayoutEffect(() => {
+  //   const formData = sessionStorage.getItem('test');
+  //   if (formData !== null) {
+  //     setValue(JSON.parse(formData));
+  //   }
+  // }, []);
 
   return (
     <BaseContainer>

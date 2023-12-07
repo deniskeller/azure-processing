@@ -38,11 +38,15 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
   const [value, setValue] = React.useState<IFormData>(initialState);
 
   useLayoutEffect(() => {
-    const formData = sessionStorage.getItem('test');
+    const formData = sessionStorage.getItem('formData');
     if (formData !== null) {
       setValue(JSON.parse(formData));
     }
   }, []);
+
+  useEffect(() => {
+    console.log('value: ', value);
+  }, [value]);
 
   const setNewValue = (value: string, prop: keyof IFormData) => {
     setValue((prev) => ({ ...prev, [prop]: value }));
@@ -61,7 +65,7 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
   const [focus, setFocus] = useState(false);
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    // console.log(date, dateString);
+    console.log(date, dateString);
     setNewValue(dateString, 'birthDate');
   };
 
@@ -134,11 +138,10 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
       );
       const result = await response.json();
       setTextErrors(result.message);
-      // console.log('result: ', result);
-      // console.log('Успех:', JSON.stringify(result));
 
       if (result.success && value.confirmPassword === value.password) {
-        sessionStorage.setItem('test', JSON.stringify(value));
+        sessionStorage.setItem('formData', JSON.stringify(value));
+        sessionStorage.setItem('step', '2');
         onClick();
       }
     } catch (error) {
@@ -152,7 +155,6 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
   useEffect(() => {
     // console.log('value: ', value);
     // console.log('textErrors: ', textErrors);
-    // console.log('new Date ', format(new Date(), 'yyyy-MM-dd'));
   }, [textErrors, value]);
 
   return (
@@ -195,10 +197,13 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
                 } ${!focus ? s.DataPicker_Blur : ''} ${
                   hasBirthDateError ? s.DataPicker_Error : ''
                 }`}
-                format="YYYY-MM-DD"
                 placeholder="Birht date"
-                // value={dayjs(value.birthDate, 'YYYY-MM-DD')}
-                // defaultValue={dayjs('', 'YYYY-MM-DD')}
+                value={
+                  value.birthDate !== ''
+                    ? dayjs(value.birthDate, 'YYYY-MM-DD')
+                    : null
+                }
+                format={'YYYY-MM-DD'}
                 onChange={onChange}
                 onFocus={() => setFocus(true)}
                 onBlur={() => setFocus(false)}
