@@ -16,22 +16,19 @@ const Registration: React.FC = () => {
   const [step, setStep] = useState(1);
 
   useEffect(() => {
-    const formData = sessionStorage.getItem('test');
+    const formData = sessionStorage.getItem('formData');
     if (formData !== null) {
       console.log('formData: ', JSON.parse(formData));
     }
 
     const currentStep = sessionStorage.getItem('step');
-    console.log('currentStep: ', currentStep);
     if (currentStep !== null) {
       setStep(+currentStep);
     }
-
-    console.log('step: ', step);
   }, [step]);
 
   // useLayoutEffect(() => {
-  //   const formData = sessionStorage.getItem('test');
+  //   const formData = sessionStorage.getItem('formData');
   //   if (formData !== null) {
   //     setValue(JSON.parse(formData));
   //   }
@@ -65,11 +62,23 @@ const Registration: React.FC = () => {
         ) : null}
 
         {step == 1 ? (
-          <StepFirst onClick={() => setStep(2)} />
+          <StepFirst nextStep={() => setStep(2)} />
         ) : step == 2 ? (
-          <StepTwo onClick={() => setStep(3)} onClick2={() => setStep(1)} />
+          <StepTwo
+            nextStep={() => setStep(3)}
+            backStep={() => {
+              setStep(1);
+              sessionStorage.setItem('step', '1');
+            }}
+          />
         ) : step == 3 ? (
-          <StepThree onClick={() => setStep(4)} onClick2={() => setStep(2)} />
+          <StepThree
+            nextStep={() => setStep(4)}
+            backStep={() => {
+              setStep(2);
+              sessionStorage.setItem('step', '2');
+            }}
+          />
         ) : step == 4 ? (
           <Confirm />
         ) : null}

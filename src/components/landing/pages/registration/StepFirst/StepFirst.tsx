@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 import { format } from 'date-fns';
 
 interface Props {
-  onClick: () => void;
+  nextStep: () => void;
 }
 
 interface IFormData {
@@ -22,7 +22,7 @@ interface IFormData {
   confirmPassword: string;
 }
 
-const StepFirst: React.FC<Props> = ({ onClick }) => {
+const StepFirst: React.FC<Props> = ({ nextStep }) => {
   const router = useRouter();
 
   const initialState = {
@@ -142,7 +142,7 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
       if (result.success && value.confirmPassword === value.password) {
         sessionStorage.setItem('formData', JSON.stringify(value));
         sessionStorage.setItem('step', '2');
-        onClick();
+        nextStep();
       }
     } catch (error) {
       console.error('Ошибка:', error);

@@ -6,11 +6,11 @@ import s from './StepThree.module.scss';
 import { InputUploadPhoto } from '@content/landing/index';
 
 interface Props {
-  onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-  onClick2?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  nextStep?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  backStep?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const StepThree: React.FC<Props> = ({ onClick, onClick2 }) => {
+const StepThree: React.FC<Props> = ({ nextStep, backStep }) => {
   const router = useRouter();
 
   const [disabled, setDisabled] = useState(true);
@@ -38,12 +38,12 @@ const StepThree: React.FC<Props> = ({ onClick, onClick2 }) => {
       </div>
 
       <div className={s.Step_Actions}>
-        <BaseButton onClick={onClick2} className={s.Back} type="empty">
+        <BaseButton onClick={backStep} className={s.Back} type="empty">
           Back
         </BaseButton>
 
         <BaseButton
-          onClick={onClick}
+          onClick={nextStep}
           className={s.NextStep}
           disabled={disabled}
         >
