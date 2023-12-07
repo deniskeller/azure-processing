@@ -1,11 +1,13 @@
 import { BaseButton, BaseInput } from '@base/index';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import s from './StepFirst.module.scss';
 import type { DatePickerProps } from 'antd';
-import { DatePicker } from 'antd';
-import { InputPhone } from '@content/landing/index';
 import toast from 'react-hot-toast';
+import { InputPhone } from '@content/landing/index';
+import { DatePicker } from 'antd';
+import dayjs from 'dayjs';
+import { format } from 'date-fns';
 
 interface Props {
   onClick: () => void;
@@ -23,14 +25,23 @@ interface IFormData {
 const StepFirst: React.FC<Props> = ({ onClick }) => {
   const router = useRouter();
 
-  const [value, setValue] = React.useState<IFormData>({
+  const initialState = {
     nameSurname: '',
-    birthDate: '',
+    birthDate: format(new Date(), 'yyyy-MM-dd'),
     email: '',
     phone: '',
     password: '',
     confirmPassword: '',
-  });
+  };
+
+  const [value, setValue] = React.useState<IFormData>(initialState);
+
+  useLayoutEffect(() => {
+    const formData = sessionStorage.getItem('test');
+    if (formData !== null) {
+      setValue(JSON.parse(formData));
+    }
+  }, []);
 
   const setNewValue = (value: string, prop: keyof IFormData) => {
     setValue((prev) => ({ ...prev, [prop]: value }));
@@ -70,6 +81,10 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
   const [hasPasswordError, setHasPasswordError] = useState(false);
   const passwordError = 'The password is too simple.';
 
+  // const idOrPassportImgError = 'There should not be more than two elements.';
+  // const selfieWithPassportImgError =
+  //   'There should not be more than two elements.';
+
   useEffect(() => {
     if (textErrors.includes(nameSurnameError)) {
       setHasNameSurnameError(true);
@@ -106,30 +121,25 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(value),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/validate`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(value),
+        }
+      );
       const result = await response.json();
       setTextErrors(result.message);
-      console.log('result: ', result);
-      console.log('Успех:', JSON.stringify(result));
+      // console.log('result: ', result);
+      // console.log('Успех:', JSON.stringify(result));
 
-      // if (result.success) {
-      //   toast.success('Application successfully submitted', {
-      //     duration: 3000,
-      //   });
-      //   setValue({
-      //     nameSurname: '',
-      //     companyName: '',
-      //     email: '',
-      //     phoneNumber: '',
-      //     problemDescription: '',
-      //   });
-      // }
+      if (result.success && value.confirmPassword === value.password) {
+        sessionStorage.setItem('test', JSON.stringify(value));
+        onClick();
+      }
     } catch (error) {
       console.error('Ошибка:', error);
       toast.error('Something went wrong', {
@@ -140,8 +150,9 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
 
   useEffect(() => {
     // console.log('value: ', value);
-    console.log('textErrors: ', textErrors);
-  }, [textErrors]);
+    // console.log('textErrors: ', textErrors);
+    // console.log('new Date ', format(new Date(), 'yyyy-MM-dd'));
+  }, [textErrors, value]);
 
   return (
     <div className={s.Step}>
@@ -185,6 +196,11 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
                 }`}
                 format="YYYY-MM-DD"
                 placeholder="Birht date"
+                value={dayjs(
+                  value.birthDate ||
+                    format(new Date(), 'YYYY-MM-DD').toString(),
+                  'YYYY-MM-DD'
+                )}
                 onChange={onChange}
                 onFocus={() => setFocus(true)}
                 onBlur={() => setFocus(false)}

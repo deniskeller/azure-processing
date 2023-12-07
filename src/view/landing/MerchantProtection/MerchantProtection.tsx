@@ -138,6 +138,7 @@ const MerchantProtection: React.FC = () => {
     } else {
       setHasPhoneNumberError(false);
     }
+    console.log('textErrors: ', textErrors);
   }, [textErrors]);
 
   //ОТПРАВКА ФОРМЫ

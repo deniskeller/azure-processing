@@ -1,7 +1,7 @@
 import { BaseContainer } from '@base/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './Registration.module.scss';
 import {
   Confirm,
@@ -14,6 +14,10 @@ const Registration: React.FC = () => {
   const router = useRouter();
 
   const [step, setStep] = useState(1);
+
+  useEffect(() => {
+    console.log('step: ', step);
+  }, [step]);
 
   return (
     <BaseContainer>
