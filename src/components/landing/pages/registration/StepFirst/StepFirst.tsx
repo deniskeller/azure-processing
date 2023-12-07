@@ -1,5 +1,4 @@
 import { BaseButton, BaseInput } from '@base/index';
-import { useRouter } from 'next/router';
 import React, { useEffect, useState, useLayoutEffect } from 'react';
 import s from './StepFirst.module.scss';
 import type { DatePickerProps } from 'antd';
@@ -7,7 +6,6 @@ import toast from 'react-hot-toast';
 import { InputPhone } from '@content/landing/index';
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
-import { format } from 'date-fns';
 
 interface Props {
   nextStep: () => void;
@@ -23,11 +21,8 @@ interface IFormData {
 }
 
 const StepFirst: React.FC<Props> = ({ nextStep }) => {
-  const router = useRouter();
-
   const initialState = {
     nameSurname: '',
-    // birthDate: format(new Date(), 'yyyy-MM-dd'),
     birthDate: '',
     email: '',
     phone: '',
@@ -43,10 +38,6 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
       setValue(JSON.parse(formData));
     }
   }, []);
-
-  useEffect(() => {
-    console.log('value: ', value);
-  }, [value]);
 
   const setNewValue = (value: string, prop: keyof IFormData) => {
     setValue((prev) => ({ ...prev, [prop]: value }));

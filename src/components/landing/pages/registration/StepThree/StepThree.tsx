@@ -1,19 +1,70 @@
-import { BaseButton, BaseContainer } from '@base/index';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import { BaseButton } from '@base/index';
+import React, { useState, useEffect } from 'react';
 import s from './StepThree.module.scss';
 import { InputUploadPhoto } from '@content/landing/index';
 
 interface Props {
-  nextStep?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  confirm?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   backStep?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const StepThree: React.FC<Props> = ({ nextStep, backStep }) => {
-  const router = useRouter();
+interface IFile {
+  file: File;
+  thumbnail: string;
+}
 
+interface INewFormData {
+  nameSurname: string;
+  birthDate: string;
+  email: string;
+  phone: string;
+  password: string;
+  confirmPassword: string;
+  idOrPassportImg: string[];
+  selfieWithPassportImg: string[];
+}
+
+const StepThree: React.FC<Props> = ({ confirm, backStep }) => {
+  const [images, setImages] = useState<IFile[]>([]);
   const [disabled, setDisabled] = useState(true);
+  const [selfieWithPassportImg, setSelfieWithPassportImg] = useState<string[]>(
+    []
+  );
+
+  useEffect(() => {
+    if (images.length > 0) {
+      // console.log('images: ', images);
+      const formData = new FormData();
+      formData.set('file', images[images.length - 1].file);
+
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/upload`, {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => {
+          // console.log('response: ', response);
+          return response.json();
+        })
+        .then((data) => {
+          // console.log(data);
+          setSelfieWithPassportImg((prev) => [...prev, data.url]);
+        });
+    }
+  }, [images]);
+
+  useEffect(() => {
+    let formData = sessionStorage.getItem('formData');
+    let newFormData = {} as INewFormData;
+    if (formData !== null) {
+      newFormData = JSON.parse(formData);
+    }
+
+    console.log('newformData11111: ', newFormData);
+
+    newFormData['selfieWithPassportImg'] = selfieWithPassportImg;
+
+    sessionStorage.setItem('formData', JSON.stringify(newFormData));
+  }, [selfieWithPassportImg]);
 
   return (
     <div className={s.Step}>
@@ -34,7 +85,7 @@ const StepThree: React.FC<Props> = ({ nextStep, backStep }) => {
           <h2>Upload selfie photos (up to two photos)</h2>
         </div>
 
-        <InputUploadPhoto setDisabled={setDisabled} />
+        <InputUploadPhoto setDisabled={setDisabled} uploadImage={setImages} />
       </div>
 
       <div className={s.Step_Actions}>
@@ -43,7 +94,7 @@ const StepThree: React.FC<Props> = ({ nextStep, backStep }) => {
         </BaseButton>
 
         <BaseButton
-          onClick={nextStep}
+          onClick={confirm}
           className={s.NextStep}
           disabled={disabled}
         >

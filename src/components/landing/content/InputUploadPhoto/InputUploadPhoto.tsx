@@ -5,7 +5,7 @@ import s from './InputUploadPhoto.module.scss';
 interface Props {
   className?: string;
   multiple?: boolean;
-  onClick?: (ev: React.MouseEvent<HTMLDivElement>) => void;
+  uploadImage: (File) => void;
   setDisabled: (boolean) => void;
 }
 
@@ -20,7 +20,7 @@ interface IInputData {
 const InputUploadPhoto: React.FC<Props> = ({
   className = '',
   multiple = true,
-  onClick,
+  uploadImage,
   setDisabled,
 }) => {
   const [value, setValue] = useState<IInputData>({
@@ -73,16 +73,18 @@ const InputUploadPhoto: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    // console.log('files: ', value.files);
     if (value.files.length > 0) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
+
+    uploadImage(value.files);
+
     return () => {
       setDisabled(true);
     };
-  }, [setDisabled, value.files.length]);
+  }, [setDisabled, uploadImage, value.files, value.files.length]);
 
   return (
     <div className={`${s.InputUploadPhoto} ${className}`}>

@@ -1,7 +1,6 @@
 import { BaseContainer } from '@base/index';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import s from './Registration.module.scss';
 import {
   Confirm,
@@ -9,30 +8,47 @@ import {
   StepThree,
   StepTwo,
 } from 'components/landing/pages/registration';
+import toast from 'react-hot-toast';
 
 const Registration: React.FC = () => {
-  const router = useRouter();
-
   const [step, setStep] = useState(1);
 
-  useEffect(() => {
-    const formData = sessionStorage.getItem('formData');
-    if (formData !== null) {
-      console.log('formData: ', JSON.parse(formData));
-    }
-
+  useLayoutEffect(() => {
     const currentStep = sessionStorage.getItem('step');
     if (currentStep !== null) {
       setStep(+currentStep);
     }
+
+    return () => {
+      setStep(1);
+      sessionStorage.setItem('step', '1');
+    };
   }, [step]);
 
-  // useLayoutEffect(() => {
-  //   const formData = sessionStorage.getItem('formData');
-  //   if (formData !== null) {
-  //     setValue(JSON.parse(formData));
-  //   }
-  // }, []);
+  async function submitHandler() {
+    const formData = sessionStorage.getItem('formData');
+    console.log('formData: ', formData);
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: formData,
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        setStep(4);
+      }
+    } catch (error) {
+      console.error('Ошибка:', error);
+      toast.error('Something went wrong', {
+        duration: 3000,
+      });
+    }
+  }
 
   return (
     <BaseContainer>
@@ -65,15 +81,18 @@ const Registration: React.FC = () => {
           <StepFirst nextStep={() => setStep(2)} />
         ) : step == 2 ? (
           <StepTwo
-            nextStep={() => setStep(3)}
             backStep={() => {
               setStep(1);
               sessionStorage.setItem('step', '1');
             }}
+            nextStep={() => {
+              sessionStorage.setItem('step', '3');
+              setStep(3);
+            }}
           />
         ) : step == 3 ? (
           <StepThree
-            nextStep={() => setStep(4)}
+            confirm={submitHandler}
             backStep={() => {
               setStep(2);
               sessionStorage.setItem('step', '2');
