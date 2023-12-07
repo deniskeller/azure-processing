@@ -1,6 +1,6 @@
 import { BaseContainer } from '@base/index';
 import Link from 'next/link';
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 import s from './Registration.module.scss';
 import {
   Confirm,
@@ -18,12 +18,14 @@ const Registration: React.FC = () => {
     if (currentStep !== null) {
       setStep(+currentStep);
     }
+  }, [step]);
 
+  useEffect(() => {
     return () => {
       setStep(1);
       sessionStorage.setItem('step', '1');
     };
-  }, [step]);
+  }, []);
 
   async function submitHandler() {
     const formData = sessionStorage.getItem('formData');
@@ -41,6 +43,7 @@ const Registration: React.FC = () => {
 
       if (result.success) {
         setStep(4);
+        sessionStorage.setItem('step', '4');
       }
     } catch (error) {
       console.error('Ошибка:', error);

@@ -33,7 +33,24 @@ const Confirm: React.FC<Props> = ({ onClick }) => {
         </p>
       </div>
 
-      <BaseButton onClick={() => router.push('/')} className={s.Step_Button}>
+      <BaseButton
+        onClick={() => {
+          sessionStorage.setItem('step', '1');
+          sessionStorage.setItem(
+            'formData',
+            JSON.stringify({
+              nameSurname: '',
+              birthDate: '',
+              email: '',
+              phone: '',
+              password: '',
+              confirmPassword: '',
+            })
+          );
+          router.push('/');
+        }}
+        className={s.Step_Button}
+      >
         Go to main page
       </BaseButton>
     </div>
