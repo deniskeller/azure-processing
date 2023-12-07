@@ -17,7 +17,7 @@ interface IFormData {
   email: string;
   phone: string;
   password: string;
-  confirm_password: string;
+  confirmPassword: string;
 }
 
 const StepFirst: React.FC<Props> = ({ onClick }) => {
@@ -29,7 +29,7 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
     email: '',
     phone: '',
     password: '',
-    confirm_password: '',
+    confirmPassword: '',
   });
 
   const setNewValue = (value: string, prop: keyof IFormData) => {
@@ -351,29 +351,29 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
             <li className={s.ConfirmPassword}>
               <BaseInput
                 type="password"
-                name="confirm_password"
+                name="confirmPassword"
                 placeholder="Confirm password"
                 label="Confirm password"
-                value={value.confirm_password}
-                onChange={(val: string) => setNewValue(val, 'confirm_password')}
+                value={value.confirmPassword}
+                onChange={(val: string) => setNewValue(val, 'confirmPassword')}
                 error={
-                  hasPasswordError || value.confirm_password != value.password
+                  hasPasswordError || value.confirmPassword != value.password
                 }
               />
 
               <ul
                 className={`${s.PasswordCheck} ${
-                  value.confirm_password ||
+                  value.confirmPassword ||
                   hasPasswordError ||
-                  value.confirm_password != value.password
+                  value.confirmPassword != value.password
                     ? s.PasswordCheck_Visible
                     : ''
                 }`}
               >
                 <li
                   className={`${s.PasswordCheck_Item} ${
-                    value.confirm_password &&
-                    value.password === value.confirm_password
+                    value.confirmPassword &&
+                    value.password === value.confirmPassword
                       ? s.PasswordCheck_Item_Valid
                       : ''
                   }`}
