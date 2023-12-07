@@ -27,7 +27,8 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
 
   const initialState = {
     nameSurname: '',
-    birthDate: format(new Date(), 'yyyy-MM-dd'),
+    // birthDate: format(new Date(), 'yyyy-MM-dd'),
+    birthDate: '',
     email: '',
     phone: '',
     password: '',
@@ -196,11 +197,8 @@ const StepFirst: React.FC<Props> = ({ onClick }) => {
                 }`}
                 format="YYYY-MM-DD"
                 placeholder="Birht date"
-                value={dayjs(
-                  value.birthDate ||
-                    format(new Date(), 'YYYY-MM-DD').toString(),
-                  'YYYY-MM-DD'
-                )}
+                // value={dayjs(value.birthDate, 'YYYY-MM-DD')}
+                // defaultValue={dayjs('', 'YYYY-MM-DD')}
                 onChange={onChange}
                 onFocus={() => setFocus(true)}
                 onBlur={() => setFocus(false)}
