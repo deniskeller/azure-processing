@@ -36,7 +36,10 @@ export default function Document() {
           content="Azure Processing is professional Agent with many years of experience made to solicit merchants for an acquiring banks or payment service providers under their name."
         />
         {/* <meta property="og:type" content="website" /> */}
-        <meta property="og:title" content="Azure processing" />
+        <meta
+          property="og:title"
+          content="Azure processing. Your best acquiring provider"
+        />
         <meta
           property="og:description"
           content="Azure Processing is professional Agent with many years of experience made to solicit merchants for an acquiring banks or payment service providers under their name."
