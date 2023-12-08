@@ -9,12 +9,10 @@ import {
 import { useRouter } from 'next/router';
 import React, { useRef, useEffect, useState } from 'react';
 import s from './MerchantProtection.module.scss';
-import Image from 'next/image';
 import Link from 'next/link';
 import { InputPhone, LinesWithGradient } from '@content/landing/index';
 import { gsap } from 'gsap';
 import toast from 'react-hot-toast';
-import { message } from 'antd';
 const { ScrollTrigger } = require('gsap/dist/ScrollTrigger');
 gsap.registerPlugin(ScrollTrigger);
 
@@ -138,7 +136,6 @@ const MerchantProtection: React.FC = () => {
     } else {
       setHasPhoneNumberError(false);
     }
-    console.log('textErrors: ', textErrors);
   }, [textErrors]);
 
   //ОТПРАВКА ФОРМЫ
@@ -158,11 +155,9 @@ const MerchantProtection: React.FC = () => {
       );
       const result = await response.json();
       setTextErrors(result.message);
-      // console.log('result: ', result);
-      // console.log('Успех:', JSON.stringify(result));
 
       if (result.success) {
-        toast.success('Application successfully submitted', {
+        toast.success('Thank you! We will reach you in 24 hours.', {
           duration: 3000,
         });
         setValue({
@@ -631,6 +626,7 @@ const MerchantProtection: React.FC = () => {
                   name="text_problem"
                   label="Describe your problem"
                   value={value.problemDescription}
+                  maxLength={500}
                   onChange={(val: string) =>
                     setNewValue(val, 'problemDescription')
                   }

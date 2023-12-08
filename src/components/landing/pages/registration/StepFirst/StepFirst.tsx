@@ -69,6 +69,8 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
   const [hasBirthDateError, setHasBirthDateError] = useState(false);
 
   const emailError = 'Invalid email.';
+  const emailValidError = 'Invalid email.';
+  const [hasEmailValidError, setHasEmailValidError] = useState(false);
   const [hasEmailError, setHasEmailError] = useState(false);
 
   const [hasPhoneNumberError, setHasPhoneNumberError] = useState(false);
@@ -76,10 +78,6 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
 
   const [hasPasswordError, setHasPasswordError] = useState(false);
   const passwordError = 'The password is too simple.';
-
-  // const idOrPassportImgError = 'There should not be more than two elements.';
-  // const selfieWithPassportImgError =
-  //   'There should not be more than two elements.';
 
   useEffect(() => {
     if (textErrors.includes(nameSurnameError)) {
@@ -94,10 +92,15 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
       setHasBirthDateError(false);
     }
 
-    if (textErrors.includes(emailError)) {
+    if (
+      textErrors.includes(emailError) ||
+      textErrors.includes(emailValidError)
+    ) {
       setHasEmailError(true);
+      setHasEmailValidError(true);
     } else {
       setHasEmailError(false);
+      setHasEmailValidError(false);
     }
 
     if (textErrors.includes(phoneNumberError)) {
@@ -111,6 +114,7 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
     } else {
       setHasPasswordError(false);
     }
+    console.log('textErrors: ', textErrors);
   }, [textErrors]);
 
   async function submitHandler(e: { preventDefault: () => void }) {
@@ -241,7 +245,7 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
                 label="Email"
                 value={value.email}
                 onChange={(val: string) => setNewValue(val, 'email')}
-                error={hasEmailError}
+                error={hasEmailError || hasEmailValidError}
               />
             </li>
 

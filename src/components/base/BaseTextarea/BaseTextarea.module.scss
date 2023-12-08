@@ -121,21 +121,6 @@
     }
   }
 
-  .Counter {
-    position: absolute;
-    right: em(6px);
-    bottom: em(4px);
-    color: #ff5f5f;
-    opacity: 0.6;
-    font-family: $HelveticaNeueCyr;
-    font-size: em(10px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 100%;
-    pointer-events: none;
-    user-select: none;
-  }
-
   &_Error {
     border-color: #ff5f5f !important;
   }

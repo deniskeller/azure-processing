@@ -17,7 +17,7 @@ const PartnerCard = forwardRef<Ref, Props>(function PartnerCard(
   ref
 ) {
   return (
-    <Link href={href} className={s.PartnerCard} ref={ref}>
+    <Link href={href} className={s.PartnerCard} ref={ref} target="_blank">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 40 40"

@@ -86,12 +86,6 @@ const BaseTextarea: React.FC<Props> = ({
           <span>{label}</span>
         </label>
       ) : null}
-
-      {maxLength ? (
-        <span className={s.Counter}>
-          {value.length}/{maxLength}
-        </span>
-      ) : null}
     </div>
   );
 };

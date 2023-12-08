@@ -636,7 +636,7 @@ const ServiceProviders: React.FC = () => {
 
           <div className={s.AcquiringBanks_Cards}>
             <PartnerCard
-              href="/"
+              href="https://www.concardis.com"
               name="JSC ConCardis"
               card_type="VISA, MasterCard"
               country="Germany"
@@ -660,7 +660,7 @@ const ServiceProviders: React.FC = () => {
             </PartnerCard>
 
             <PartnerCard
-              href="/"
+              href="https://www.bankfrick.li"
               name="JSC Bank Frick"
               card_type="VISA, MasterCard"
               country="Liechtenstein"
@@ -694,7 +694,7 @@ const ServiceProviders: React.FC = () => {
 
           <div className={s.PaymentServiceProviders_Cards}>
             <PartnerCard
-              href="/"
+              href="https://www.elavon.com"
               name="Elavon"
               card_type="VISA, MasterCard"
               country="USA"
@@ -741,7 +741,7 @@ const ServiceProviders: React.FC = () => {
             </PartnerCard>
 
             <PartnerCard
-              href="/"
+              href="https://www.payu.ru"
               name="PAYU"
               card_type="VISA, MasterCard"
               country="United Kingdom"
@@ -768,7 +768,7 @@ const ServiceProviders: React.FC = () => {
             </PartnerCard>
 
             <PartnerCard
-              href="/"
+              href="https://www.cardpay.com"
               name="CARDPAY"
               card_type="VISA, MasterCard"
               country="Cyprus"
@@ -795,7 +795,7 @@ const ServiceProviders: React.FC = () => {
             </PartnerCard>
 
             <PartnerCard
-              href="/"
+              href="http://www.payvision.com"
               name="Payvision"
               card_type="VISA, MasterCard"
               country="Netherlands"
@@ -812,7 +812,7 @@ const ServiceProviders: React.FC = () => {
             </PartnerCard>
 
             <PartnerCard
-              href="/"
+              href="http://www.sepa.express"
               name="SEPA Express"
               card_type="SEPA"
               country="Germany"
@@ -847,7 +847,7 @@ const ServiceProviders: React.FC = () => {
             </PartnerCard>
 
             <PartnerCard
-              href="/"
+              href="https://www.borgun.com"
               name="Borgun"
               card_type="VISA, MasterCard"
               country="Latvia"

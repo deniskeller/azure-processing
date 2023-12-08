@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import s from './Confirm.module.scss';
 import Image from 'next/image';
+import toast from 'react-hot-toast';
 
 interface Props {
   onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
@@ -37,8 +38,10 @@ const Confirm: React.FC<Props> = ({ onClick }) => {
         onClick={() => {
           sessionStorage.removeItem('step');
           sessionStorage.removeItem('formData');
-
           router.push('/');
+          toast.success('Thank you! We will reach you in 24 hours.', {
+            duration: 3000,
+          });
         }}
         className={s.Step_Button}
       >
