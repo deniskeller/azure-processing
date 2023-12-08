@@ -32,7 +32,7 @@ export default function Document() {
         <meta name="msapplication-TileColor" content="#da532c"></meta>
         <meta name="theme-color" content="#ffffff"></meta>
         <meta
-          name="keywords"
+          name="description"
           content="Azure Processing is professional Agent with many years of experience made to solicit merchants for an acquiring banks or payment service providers under their name."
         />
       </Head>
