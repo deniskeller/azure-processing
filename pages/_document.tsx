@@ -31,8 +31,12 @@ export default function Document() {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c"></meta>
         <meta name="theme-color" content="#ffffff"></meta>
+        <meta
+          name="keywords"
+          content="Azure Processing is professional Agent with many years of experience made to solicit merchants for an acquiring banks or payment service providers under their name."
+        />
       </Head>
-      <title>Azure Processing</title>
+      <title>Azure processing</title>
       <body>
         <Main />
         <NextScript />
