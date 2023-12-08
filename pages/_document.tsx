@@ -43,7 +43,7 @@ export default function Document() {
         <meta property="og:site_name" content="Azure processing" />
         <meta
           property="og:title"
-          content="Azure processing. Your best acquiring provider111111"
+          content="Azure processing. Your best acquiring provider"
         />
         <meta
           property="og:description"
