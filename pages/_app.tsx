@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Azure Processing is professional Agent with many years of experience made to solicit merchants for an acquiring banks or payment service providers under their name."
         />
         {/* <meta property="og:type" content="website" /> */}
-        <meta property="og:url" content="Azure processing" />
+        {/* <meta property="og:url" content="Azure processing" /> */}
         <meta
           property="og:title"
           content="Azure processing. Your best acquiring provider"
