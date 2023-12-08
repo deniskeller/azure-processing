@@ -99,6 +99,7 @@ const MerchantProtection: React.FC = () => {
   //   };
   // }, [emailCheckValid, value]);
   const [textErrors, setTextErrors] = useState<string[]>([]);
+  const [dirty, setDirty] = useState(false);
 
   const nameSurnameError = 'The "Name and Surname" field must not be empty';
   const [hasNameSurnameError, setHasNameSurnameError] = useState(false);
@@ -138,9 +139,30 @@ const MerchantProtection: React.FC = () => {
     }
   }, [textErrors]);
 
+  useEffect(() => {
+    if (dirty) {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/contact/merchant`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(value),
+      })
+        .then((response) => {
+          console.log('response: ', response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setTextErrors(data.message);
+        });
+    }
+  }, [value, dirty]);
+
   //ОТПРАВКА ФОРМЫ
   async function submitHandler(e: { preventDefault: () => void }) {
     e.preventDefault();
+    setDirty(true);
 
     try {
       const response = await fetch(
@@ -167,6 +189,7 @@ const MerchantProtection: React.FC = () => {
           phoneNumber: '1',
           problemDescription: '',
         });
+        setDirty(false);
       }
     } catch (error) {
       console.error('Ошибка:', error);
