@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
         />
         <meta
-          name="keywords"
+          name="description"
           content="Azure Processing is professional Agent with many years of experience made to solicit merchants for an acquiring banks or payment service providers under their name."
         />
       </Head>
