@@ -164,7 +164,7 @@ const MerchantProtection: React.FC = () => {
           nameSurname: '',
           companyName: '',
           email: '',
-          phoneNumber: '',
+          phoneNumber: '1',
           problemDescription: '',
         });
       }
@@ -175,6 +175,10 @@ const MerchantProtection: React.FC = () => {
       });
     }
   }
+
+  useEffect(() => {
+    console.log('value: ', value);
+  }, [value]);
 
   return (
     <div className={s.MerchantProtection}>
