@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:url" content="Azure processing" />
         <meta
           property="og:title"
-          content="Azure processing. Your best acquiring provider"
+          content="Azure processing. Your best acquiring provider1111"
         />
         <meta
           property="og:description"
