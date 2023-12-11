@@ -1,12 +1,12 @@
 //@ts-nocheck
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './InputUploadPhoto.module.scss';
 
 interface Props {
   className?: string;
   multiple?: boolean;
-  uploadImage: (File) => void;
-  setDisabled: (boolean) => void;
+  type?: string;
+  setDisabled: (value: boolean) => void;
 }
 
 interface IFile {
@@ -17,10 +17,21 @@ interface IInputData {
   files: IFile[];
 }
 
+interface INewFormData {
+  nameSurname: string;
+  birthDate: string;
+  email: string;
+  phone: string;
+  password: string;
+  confirmPassword: string;
+  idOrPassportImg: string[];
+  selfieWithPassportImg: string[];
+}
+
 const InputUploadPhoto: React.FC<Props> = ({
   className = '',
   multiple = true,
-  uploadImage,
+  type,
   setDisabled,
 }) => {
   const [value, setValue] = useState<IInputData>({
@@ -66,7 +77,7 @@ const InputUploadPhoto: React.FC<Props> = ({
     });
   };
 
-  const deletePhoto = (index) => {
+  const deletePhoto = (index: number) => {
     let fileList = value.files;
     fileList.splice(index, 1);
     setValue((prev) => ({ ...prev, [value.files]: fileList }));
@@ -84,10 +95,60 @@ const InputUploadPhoto: React.FC<Props> = ({
     };
   }, [setDisabled, value.files, value.files.length]);
 
+  const [idOrPassportImg, setIdOrPassportImg] = useState<string[]>([]);
+  const [selfieWithPassportImg, setSelfieWithPassportImg] = useState<string[]>(
+    []
+  );
+
   useEffect(() => {
-    uploadImage(value.files);
+    if (value.files.length) {
+      const formData = new FormData();
+      formData.set('file', value.files[value.files.length - 1].file);
+
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/upload`, {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log('data: ', data);
+          if (type == 'idOrPassportImg') {
+            setIdOrPassportImg((prev) => {
+              return [...prev, data.url];
+            });
+          }
+          if (type == 'selfieWithPassportImg') {
+            setSelfieWithPassportImg((prev) => {
+              return [...prev, data.url];
+            });
+          }
+        });
+    }
+  }, [type, value]);
+
+  useEffect(() => {
+    let formData = sessionStorage.getItem('formData');
+    let newFormData = {} as INewFormData;
+    if (formData !== null) {
+      newFormData = JSON.parse(formData);
+    }
+
+    console.log('newformData11111: ', newFormData);
+    if (type == 'idOrPassportImg') {
+      newFormData['idOrPassportImg'] = idOrPassportImg;
+    }
+    if (type == 'selfieWithPassportImg') {
+      newFormData['selfieWithPassportImg'] = selfieWithPassportImg;
+    }
+
+    sessionStorage.setItem('formData', JSON.stringify(newFormData));
+  }, [idOrPassportImg, selfieWithPassportImg, type]);
+
+  useEffect(() => {
     console.log('value.files: ', value.files);
-  }, [uploadImage, value]);
+  }, [value]);
 
   return (
     <div className={`${s.InputUploadPhoto} ${className}`}>

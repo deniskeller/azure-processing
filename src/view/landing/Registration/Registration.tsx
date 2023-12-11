@@ -1,6 +1,6 @@
 import { BaseContainer } from '@base/index';
 import Link from 'next/link';
-import React, { useState, useLayoutEffect, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import s from './Registration.module.scss';
 import {
   Confirm,
@@ -9,12 +9,8 @@ import {
   StepTwo,
 } from 'components/landing/pages/registration';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/router';
-import { clearFormData } from '@utils/sessionStorage';
 
 const Registration: React.FC = () => {
-  const router = useRouter();
-
   const [step, setStep] = useState(1);
 
   useLayoutEffect(() => {
