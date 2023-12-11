@@ -8,10 +8,6 @@ interface Props {
   setDisabled: (value: boolean) => void;
 }
 
-interface IFile {
-  file: File;
-  thumbnail: string;
-}
 interface IInputData {
   files: File[];
 }
