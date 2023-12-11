@@ -34,10 +34,12 @@ const InputUploadPhoto: React.FC<Props> = ({
   type,
   setDisabled,
 }) => {
+  //ЛОКАЛЬНЫЙ СТЕЙТ
   const [value, setValue] = useState<IInputData>({
     files: [],
   });
 
+  //ЧТЕНИЕ ФАЙЛА
   const readFileData = (file: Blob) => {
     const promise = new Promise((resolve, reject) => {
       var reader = new FileReader();
@@ -52,6 +54,7 @@ const InputUploadPhoto: React.FC<Props> = ({
     return promise;
   };
 
+  //ДОБАВЛЕНИЕ ФОТКИ В ЛОКАЛЬНЫЙ СТЕЙТ
   const handleInputChange = (e: {
     preventDefault: () => any;
     stopPropagation: () => any;
@@ -77,12 +80,14 @@ const InputUploadPhoto: React.FC<Props> = ({
     });
   };
 
+  //УДАЛЕНИЕ ФОТКИ ИЗ ЛОКАЛЬНОГО СТЕЙТА
   const deletePhoto = (index: number) => {
     let fileList = value.files;
     fileList.splice(index, 1);
     setValue((prev) => ({ ...prev, [value.files]: fileList }));
   };
 
+  //АКТИВАЦИЯ КНОПКИ "СЛЕДУЮЩИЙ ШАГ"
   useEffect(() => {
     if (value.files.length > 0) {
       setDisabled(false);
@@ -95,11 +100,13 @@ const InputUploadPhoto: React.FC<Props> = ({
     };
   }, [setDisabled, value.files, value.files.length]);
 
+  //СТЕЙТ ДЛЯ ФОТОК
   const [idOrPassportImg, setIdOrPassportImg] = useState<string[]>([]);
   const [selfieWithPassportImg, setSelfieWithPassportImg] = useState<string[]>(
     []
   );
 
+  //ОТПРАВЛЯЕМ ФОТКУ НА СЕРВЕР
   useEffect(() => {
     if (value.files.length) {
       const formData = new FormData();
@@ -128,6 +135,7 @@ const InputUploadPhoto: React.FC<Props> = ({
     }
   }, [type, value]);
 
+  //ЗАПИСЫВАЕМ ФОТКИ В sessionStorage
   useEffect(() => {
     let formData = sessionStorage.getItem('formData');
     let newFormData = {} as INewFormData;
@@ -142,13 +150,15 @@ const InputUploadPhoto: React.FC<Props> = ({
     if (type == 'selfieWithPassportImg') {
       newFormData['selfieWithPassportImg'] = selfieWithPassportImg;
     }
-
     sessionStorage.setItem('formData', JSON.stringify(newFormData));
   }, [idOrPassportImg, selfieWithPassportImg, type]);
 
+  //КОНСОЛЬ
   useEffect(() => {
     console.log('value.files: ', value.files);
-  }, [value]);
+    console.log('selfieWithPassportImg: ', selfieWithPassportImg);
+    console.log('idOrPassportImg: ', idOrPassportImg);
+  }, [idOrPassportImg, selfieWithPassportImg, value]);
 
   return (
     <div className={`${s.InputUploadPhoto} ${className}`}>
