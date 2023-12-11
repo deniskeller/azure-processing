@@ -39,20 +39,13 @@ const InputUploadPhoto: React.FC<Props> = ({
     files: [],
   });
 
-  //ЧТЕНИЕ ФАЙЛА
-  const readFileData = (file: Blob) => {
-    const promise = new Promise((resolve, reject) => {
-      var reader = new FileReader();
-      reader.onloadend = () => {
-        resolve(reader.result);
-      };
-      reader.onerror = () => {
-        reject('Something went wrong when reading the file');
-      };
-      reader.readAsDataURL(file);
-    });
-    return promise;
-  };
+  const [selectFiles, setSelectFiles] = useState<File[]>([]);
+
+  //СТЕЙТ ДЛЯ ФОТОК
+  const [idOrPassportImg, setIdOrPassportImg] = useState<string[]>([]);
+  const [selfieWithPassportImg, setSelfieWithPassportImg] = useState<string[]>(
+    []
+  );
 
   //ДОБАВЛЕНИЕ ФОТКИ В ЛОКАЛЬНЫЙ СТЕЙТ
   const handleInputChange = (e: {
@@ -64,9 +57,44 @@ const InputUploadPhoto: React.FC<Props> = ({
     e && e.stopPropagation();
     let files = e.target.files.length < 2 ? e.target.files : false;
 
-    let fileReadProcesses = Array.prototype.map.call(files, (file) =>
-      readFileData(file)
-    );
+    const formData = new FormData();
+    formData.set('file', e.target.files[e.target.files.length - 1]);
+
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/upload`, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        // console.log('data: ', data);
+        if (type == 'idOrPassportImg') {
+          setIdOrPassportImg((prev) => {
+            return [...prev, data.url];
+          });
+        }
+        if (type == 'selfieWithPassportImg') {
+          setSelfieWithPassportImg((prev) => {
+            return [...prev, data.url];
+          });
+        }
+      });
+
+    let fileReadProcesses = Array.prototype.map.call(files, (file) => {
+      const promise = new Promise((resolve, reject) => {
+        var reader = new FileReader();
+        reader.onloadend = () => {
+          resolve(reader.result);
+        };
+        reader.onerror = () => {
+          reject('Something went wrong when reading the file');
+        };
+        reader.readAsDataURL(file);
+      });
+      return promise;
+    });
+
     Promise.all(fileReadProcesses).then((thumbnails) => {
       let filesData = thumbnails.map((thumbnail, index) => ({
         file: files[index],
@@ -84,7 +112,7 @@ const InputUploadPhoto: React.FC<Props> = ({
   const deletePhoto = (index: number) => {
     let fileList = value.files;
     fileList.splice(index, 1);
-    setValue((prev) => ({ ...prev, [value.files]: fileList }));
+    setValue((prev) => ({ ...prev, fileList }));
   };
 
   //АКТИВАЦИЯ КНОПКИ "СЛЕДУЮЩИЙ ШАГ"
@@ -100,41 +128,6 @@ const InputUploadPhoto: React.FC<Props> = ({
     };
   }, [setDisabled, value.files, value.files.length]);
 
-  //СТЕЙТ ДЛЯ ФОТОК
-  const [idOrPassportImg, setIdOrPassportImg] = useState<string[]>([]);
-  const [selfieWithPassportImg, setSelfieWithPassportImg] = useState<string[]>(
-    []
-  );
-
-  //ОТПРАВЛЯЕМ ФОТКУ НА СЕРВЕР
-  useEffect(() => {
-    if (value.files.length) {
-      const formData = new FormData();
-      formData.set('file', value.files[value.files.length - 1].file);
-
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/upload`, {
-        method: 'POST',
-        body: formData,
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log('data: ', data);
-          if (type == 'idOrPassportImg') {
-            setIdOrPassportImg((prev) => {
-              return [...prev, data.url];
-            });
-          }
-          if (type == 'selfieWithPassportImg') {
-            setSelfieWithPassportImg((prev) => {
-              return [...prev, data.url];
-            });
-          }
-        });
-    }
-  }, [type, value]);
-
   //ЗАПИСЫВАЕМ ФОТКИ В sessionStorage
   useEffect(() => {
     let formData = sessionStorage.getItem('formData');
@@ -143,7 +136,7 @@ const InputUploadPhoto: React.FC<Props> = ({
       newFormData = JSON.parse(formData);
     }
 
-    console.log('newformData11111: ', newFormData);
+    // console.log('newformData11111: ', newFormData);
     if (type == 'idOrPassportImg') {
       newFormData['idOrPassportImg'] = idOrPassportImg;
     }
@@ -156,8 +149,10 @@ const InputUploadPhoto: React.FC<Props> = ({
   //КОНСОЛЬ
   useEffect(() => {
     console.log('value.files: ', value.files);
-    console.log('selfieWithPassportImg: ', selfieWithPassportImg);
-    console.log('idOrPassportImg: ', idOrPassportImg);
+    // console.log('idOrPassportImg: ', idOrPassportImg);
+    // console.log('selfieWithPassportImg: ', selfieWithPassportImg);
+    const sessionStorageData = JSON.parse(sessionStorage.getItem('formData'));
+    console.log('sessionStorageData: ', sessionStorageData);
   }, [idOrPassportImg, selfieWithPassportImg, value]);
 
   return (
