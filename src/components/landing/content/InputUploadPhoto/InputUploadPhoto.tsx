@@ -1,5 +1,5 @@
 //@ts-nocheck
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import s from './InputUploadPhoto.module.scss';
 
 interface Props {
@@ -67,7 +67,7 @@ const InputUploadPhoto: React.FC<Props> = ({
   };
 
   const deletePhoto = (index) => {
-    const fileList = value.files;
+    let fileList = value.files;
     fileList.splice(index, 1);
     setValue((prev) => ({ ...prev, [value.files]: fileList }));
   };
@@ -79,12 +79,15 @@ const InputUploadPhoto: React.FC<Props> = ({
       setDisabled(true);
     }
 
-    uploadImage(value.files);
-
     return () => {
       setDisabled(true);
     };
-  }, [setDisabled, uploadImage, value.files, value.files.length]);
+  }, [setDisabled, value.files, value.files.length]);
+
+  useEffect(() => {
+    uploadImage(value.files);
+    console.log('value.files: ', value.files);
+  }, [uploadImage, value]);
 
   return (
     <div className={`${s.InputUploadPhoto} ${className}`}>

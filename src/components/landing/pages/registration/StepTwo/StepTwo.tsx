@@ -31,8 +31,7 @@ const StepTwo: React.FC<Props> = ({ nextStep, backStep }) => {
   const [idOrPassportImg, setIdOrPassportImg] = useState<string[]>([]);
 
   useEffect(() => {
-    if (images.length > 0) {
-      // console.log('images: ', images);
+    if (images.length) {
       const formData = new FormData();
       formData.set('file', images[images.length - 1].file);
 
@@ -41,15 +40,16 @@ const StepTwo: React.FC<Props> = ({ nextStep, backStep }) => {
         body: formData,
       })
         .then((response) => {
-          // console.log('response: ', response);
           return response.json();
         })
         .then((data) => {
-          // console.log(data);
-          setIdOrPassportImg((prev) => [...prev, data.url]);
+          console.log('data: ', data);
+          setIdOrPassportImg((prev) => {
+            return [...prev, data.url];
+          });
         });
     }
-  }, [images]);
+  }, [images, images.length]);
 
   useEffect(() => {
     let formData = sessionStorage.getItem('formData');
@@ -61,9 +61,12 @@ const StepTwo: React.FC<Props> = ({ nextStep, backStep }) => {
     console.log('newformData11111: ', newFormData);
 
     newFormData['idOrPassportImg'] = idOrPassportImg;
-
     sessionStorage.setItem('formData', JSON.stringify(newFormData));
   }, [idOrPassportImg]);
+
+  useEffect(() => {
+    console.log('images1111111111122222222: ', images);
+  }, [images]);
 
   return (
     <div className={s.Step}>

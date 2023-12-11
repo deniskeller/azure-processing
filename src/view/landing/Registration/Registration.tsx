@@ -9,8 +9,12 @@ import {
   StepTwo,
 } from 'components/landing/pages/registration';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/router';
+import { clearFormData } from '@utils/sessionStorage';
 
 const Registration: React.FC = () => {
+  const router = useRouter();
+
   const [step, setStep] = useState(1);
 
   useLayoutEffect(() => {
@@ -20,16 +24,8 @@ const Registration: React.FC = () => {
     }
   }, [step]);
 
-  useEffect(() => {
-    return () => {
-      setStep(1);
-      sessionStorage.setItem('step', '1');
-    };
-  }, []);
-
   async function submitHandler() {
     const formData = sessionStorage.getItem('formData');
-    console.log('formData: ', formData);
 
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {

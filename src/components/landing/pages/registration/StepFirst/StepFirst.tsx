@@ -56,7 +56,7 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
   const [focus, setFocus] = useState(false);
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(date, dateString);
+    // console.log(date, dateString);
     setNewValue(dateString, 'birthDate');
   };
 
@@ -69,8 +69,6 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
   const [hasBirthDateError, setHasBirthDateError] = useState(false);
 
   const emailError = 'Invalid email.';
-  const emailValidError = 'Invalid email.';
-  const [hasEmailValidError, setHasEmailValidError] = useState(false);
   const [hasEmailError, setHasEmailError] = useState(false);
 
   const [hasPhoneNumberError, setHasPhoneNumberError] = useState(false);
@@ -92,15 +90,10 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
       setHasBirthDateError(false);
     }
 
-    if (
-      textErrors.includes(emailError) ||
-      textErrors.includes(emailValidError)
-    ) {
+    if (textErrors.includes(emailError)) {
       setHasEmailError(true);
-      setHasEmailValidError(true);
     } else {
       setHasEmailError(false);
-      setHasEmailValidError(false);
     }
 
     if (textErrors.includes(phoneNumberError)) {
@@ -114,11 +107,12 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
     } else {
       setHasPasswordError(false);
     }
-    console.log('textErrors: ', textErrors);
+    // console.log('textErrors: ', textErrors);
   }, [textErrors]);
 
   async function submitHandler(e: { preventDefault: () => void }) {
     e.preventDefault();
+    setDirty(true);
 
     try {
       const response = await fetch(
@@ -137,6 +131,7 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
       if (result.success && value.confirmPassword === value.password) {
         sessionStorage.setItem('formData', JSON.stringify(value));
         sessionStorage.setItem('step', '2');
+        setDirty(false);
         nextStep();
       }
     } catch (error) {
@@ -146,6 +141,27 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
       });
     }
   }
+
+  const [dirty, setDirty] = useState(false);
+  useEffect(() => {
+    if (dirty) {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/validate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(value),
+      })
+        .then((response) => {
+          // console.log('response: ', response);
+          return response.json();
+        })
+        .then((data) => {
+          // console.log(data);
+          setTextErrors(data.message);
+        });
+    }
+  }, [value, dirty]);
 
   useEffect(() => {
     // console.log('value: ', value);
@@ -245,7 +261,7 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
                 label="Email"
                 value={value.email}
                 onChange={(val: string) => setNewValue(val, 'email')}
-                error={hasEmailError || hasEmailValidError}
+                error={hasEmailError}
               />
             </li>
 

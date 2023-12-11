@@ -98,6 +98,7 @@ const MerchantProtection: React.FC = () => {
   //     setDisabled(true);
   //   };
   // }, [emailCheckValid, value]);
+
   const [textErrors, setTextErrors] = useState<string[]>([]);
   const [dirty, setDirty] = useState(false);
 
@@ -149,11 +150,11 @@ const MerchantProtection: React.FC = () => {
         body: JSON.stringify(value),
       })
         .then((response) => {
-          console.log('response: ', response);
+          // console.log('response: ', response);
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setTextErrors(data.message);
         });
     }
@@ -192,16 +193,16 @@ const MerchantProtection: React.FC = () => {
         setDirty(false);
       }
     } catch (error) {
-      console.error('Ошибка:', error);
+      // console.error('Ошибка:', error);
       toast.error('Something went wrong', {
         duration: 3000,
       });
     }
   }
 
-  useEffect(() => {
-    console.log('value: ', value);
-  }, [value]);
+  // useEffect(() => {
+  //   console.log('value: ', value);
+  // }, [value]);
 
   return (
     <div className={s.MerchantProtection}>
