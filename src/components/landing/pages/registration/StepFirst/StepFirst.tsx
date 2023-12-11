@@ -143,6 +143,7 @@ const StepFirst: React.FC<Props> = ({ nextStep }) => {
   }
 
   const [dirty, setDirty] = useState(false);
+
   useEffect(() => {
     if (dirty) {
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/validate`, {

@@ -1,5 +1,4 @@
-//@ts-nocheck
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useEffect, useMemo, useState } from 'react';
 import s from './InputUploadPhoto.module.scss';
 
 interface Props {
@@ -14,7 +13,7 @@ interface IFile {
   thumbnail: string;
 }
 interface IInputData {
-  files: IFile[];
+  files: File[];
 }
 
 interface INewFormData {
@@ -24,8 +23,25 @@ interface INewFormData {
   phone: string;
   password: string;
   confirmPassword: string;
-  idOrPassportImg: string[];
-  selfieWithPassportImg: string[];
+  idOrPassportImg?: string[];
+  selfieWithPassportImg?: string[];
+}
+
+export async function loadPhotoToServer(file: File) {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/users/upload`,
+    {
+      method: 'POST',
+      body: formData,
+    }
+  );
+
+  const data = await response.json();
+
+  return data as { url: string };
 }
 
 const InputUploadPhoto: React.FC<Props> = ({
@@ -39,130 +55,128 @@ const InputUploadPhoto: React.FC<Props> = ({
     files: [],
   });
 
-  const [selectFiles, setSelectFiles] = useState<File[]>([]);
-
-  //СТЕЙТ ДЛЯ ФОТОК
-  const [idOrPassportImg, setIdOrPassportImg] = useState<string[]>([]);
-  const [selfieWithPassportImg, setSelfieWithPassportImg] = useState<string[]>(
-    []
-  );
-
   //ДОБАВЛЕНИЕ ФОТКИ В ЛОКАЛЬНЫЙ СТЕЙТ
-  const handleInputChange = (e: {
-    preventDefault: () => any;
-    stopPropagation: () => any;
-    target: { files: any };
-  }) => {
-    e && e.preventDefault();
-    e && e.stopPropagation();
-    let files = e.target.files.length < 2 ? e.target.files : false;
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
 
-    const formData = new FormData();
-    formData.set('file', e.target.files[e.target.files.length - 1]);
+    if (!e.target.files) return;
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/upload`, {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log('data: ', data);
-        if (type == 'idOrPassportImg') {
-          setIdOrPassportImg((prev) => {
-            return [...prev, data.url];
-          });
-        }
-        if (type == 'selfieWithPassportImg') {
-          setSelfieWithPassportImg((prev) => {
-            return [...prev, data.url];
-          });
-        }
-      });
+    const files = Array.from(e.target.files);
 
-    let fileReadProcesses = Array.prototype.map.call(files, (file) => {
-      const promise = new Promise((resolve, reject) => {
-        var reader = new FileReader();
-        reader.onloadend = () => {
-          resolve(reader.result);
-        };
-        reader.onerror = () => {
-          reject('Something went wrong when reading the file');
-        };
-        reader.readAsDataURL(file);
-      });
-      return promise;
+    if (!files) return;
+
+    const filesLength = files.length;
+
+    if (filesLength >= 2 || filesLength === 0) {
+      return;
+    }
+
+    // load photo to server
+    const promises = files.map(async (file) => {
+      const data = await loadPhotoToServer(file);
+
+      if (type == 'idOrPassportImg') {
+        // write to sessionStorage
+        const sessionStorageData = JSON.parse(
+          sessionStorage.getItem('formData') ?? ''
+        ) as INewFormData;
+        sessionStorageData.idOrPassportImg = [
+          ...(sessionStorageData.idOrPassportImg
+            ? sessionStorageData.idOrPassportImg
+            : []),
+          data.url,
+        ];
+        sessionStorage.setItem('formData', JSON.stringify(sessionStorageData));
+      }
+
+      if (type == 'selfieWithPassportImg') {
+        // write to sessionStorage
+        const sessionStorageData = JSON.parse(
+          sessionStorage.getItem('formData') ?? ''
+        ) as INewFormData;
+        sessionStorageData.selfieWithPassportImg = [
+          ...(sessionStorageData.selfieWithPassportImg
+            ? sessionStorageData.selfieWithPassportImg
+            : []),
+          data.url,
+        ];
+        sessionStorage.setItem('formData', JSON.stringify(sessionStorageData));
+      }
+
+      console.log(
+        JSON.parse(sessionStorage.getItem('formData') ?? '') as INewFormData
+      );
     });
 
-    Promise.all(fileReadProcesses).then((thumbnails) => {
-      let filesData = thumbnails.map((thumbnail, index) => ({
-        file: files[index],
-        thumbnail,
-      }));
-      setValue((prevState) => {
-        let newState = Object.assign({}, prevState);
-        newState.files = prevState.files.concat(filesData);
-        return newState;
-      });
+    await Promise.all(promises);
+
+    setValue((prevState) => {
+      return {
+        ...prevState,
+        files: [...prevState.files, ...files],
+      };
     });
+
+    e.target.value = '';
   };
 
   //УДАЛЕНИЕ ФОТКИ ИЗ ЛОКАЛЬНОГО СТЕЙТА
   const deletePhoto = (index: number) => {
-    let fileList = value.files;
-    fileList.splice(index, 1);
-    setValue((prev) => ({ ...prev, fileList }));
+    let newFiles = [...value.files];
+    newFiles.splice(index, 1);
+    setValue((prev) => ({ ...prev, files: newFiles }));
+    // remove from sessionStorage
+    const sessionStorageData = JSON.parse(
+      sessionStorage.getItem('formData') ?? ''
+    ) as INewFormData;
+    if (type == 'idOrPassportImg') {
+      sessionStorageData.idOrPassportImg?.splice(index, 1);
+    }
+    if (type == 'selfieWithPassportImg') {
+      sessionStorageData.selfieWithPassportImg?.splice(index, 1);
+    }
+    sessionStorage.setItem('formData', JSON.stringify(sessionStorageData));
+    console.log(
+      JSON.parse(sessionStorage.getItem('formData') ?? '') as INewFormData
+    );
   };
 
-  //АКТИВАЦИЯ КНОПКИ "СЛЕДУЮЩИЙ ШАГ"
   useEffect(() => {
-    if (value.files.length > 0) {
-      setDisabled(false);
-    } else {
+    if (value.files.length == 0) {
       setDisabled(true);
     }
 
     return () => {
-      setDisabled(true);
+      setDisabled(false);
     };
-  }, [setDisabled, value.files, value.files.length]);
+  }, [setDisabled, value.files.length]);
 
-  //ЗАПИСЫВАЕМ ФОТКИ В sessionStorage
   useEffect(() => {
-    let formData = sessionStorage.getItem('formData');
-    let newFormData = {} as INewFormData;
-    if (formData !== null) {
-      newFormData = JSON.parse(formData);
-    }
-
-    // console.log('newformData11111: ', newFormData);
+    const sessionStorageData = JSON.parse(
+      sessionStorage.getItem('formData') ?? ''
+    ) as INewFormData;
     if (type == 'idOrPassportImg') {
-      newFormData['idOrPassportImg'] = idOrPassportImg;
+      sessionStorageData.idOrPassportImg = [];
     }
     if (type == 'selfieWithPassportImg') {
-      newFormData['selfieWithPassportImg'] = selfieWithPassportImg;
+      sessionStorageData.selfieWithPassportImg = [];
     }
-    sessionStorage.setItem('formData', JSON.stringify(newFormData));
-  }, [idOrPassportImg, selfieWithPassportImg, type]);
-
-  //КОНСОЛЬ
-  useEffect(() => {
-    console.log('value.files: ', value.files);
-    // console.log('idOrPassportImg: ', idOrPassportImg);
-    // console.log('selfieWithPassportImg: ', selfieWithPassportImg);
-    const sessionStorageData = JSON.parse(sessionStorage.getItem('formData'));
-    console.log('sessionStorageData: ', sessionStorageData);
-  }, [idOrPassportImg, selfieWithPassportImg, value]);
+    sessionStorage.setItem('formData', JSON.stringify(sessionStorageData));
+    console.log(
+      JSON.parse(sessionStorage.getItem('formData') ?? '') as INewFormData
+    );
+  }, [type]);
 
   return (
     <div className={`${s.InputUploadPhoto} ${className}`}>
       {value.files.map((thumbnail, index) => {
+        const thumbnailUrl = URL.createObjectURL(thumbnail);
+
         return (
           <div
             key={index}
             className={s.UploadedPhoto}
-            style={{ backgroundImage: `url(${thumbnail.thumbnail})` }}
+            style={{ backgroundImage: `url(${thumbnailUrl})` }}
           >
             <div className={s.UploadedPhoto_Overlay}></div>
             <svg
