@@ -68,7 +68,7 @@ const InputUploadPhoto: React.FC<Props> = ({
         return response.json();
       })
       .then((data) => {
-        // console.log('data: ', data);
+        console.log('data: ', data);
         if (type == 'idOrPassportImg') {
           setIdOrPassportImg((prev) => {
             return [...prev, data.url];
