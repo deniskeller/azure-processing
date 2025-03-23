@@ -37,7 +37,7 @@ const PrivacyPolicy: React.FC = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const headerId = entry.target.id;
-          const sectionNumber = parseInt(headerId.split('-')[1], 10);
+          const sectionNumber = parseInt(headerId.split('-')[1]);
           setActiveSection(sectionNumber);
         }
       });
