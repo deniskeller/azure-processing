@@ -208,6 +208,7 @@
               font-size: em(14px);
             }
           }
+
           &:hover {
             p::after {
               animation: bottomLine 0.3s linear forwards;
@@ -216,6 +217,15 @@
               color: $base900light;
             }
           }
+
+					&.Active {
+						p::after {
+              animation: bottomLine 0.3s linear forwards;
+            }
+            p {
+              color: $base900light;
+            }
+					}
         }
       }
     }

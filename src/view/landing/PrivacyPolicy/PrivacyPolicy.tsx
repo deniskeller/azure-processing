@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import s from './PrivacyPolicy.module.scss';
 import { BaseContainer } from '@base/index';
 
@@ -12,27 +12,63 @@ const PrivacyPolicy: React.FC = () => {
     'User Information Azure Processing Collects',
     'Disclosures',
   ];
-  const [isActive, setIsActive] = useState(0);
+  const [activeSection, setActiveSection] = useState<number>(1);
 
   const handleClickNavbar = (index: number) => {
-    setIsActive(index);
+    setActiveSection(index);
 
-    scroller.scrollTo(`section-${index + 1}`, {
+    scroller.scrollTo(`section-${index}`, {
       duration: 0,
       delay: 0,
       smooth: true,
-      offset: -100,
+      offset: -50,
     });
   };
+
+	const refSectionsParent = useRef<HTMLDivElement>(null);
+	
+	useEffect(() => {
+    const observerOptions: IntersectionObserverInit = {
+      rootMargin: '-10% 0px -90% 0px',
+      threshold: 0,
+    };
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const headerId = entry.target.id;
+          const sectionNumber = parseInt(headerId.split('-')[1], 10);
+          setActiveSection(sectionNumber);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    const sectionsParent = refSectionsParent.current;
+		if (sectionsParent) {
+      sectionsParent.querySelectorAll('h1').forEach((header) => {
+        observer.observe(header);
+      });
+    }
+    
+    return () => {
+			if (sectionsParent) {
+				sectionsParent.querySelectorAll('h1').forEach((header) => {
+					observer.unobserve(header);
+				});
+			}
+    };
+  }, []);
 
   return (
     <section className={s.PrivacyPolicy}>
       <BaseContainer>
         <div className={s.PrivacyPolicy_Container}>
-          <ul className={s.PrivacyPolicy_Content}>
-            <li className={s.Section} id="section-1">
+          <div className={s.PrivacyPolicy_Content} ref={refSectionsParent}>
+            <section className={s.Section} id="section-1">
               <div className={s.Section_Title}>
-                <h1>Azure Processing Privacy Policy</h1>
+                <h1 id="header-1">Azure Processing Privacy Policy</h1>
               </div>
 
               <ul className={s.Section_Content}>
@@ -74,11 +110,11 @@ const PrivacyPolicy: React.FC = () => {
                   </p>
                 </li>
               </ul>
-            </li>
+            </section>
 
-            <li className={s.Section} id="section-2">
+            <section className={s.Section} id="section-2">
               <div className={s.Section_Title}>
-                <h1>How Azure Processing Uses Information</h1>
+                <h1 id="header-2">How Azure Processing Uses Information</h1>
               </div>
 
               <ul className={s.Section_Content}>
@@ -116,11 +152,11 @@ const PrivacyPolicy: React.FC = () => {
                   </p>
                 </li>
               </ul>
-            </li>
+            </section>
 
-            <li className={s.Section} id="section-3">
+            <section className={s.Section} id="section-3">
               <div className={s.Section_Title}>
-                <h1>User Information Azure Processing Collects</h1>
+                <h1 id="header-3">User Information Azure Processing Collects</h1>
               </div>
 
               <ul className={s.Section_Content}>
@@ -208,11 +244,11 @@ const PrivacyPolicy: React.FC = () => {
                   </p>
                 </li>
               </ul>
-            </li>
+            </section>
 
-            <li className={s.Section} id="section-4">
+            <section className={s.Section} id="section-4">
               <div className={s.Section_Title}>
-                <h1>Disclosures</h1>
+                <h1 id="header-4">Disclosures</h1>
               </div>
 
               <ul className={s.Section_Content}>
@@ -265,7 +301,7 @@ const PrivacyPolicy: React.FC = () => {
                     <h2>Legal Requirements</h2>
                   </div>
 
-                  <p className={s.Paragraph_Description}>
+                  <div className={s.Paragraph_Description}>
                     Azure Processing does not disclose Personal Data, including
                     the data associated with the Service, unless disclosure is
                     necessary to comply with an enforceable governmental request
@@ -305,7 +341,7 @@ const PrivacyPolicy: React.FC = () => {
                         of such sale or transfer.
                       </li>
                     </ul>
-                  </p>
+                  </div>
                 </li>
 
                 <li className={s.Paragraph}>
@@ -384,8 +420,8 @@ const PrivacyPolicy: React.FC = () => {
                   </p>
                 </li>
               </ul>
-            </li>
-          </ul>
+            </section>
+          </div>
 
           <div className={s.PrivacyPolicy_Sidebar}>
             <div className={s.Sidebar}>
@@ -398,10 +434,10 @@ const PrivacyPolicy: React.FC = () => {
                   return (
                     <li
                       className={`${s.Sidebar_Navbar_Item} ${
-                        isActive == index ? s.Active : ''
+                        activeSection == index	+ 1 ? s.Active : ''
                       }`}
                       key={index}
-                      onClick={() => handleClickNavbar(index)}
+                      onClick={() => handleClickNavbar(index + 1)}
                     >
                       <p>{link}</p>
                     </li>

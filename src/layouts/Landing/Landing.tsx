@@ -33,7 +33,7 @@ const Landing: React.FC<Props> = ({ children, footer = true }) => {
       <div className={s.Landing}>
         <Header pages={pages} />
 
-        <div className={s.Content}>{children}</div>
+        <main className={s.Content}>{children}</main>
 
         {footer ? <Footer /> : null}
       </div>

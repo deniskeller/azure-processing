@@ -11,7 +11,7 @@ const Footer: React.FC<Props> = () => {
   const router = useRouter();
 
   return (
-    <div className={s.Footer}>
+    <footer className={s.Footer}>
       <BaseContainer className={s.Footer_Container}>
         <div className={s.Footer_Logo}>
           <Logo />
@@ -59,7 +59,7 @@ const Footer: React.FC<Props> = () => {
           </div>
         </div>
       </BaseContainer>
-    </div>
+    </footer>
   );
 };
 

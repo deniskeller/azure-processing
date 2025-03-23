@@ -30,7 +30,7 @@ const Header: React.FC<Props> = ({ pages }) => {
   }, [isVisibleSidebar]);
 
   return (
-    <div className={s.Header}>
+    <header className={s.Header}>
       <BaseContainer className={s.Header_Container}>
         <Logo className={s.Header_Logo} />
 
@@ -169,7 +169,7 @@ const Header: React.FC<Props> = ({ pages }) => {
           </div>
         </div>
       </BaseContainer>
-    </div>
+    </header>
   );
 };
 
